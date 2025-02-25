@@ -1393,7 +1393,7 @@
                         <textarea name="message" rows="5" placeholder="Type your message here..." required></textarea>
                     </div>
                     <div class="col-12">
-                        <button class="button">
+                        <button type="submit" class="button">
                             <span class="default">Send</span>
                             <span class="success">Sent</span>
                             <div class="left"></div>
@@ -1638,9 +1638,21 @@
     <script>
         document.querySelectorAll('.button').forEach(button => {
             let getVar = variable => getComputedStyle(button).getPropertyValue(variable);
+
+            function allFieldsFilled() {
+                let inputs = document.querySelectorAll('input[required]');
+                return Array.from(inputs).every(input => input.value.trim() !== "");
+            }
+
             button.addEventListener('click', e => {
+                if (!allFieldsFilled()) {
+
+                    return; // Stop the animation if fields are empty
+                }
+
                 if (!button.classList.contains('active')) {
                     button.classList.add('active');
+
                     gsap.to(button, {
                         keyframes: [{
                             '--left-wing-first-x': 50,
@@ -1714,6 +1726,7 @@
                             }
                         }]
                     });
+
                     gsap.to(button, {
                         keyframes: [{
                             '--text-opacity': 0,
@@ -1739,6 +1752,7 @@
                 }
             });
         });
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script2.js"></script>
