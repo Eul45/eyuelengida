@@ -1637,29 +1637,47 @@
 
     <script>
         document.querySelectorAll('.button').forEach(button => {
+            // Helper to get a CSS custom property value
             let getVar = variable => getComputedStyle(button).getPropertyValue(variable);
 
-            function allFieldsFilled() {
-                let inputs = document.querySelectorAll('input[required]');
-                return Array.from(inputs).every(input => input.value.trim() !== "");
-            }
-
             button.addEventListener('click', e => {
-                if (!allFieldsFilled()) {
+                // Prevent the animation from starting unless all required fields are filled.
+                // First, try to find the closest parent form.
+                const form = button.closest('form');
 
-                    return; // Stop the animation if fields are empty
+                // If a form exists, use HTML5 form validation.
+                if (form) {
+                    if (!form.checkValidity()) {
+                        // This will show the browser's native validation messages.
+                        form.reportValidity();
+                        return;  // Stop processing if the form is invalid.
+                    }
+                } else {
+                    // If no form exists, manually check all required inputs in the document.
+                    const requiredInputs = document.querySelectorAll('input[required]');
+                    let allFilled = true;
+                    requiredInputs.forEach(input => {
+                        if (!input.value.trim()) {
+                            allFilled = false;
+                        }
+                    });
+                    if (!allFilled) {
+                        // Optionally, show a custom message or simply exit.
+                        alert("Please fill all required fields.");
+                        return;
+                    }
                 }
 
+                // If we pass the validation, proceed with the GSAP animation.
                 if (!button.classList.contains('active')) {
                     button.classList.add('active');
-
                     gsap.to(button, {
                         keyframes: [{
                             '--left-wing-first-x': 50,
                             '--left-wing-first-y': 100,
                             '--right-wing-second-x': 50,
                             '--right-wing-second-y': 100,
-                            duration: .2,
+                            duration: 0.2,
                             onComplete() {
                                 gsap.set(button, {
                                     '--left-wing-first-y': 0,
@@ -1675,9 +1693,10 @@
                                     '--right-wing-third-x': 100,
                                     '--right-wing-third-y': 100,
                                     '--right-body-third-x': 60
-                                })
+                                });
                             }
-                        }, {
+                        },
+                        {
                             '--left-wing-third-x': 20,
                             '--left-wing-third-y': 90,
                             '--left-wing-second-y': 90,
@@ -1686,8 +1705,9 @@
                             '--right-wing-third-y': 90,
                             '--right-body-third-y': 90,
                             '--right-wing-second-y': 90,
-                            duration: .2
-                        }, {
+                            duration: 0.2
+                        },
+                        {
                             '--rotate': 50,
                             '--left-wing-third-y': 95,
                             '--left-wing-third-x': 27,
@@ -1695,18 +1715,20 @@
                             '--right-wing-second-x': 45,
                             '--right-wing-third-x': 60,
                             '--right-wing-third-y': 83,
-                            duration: .25
-                        }, {
+                            duration: 0.25
+                        },
+                        {
                             '--rotate': 55,
                             '--plane-x': -8,
                             '--plane-y': 24,
-                            duration: .2
-                        }, {
+                            duration: 0.2
+                        },
+                        {
                             '--rotate': 40,
                             '--plane-x': 45,
                             '--plane-y': -180,
                             '--plane-opacity': 0,
-                            duration: .3,
+                            duration: 0.3,
                             onComplete() {
                                 setTimeout(() => {
                                     button.removeAttribute('style');
@@ -1717,37 +1739,41 @@
                                         opacity: 1,
                                         y: 0,
                                         clearProps: true,
-                                        duration: .3,
+                                        duration: 0.3,
                                         onComplete() {
                                             button.classList.remove('active');
                                         }
-                                    })
-                                }, 2000)
+                                    });
+                                }, 2000);
                             }
-                        }]
+                        }
+                        ]
                     });
-
                     gsap.to(button, {
                         keyframes: [{
                             '--text-opacity': 0,
                             '--border-radius': 0,
                             '--left-wing-background': getVar('--primary-darkest'),
                             '--right-wing-background': getVar('--primary-darkest'),
-                            duration: .1
-                        }, {
+                            duration: 0.1
+                        },
+                        {
                             '--left-wing-background': getVar('--primary'),
                             '--right-wing-background': getVar('--primary'),
-                            duration: .1
-                        }, {
+                            duration: 0.1
+                        },
+                        {
                             '--left-body-background': getVar('--primary-dark'),
                             '--right-body-background': getVar('--primary-darkest'),
-                            duration: .4
-                        }, {
+                            duration: 0.4
+                        },
+                        {
                             '--success-opacity': 1,
                             '--success-scale': 1,
-                            duration: .25,
-                            delay: .25
-                        }]
+                            duration: 0.25,
+                            delay: 0.25
+                        }
+                        ]
                     });
                 }
             });
