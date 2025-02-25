@@ -1171,11 +1171,25 @@
                     <div class="hero-buttons">
                         <a href="#projects" class="btn-donate">View My Work</a>
                         <a href="#contact" class="btn-secondary"
-                            style="display: inline-block; padding: 1rem 2rem; background: transparent; color: var(--text); text-decoration: none; border-radius: 30px; font-weight: 600; border: 2px solid var(--secondary); transition: all 0.3s ease; margin-left: 15px; hover:background-color: var(--secondary); hover:color: var(--bg);"
+                            style="display: inline-block; padding: 1rem 2rem; background: transparent; color: var(--text); text-decoration: none; border-radius: 30px; font-weight: 600; border: 2px solid var(--secondary); transition: all 0.3s ease; margin-left: 15px;"
                             onmouseover="this.style.backgroundColor='var(--secondary)'; this.style.color='var(--bg)'"
                             onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--text)'">Contact
                             Me</a>
                     </div>
+                    <style>
+                        @media (max-width: 768px) {
+                            .hero-buttons {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                gap: 15px;
+                            }
+
+                            .hero-buttons a.btn-secondary {
+                                margin-left: 0;
+                            }
+                        }
+                    </style>
                 </div>
                 <div class="hero-image">
                     <svg viewBox="0 0 200 200" width="100%" height="auto">
