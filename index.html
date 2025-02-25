@@ -1013,97 +1013,41 @@
             display: none;
         }
 
-        .alert-success {
-            color: #d1e7dd;
-            /* Light text color for dark mode */
-            background-color: #198754;
-            /* Darker green background */
-            border-color: #badbcc;
-            /* Light border color for contrast */
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
+       /* Base alert styling */
+.alert {
+    margin: 0;
+    padding: 10px 20px;
+    border-radius: 5px;
+    max-width: 90%;
+    z-index: 1000;
+}
 
+/* Success alert */
+.alert-success {
+    background-color: #198754;  /* Green background */
+    color: #d1e7dd;  /* Light text */
+    border-color: #badbcc;  /* Light border */
+}
 
-        .alert-success .alert-link {
-            color: #0c4128;
-        }
+/* Failure alert */
+.alert-danger {
+    background-color: #a71d2a;  /* Red background */
+    color: #f8d7da;  /* Light text */
+    border-color: #f5c2c7;  /* Light border */
+}
 
-        .alert-info {
-            color: #055160;
-            background-color: #cff4fc;
-            border-color: #b6effb;
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
+/* Alert container for positioning */
+#alerts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: auto;
+    max-width: 400px;
+}
 
-        .alert-info .alert-link {
-            color: #04414d;
-        }
-
-        .alert-warning {
-            color: #664d03;
-            background-color: #fff3cd;
-            border-color: #ffecb5;
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-
-        .alert-warning .alert-link {
-            color: #523e02;
-        }
-
-        .alert-danger {
-            color: #f8d7da;
-            /* Light text color for dark mode */
-            background-color: #a71d2a;
-            /* Darker red background */
-            border-color: #f5c2c7;
-            /* Lighter border color for contrast */
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-
-
-        .alert-danger .alert-link {
-            color: #6a1a21;
-        }
-
-        .alert-light {
-            color: #626262;
-            background-color: #fdfdfd;
-            border-color: #fcfcfc;
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-
-        .alert-light .alert-link {
-            color: #4e4e4e;
-        }
-
-        .alert-dark {
-            color: #202020;
-            background-color: #d7d7d7;
-            border-color: #c2c2c2;
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-
-        .alert-dark .alert-link {
-            color: #1a1a1a;
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1452,12 +1396,15 @@
                 </form>
 
                 <!-- Success and Failure Messages -->
-                <div id="success-message" class="alert alert-success d-none" role="alert">
-                    Your message has been sent successfully!
-                </div>
-                <div id="failure-message" class="alert alert-danger d-none" role="alert">
-                    Something went wrong, please try again.
-                </div>
+                <div id="alerts-container">
+    <div id="success-message" class="alert alert-success d-none">
+        Message sent successfully!
+    </div>
+    <div id="failure-message" class="alert alert-danger d-none">
+        Failed to send message. Please try again.
+    </div>
+</div>
+                <!-- Success and Failure Messages -->
             </div>
         </div>
     </section>
