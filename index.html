@@ -4,179 +4,181 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eyuel Engida - Tech Innovator & Engineer</title>
-    
+
     <!-- Meta tags for SEO and Social Media previews -->
     <meta property="og:title" content="Eyuel">
     <meta property="og:description" content="Learn more about Eyuel Engida, a passionate developer and innovator.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/Eul45/EyuAppsmian2/refs/heads/main/images/eyuel.jpg">
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/Eul45/EyuAppsmian2/refs/heads/main/images/eyuel.jpg">
     <meta property="og:url" content="https://eyuelprofile.neocities.org/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Eyuel">
     <meta name="twitter:description" content="Learn more about Eyuel Engida, a passionate developer and innovator.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/Eul45/EyuAppsmian2/refs/heads/main/images/eyuel.jpg">
+    <meta name="twitter:image"
+        content="https://raw.githubusercontent.com/Eul45/EyuAppsmian2/refs/heads/main/images/eyuel.jpg">
 
 
-    
-    
+
+
     <style>
-    /* a little  bit messy here but works just fine*/
-    /* Loading screen styles */
-    :root {
-        --primary: #000000;
-        --secondary: #00ff88;
-        --accent: #ff00ff;
-        --text: #ffffff;
-        --bg: #0a0a0a;
-    }
-
-    .loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: var(--bg);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 99999;
-    }
-
-    .loading-container {
-        position: relative;
-        width: 300px;
-        height: 300px;
-    }
-
-    .cyber-circle {
-        position: absolute;
-        border: 4px solid transparent;
-        border-radius: 50%;
-        animation: rotate 2s linear infinite;
-    }
-
-    .cyber-circle:nth-child(1) {
-        width: 100%;
-        height: 100%;
-        border-top: 4px solid var(--secondary);
-        border-right: 4px solid var(--accent);
-    }
-
-    .cyber-circle:nth-child(2) {
-        width: 80%;
-        height: 80%;
-        top: 10%;
-        left: 10%;
-        border-bottom: 4px solid var(--secondary);
-        border-left: 4px solid var(--accent);
-        animation-direction: reverse;
-    }
-
-    .cyber-circle:nth-child(3) {
-        width: 60%;
-        height: 60%;
-        top: 20%;
-        left: 20%;
-        border-left: 4px solid var(--secondary);
-        border-top: 4px solid var(--accent);
-    }
-
-    .loading-logo {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80px;
-        height: 80px;
-        animation: pulse 2s infinite, glow 1.5s ease-in-out infinite alternate;
-        filter: drop-shadow(0 0 8px var(--secondary));
-    }
-
-    .loading-logo img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-
-    .loading-screen .progress-bar {
-        position: absolute;
-        bottom: 20%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 200px;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.1);
-        overflow: hidden;
-        border-radius: 4px;
-        box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-    }
-
-    .loading-screen .progress {
-        width: 0%;
-        height: 100%;
-        background: linear-gradient(90deg, var(--secondary), var(--accent));
-        animation: progress 3s ease-in-out forwards;
-    }
-
-    @keyframes rotate {
-        from {
-            transform: rotate(0deg);
+        /* a little  bit messy here but works just fine*/
+        /* Loading screen styles */
+        :root {
+            --primary: #000000;
+            --secondary: #00ff88;
+            --accent: #ff00ff;
+            --text: #ffffff;
+            --bg: #0a0a0a;
         }
 
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-    @keyframes pulse {
-        0% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        50% {
-            opacity: 0.8;
-            transform: translate(-50%, -50%) scale(0.95);
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
         }
 
-        100% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
+        .loading-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
         }
-    }
 
-    @keyframes glow {
-        from {
+        .cyber-circle {
+            position: absolute;
+            border: 4px solid transparent;
+            border-radius: 50%;
+            animation: rotate 2s linear infinite;
+        }
+
+        .cyber-circle:nth-child(1) {
+            width: 100%;
+            height: 100%;
+            border-top: 4px solid var(--secondary);
+            border-right: 4px solid var(--accent);
+        }
+
+        .cyber-circle:nth-child(2) {
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            border-bottom: 4px solid var(--secondary);
+            border-left: 4px solid var(--accent);
+            animation-direction: reverse;
+        }
+
+        .cyber-circle:nth-child(3) {
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+            border-left: 4px solid var(--secondary);
+            border-top: 4px solid var(--accent);
+        }
+
+        .loading-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            animation: pulse 2s infinite, glow 1.5s ease-in-out infinite alternate;
             filter: drop-shadow(0 0 8px var(--secondary));
         }
 
-        to {
-            filter: drop-shadow(0 0 12px var(--accent));
-        }
-    }
-
-    @keyframes progress {
-        0% {
-            width: 0%;
-        }
-
-        100% {
+        .loading-logo img {
             width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
-    }
 
-    .loading-screen.fade-out {
-        animation: fadeOut 1s forwards;
-    }
-
-    @keyframes fadeOut {
-        to {
-            opacity: 0;
-            visibility: hidden;
+        .loading-screen .progress-bar {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
         }
-    }
-</style>
+
+        .loading-screen .progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            animation: progress 3s ease-in-out forwards;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(0.95);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 8px var(--secondary));
+            }
+
+            to {
+                filter: drop-shadow(0 0 12px var(--accent));
+            }
+        }
+
+        @keyframes progress {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        .loading-screen.fade-out {
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    </style>
     <style>
         :root {
             --primary: #2d3436;
@@ -219,111 +221,116 @@
         }
 
 
-       /* Active section indicator */
-.section-indicator {
-    position: fixed;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 1000;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    backdrop-filter: blur(5px);
-}
+        /* Active section indicator */
+        .section-indicator {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
 
-.indicator-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-}
+        .indicator-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
 
-.indicator-dot:hover {
-    background: rgba(255, 255, 255, 0.5);
-    transform: scale(1.2);
-}
+        .indicator-dot:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.2);
+        }
 
-.indicator-dot::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: inherit;
-    animation: pulse 2s infinite;
-    opacity: 0;
-}
+        .indicator-dot::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: inherit;
+            animation: pulse 2s infinite;
+            opacity: 0;
+        }
 
-.indicator-dot.active {
-    background: var(--accent);
-    transform: scale(1.5);
-    box-shadow: 0 0 10px var(--accent),
+        .indicator-dot.active {
+            background: var(--accent);
+            transform: scale(1.5);
+            box-shadow: 0 0 10px var(--accent),
                 0 0 20px var(--accent),
                 0 0 30px var(--accent);
-}
+        }
 
-.indicator-dot.active::before {
-    background: var(--accent);
-    opacity: 1;
-}
+        .indicator-dot.active::before {
+            background: var(--accent);
+            opacity: 1;
+        }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    70% {
-        transform: scale(2);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(2.5);
-        opacity: 0;
-    }
-}
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
 
-/* Improved tooltip with auto-hide animation */
-.indicator-dot::after {
-    content: attr(data-section);
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
+            70% {
+                transform: scale(2);
+                opacity: 0;
+            }
 
-.indicator-dot:hover::after {
-    opacity: 1;
-    visibility: visible;
-    right: 25px;
-    animation: showHideTooltip 2s forwards;
-}
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
 
-@keyframes showHideTooltip {
-    0%, 70% {
-        opacity: 1;
-        visibility: visible;
-    }
-    100% {
-        opacity: 0;
-        visibility: hidden;
-    }
-}
+        /* Improved tooltip with auto-hide animation */
+        .indicator-dot::after {
+            content: attr(data-section);
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .indicator-dot:hover::after {
+            opacity: 1;
+            visibility: visible;
+            right: 25px;
+            animation: showHideTooltip 2s forwards;
+        }
+
+        @keyframes showHideTooltip {
+
+            0%,
+            70% {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -490,7 +497,7 @@
             margin-bottom: 2rem;
         }
 
-         .cta-button {
+        .cta-button {
             display: inline-block;
             padding: 1.5rem 3rem;
             /* Adjusted padding for better spacing */
@@ -624,10 +631,21 @@
         textarea {
             width: 100%;
             padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
             color: var(--text);
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
         .social-links {
@@ -664,152 +682,153 @@
         .social-links a:hover::after {
             transform: scaleX(1);
         }
+
         /* Flex layout for profile and form */
-.profile-and-form {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-}
+        .profile-and-form {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
 
-/*new button */
-.btn-donate {
-  --clr-font-main: hsla(0 0% 20% / 100);
-  --btn-bg-1: hsla(194 100% 69% / 1);
-  --btn-bg-2: hsla(217 100% 56% / 1);
-  --btn-bg-color: hsla(360 100% 100% / 1);
-  --radii: 0.5em;
-  cursor: pointer;
-  padding: 0.9em 1.4em;
-  min-width: 120px;
-  min-height: 44px;
-  font-size: var(--size, 1rem);
-  font-weight: 500;
-  transition: 0.8s;
-  background-size: 280% auto;
-  background-image: linear-gradient(
-    325deg,
-    var(--btn-bg-2) 0%,
-    var(--btn-bg-1) 55%,
-    var(--btn-bg-2) 90%
-  );
-  border: none;
-  border-radius: var(--radii);
-  color: var(--btn-bg-color);
-  box-shadow:
-    0px 0px 20px rgba(71, 184, 255, 0.5),
-    0px 5px 5px -1px rgba(58, 125, 233, 0.25),
-    inset 4px 4px 8px rgba(175, 230, 255, 0.5),
-    inset -4px -4px 8px rgba(19, 95, 216, 0.35);
-     text-decoration: none; /* This removes the underline */
-}
-
-
-
-/* for the view here buttons*/
-
-.animated-button {
-  position: relative;
-  display: inline-block;
-  padding: 12px 24px;
-  border: none;
-  font-size: 16px;
-  background-color: inherit;
-  border-radius: 100px;
-  font-weight: 600;
-  color: #ffffff40;
-  box-shadow: 0 0 0 2px #ffffff20;
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-}
-
-.animated-button span:last-child {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  background-color: #2196F3;
-  border-radius: 50%;
-  opacity: 0;
-  transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
-}
-
-.animated-button span:first-child {
-  position: relative;
-  z-index: 1;
-}
-
-.animated-button:hover {
-  box-shadow: 0 0 0 5px #2195f360;
-  color: #ffffff;
-}
-
-.animated-button:active {
-  scale: 0.95;
-}
-
-.animated-button:hover span:last-child {
-  width: 150px;
-  height: 150px;
-  opacity: 1;
-}
-
-
-/*  --------------*/
+        /*new button */
+        .btn-donate {
+            --clr-font-main: hsla(0 0% 20% / 100);
+            --btn-bg-1: hsla(194 100% 69% / 1);
+            --btn-bg-2: hsla(217 100% 56% / 1);
+            --btn-bg-color: hsla(360 100% 100% / 1);
+            --radii: 0.5em;
+            cursor: pointer;
+            padding: 0.9em 1.4em;
+            min-width: 120px;
+            min-height: 44px;
+            font-size: var(--size, 1rem);
+            font-weight: 500;
+            transition: 0.8s;
+            background-size: 280% auto;
+            background-image: linear-gradient(325deg,
+                    var(--btn-bg-2) 0%,
+                    var(--btn-bg-1) 55%,
+                    var(--btn-bg-2) 90%);
+            border: none;
+            border-radius: var(--radii);
+            color: var(--btn-bg-color);
+            box-shadow:
+                0px 0px 20px rgba(71, 184, 255, 0.5),
+                0px 5px 5px -1px rgba(58, 125, 233, 0.25),
+                inset 4px 4px 8px rgba(175, 230, 255, 0.5),
+                inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+            text-decoration: none;
+            /* This removes the underline */
+        }
 
 
 
-.btn-donate:hover {
-  background-position: right top;
-}
+        /* for the view here buttons*/
 
-.btn-donate:is(:focus, :focus-visible, :active) {
-  outline: none;
-  box-shadow:
-    0 0 0 3px var(--btn-bg-color),
-    0 0 0 6px var(--btn-bg-2);
-}
+        .animated-button {
+            position: relative;
+            display: inline-block;
+            padding: 12px 24px;
+            border: none;
+            font-size: 16px;
+            background-color: inherit;
+            border-radius: 100px;
+            font-weight: 600;
+            color: #ffffff40;
+            box-shadow: 0 0 0 2px #ffffff20;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
 
-@media (prefers-reduced-motion: reduce) {
-  .btn-donate {
-    transition: linear;
-  }
-}
-/* here */
+        .animated-button span:last-child {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: #2196F3;
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .animated-button span:first-child {
+            position: relative;
+            z-index: 1;
+        }
+
+        .animated-button:hover {
+            box-shadow: 0 0 0 5px #2195f360;
+            color: #ffffff;
+        }
+
+        .animated-button:active {
+            scale: 0.95;
+        }
+
+        .animated-button:hover span:last-child {
+            width: 150px;
+            height: 150px;
+            opacity: 1;
+        }
+
+
+        /*  --------------*/
 
 
 
-.profile {
-    flex: 1;
-    text-align: center;
-}
+        .btn-donate:hover {
+            background-position: right top;
+        }
 
-.profile-icon {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    border: 2px solid #ccc;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+        .btn-donate:is(:focus, :focus-visible, :active) {
+            outline: none;
+            box-shadow:
+                0 0 0 3px var(--btn-bg-color),
+                0 0 0 6px var(--btn-bg-2);
+        }
 
-#contact-form {
-    flex: 2;
-}
+        @media (prefers-reduced-motion: reduce) {
+            .btn-donate {
+                transition: linear;
+            }
+        }
 
-@media (max-width: 768px) {
-    .profile-and-form {
-        flex-direction: column;
-        align-items: center;
-    }
+        /* here */
 
-    #contact-form {
-        width: 100%;
-    }
-}
+
+
+        .profile {
+            flex: 1;
+            text-align: center;
+        }
+
+        .profile-icon {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact-form {
+            flex: 2;
+        }
+
+        @media (max-width: 768px) {
+            .profile-and-form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #contact-form {
+                width: 100%;
+            }
+        }
 
 
         /* Certificates Section */
@@ -988,50 +1007,102 @@
                 font-size: 14px;
             }
         }
+
         .d-none {
-  display: none;
-}
+            display: none;
+        }
 
-/* Base alert styling */
-.alert {
-    margin: 0;
-    padding: 10px 20px;
-    border-radius: 5px;
-    max-width: 90%;
-    z-index: 1000;
-}
-
-/* Success alert */
-.alert-success {
-    background-color: #198754;  /* Green background */
-    color: #d1e7dd;  /* Light text */
-    border-color: #badbcc;  /* Light border */
-}
-
-/* Failure alert */
-.alert-danger {
-    background-color: #a71d2a;  /* Red background */
-    color: #f8d7da;  /* Light text */
-    border-color: #f5c2c7;  /* Light border */
-}
-
-/* Alert container for positioning */
-#alerts-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: auto;
-    max-width: 400px;
-}
+        .alert-success {
+            color: #d1e7dd;
+            /* Light text color for dark mode */
+            background-color: #198754;
+            /* Darker green background */
+            border-color: #badbcc;
+            /* Light border color for contrast */
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
 
 
+        .alert-success .alert-link {
+            color: #0c4128;
+        }
+
+        .alert-info {
+            color: #055160;
+            background-color: #cff4fc;
+            border-color: #b6effb;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .alert-info .alert-link {
+            color: #04414d;
+        }
+
+        .alert-warning {
+            color: #664d03;
+            background-color: #fff3cd;
+            border-color: #ffecb5;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .alert-warning .alert-link {
+            color: #523e02;
+        }
+
+        .alert-danger {
+            color: #f8d7da;
+            /* Light text color for dark mode */
+            background-color: #a71d2a;
+            /* Darker red background */
+            border-color: #f5c2c7;
+            /* Lighter border color for contrast */
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
 
 
+        .alert-danger .alert-link {
+            color: #6a1a21;
+        }
 
+        .alert-light {
+            color: #626262;
+            background-color: #fdfdfd;
+            border-color: #fcfcfc;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
 
+        .alert-light .alert-link {
+            color: #4e4e4e;
+        }
+
+        .alert-dark {
+            color: #202020;
+            background-color: #d7d7d7;
+            border-color: #c2c2c2;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .alert-dark .alert-link {
+            color: #1a1a1a;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1040,18 +1111,18 @@
 
 <body>
     <div class="loading-screen">
-    <div class="loading-container">
-        <div class="cyber-circle"></div>
-        <div class="cyber-circle"></div>
-        <div class="cyber-circle"></div>
-        <div class="loading-logo">
-            <img src="logo.png" alt="EE">
-        </div>
-        <div class="progress-bar">
-            <div class="progress"></div>
+        <div class="loading-container">
+            <div class="cyber-circle"></div>
+            <div class="cyber-circle"></div>
+            <div class="cyber-circle"></div>
+            <div class="loading-logo">
+                <img src="logo.png" alt="EE">
+            </div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
         </div>
     </div>
-</div>
     <!-- Progress Bar -->
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
@@ -1069,7 +1140,7 @@
 
     <header>
         <nav class="container">
-           <div class="logo">
+            <div class="logo">
                 <img src="images/logo.png" alt="Logo" class="logo-img" />
                 <span class="logo-text">EE</span>
             </div>
@@ -1097,7 +1168,14 @@
                         style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 20px;">
                     <h1>Eyuel Engida</h1>
                     <p>Aspiring Engineer & Innovator in Tech</p>
-                    <a href="#projects" class="btn-donate">View My Work</a>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn-donate">View My Work</a>
+                        <a href="#contact" class="btn-secondary"
+                            style="display: inline-block; padding: 1rem 2rem; background: transparent; color: var(--text); text-decoration: none; border-radius: 30px; font-weight: 600; border: 2px solid var(--secondary); transition: all 0.3s ease; margin-left: 15px; hover:background-color: var(--secondary); hover:color: var(--bg);"
+                            onmouseover="this.style.backgroundColor='var(--secondary)'; this.style.color='var(--bg)'"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--text)'">Contact
+                            Me</a>
+                    </div>
                 </div>
                 <div class="hero-image">
                     <svg viewBox="0 0 200 200" width="100%" height="auto">
@@ -1185,7 +1263,7 @@
         </div>
     </section>
 
-   <!-- 
+    <!-- 
 <section id="projects" class="projects">
     <div class="container">
         <h2>Featured Projects</h2>
@@ -1222,55 +1300,55 @@
 
 
     <section id="skills" class="skills">
-    <div class="container">
-        <h2>Technical Skills</h2>
-        <div class="skill-categories">
-            <div class="skill-category">
-                <h3>Frontend</h3>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="--progress: 95%"></div>
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skill-categories">
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress: 95%"></div>
+                    </div>
+                    <p>HTML, CSS, JavaScript, TypeScript</p>
                 </div>
-                <p>HTML, CSS, JavaScript, TypeScript</p>
-            </div>
-            <div class="skill-category">
-                <h3>Mobile Development</h3>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="--progress: 85%"></div>
+                <div class="skill-category">
+                    <h3>Mobile Development</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress: 85%"></div>
+                    </div>
+                    <p>React Native, Expo, Java</p>
                 </div>
-                <p>React Native, Expo, Java</p>
-            </div>
-            <div class="skill-category">
-                <h3>Backend</h3>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="--progress: 70%"></div>
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress: 70%"></div>
+                    </div>
+                    <p>Node.js, Firebase</p>
                 </div>
-                <p>Node.js, Firebase</p>
-            </div>
-            <div class="skill-category">
-                <h3>Tools</h3>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="--progress: 80%"></div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress: 80%"></div>
+                    </div>
+                    <p>Git, EAS, Photoshop, Figma</p>
                 </div>
-                <p>Git, EAS, Photoshop, Figma</p>
-            </div>
-            <div class="skill-category">
-    <h3>Frameworks</h3>
-    <div class="skill-bar">
-        <div class="skill-progress" style="--progress: 90%"></div>
-    </div>
-    <p>React Native, Expo, Spring Boot</p>
-</div>
+                <div class="skill-category">
+                    <h3>Frameworks</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress: 90%"></div>
+                    </div>
+                    <p>React Native, Expo, Spring Boot</p>
+                </div>
 
-            <div class="skill-category">
-                <h3>Other Skills</h3>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="--progress: 75%"></div>
+                <div class="skill-category">
+                    <h3>Other Skills</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--progress: 75%"></div>
+                    </div>
+                    <p>UI/UX Design, OOP, Problem Solving</p>
                 </div>
-                <p>UI/UX Design, OOP, Problem Solving</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
     <!-- Certificates Section -->
@@ -1278,7 +1356,7 @@
         <div class="container">
             <h2>Certifications</h2>
             <div class="certificates-grid">
-                 <div class="certificate-card">
+                <div class="certificate-card">
                     <img src="images.png" alt="Udacity Icon" class="certificate-icon">
                     <h3 class="certificate-title">Udacity Certificate 1</h3>
                     <p>Data Analysis Fundamentals</p>
@@ -1313,72 +1391,114 @@
     </section>
 
     <section id="contact" class="contact">
-      <div class="container">
-        <h2>Contact Me</h2>
-        <div class="profile-and-form">
-          <!-- Profile Image -->
-          <div class="profile">
-            <img src="profile7.jpg" alt="Eyuel Engida" class="profile-icon">
-          </div>
-    
-          <!-- Contact Form -->
-          <form id="contact-form">
-            <div class="form-group">
-                <label for="email">Your email:</label>
-                <input
-                  type="email"
-                  name="email"
-                 
-                  placeholder="Enter your email address"
-                  
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="message">Your message:</label>
-                <textarea
-                  name="message"
-                  rows="5"
-                  placeholder="Type your message here..."
-                  
-                  required
-                ></textarea>
-              </div>
-              <div class="col-12">
-                <button class="cta-button" type="submit">
-                  Submit
-                </button>
-              </div>
-            
-          </form>
-    
-          <!-- Success and Failure Messages -->
-          <div id="alerts-container">
-    <div id="success-message" class="alert alert-success d-none">
-        Message sent successfully!
-    </div>
-    <div id="failure-message" class="alert alert-danger d-none">
-        Failed to send message. Please try again.
-    </div>
-</div>
+        <div class="container">
+            <h2>Contact Me</h2>
+            <div class="profile-and-form">
+                <!-- Profile Image -->
+                <div class="profile">
+                    <img src="profile7.jpg" alt="Eyuel Engida" class="profile-icon">
+                </div>
 
+                <!-- Contact Form -->
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="email">Your email:</label>
+                        <input type="email" name="email" placeholder="Enter your email address" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your message:</label>
+                        <textarea name="message" rows="5" placeholder="Type your message here..." required></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button class="cta-button" type="submit">
+                            Submit
+                        </button>
+                    </div>
+
+                </form>
+
+                <!-- Success and Failure Messages -->
+                <div id="success-message" class="alert alert-success d-none" role="alert">
+                    Your message has been sent successfully!
+                </div>
+                <div id="failure-message" class="alert alert-danger d-none" role="alert">
+                    Something went wrong, please try again.
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-    
+
     <footer>
-    <div class="container">
-        <p class="footer-title">Crafted by Eyuel Engida</p>
-        <p>&copy; <span id="currentYear"></span> - All rights reserved.</p>
-    </div>
-</footer>
+        <div class="container">
+            <p class="footer-title">Crafted by Eyuel Engida</p>
+            <p>&copy; <span id="currentYear"></span> - All rights reserved.</p>
+        </div>
+        <a href="#home" class="back-to-top" id="backToTopBtn">
+            <div class="back-to-top-rectangle">
+                <i class="fas fa-arrow-up"></i>
+            </div>
+        </a>
+        <style>
+            .back-to-top {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                z-index: 99;
+                text-decoration: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s, visibility 0.3s;
+            }
 
-<script>
-    // Set the current year dynamically
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-</script>
+            .back-to-top.visible {
+                opacity: 1;
+                visibility: visible;
+            }
 
-     <script>
+            .back-to-top-rectangle {
+                width: 50px;
+                height: 50px;
+                background: linear-gradient(145deg, var(--secondary), var(--accent));
+                border-radius: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: var(--text);
+                box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+                transition: all 0.3s ease;
+            }
+
+            .back-to-top-rectangle:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(0, 255, 136, 0.5);
+            }
+        </style>
+        <script>
+            // Control back to top button visibility
+            window.addEventListener('scroll', function () {
+                const backToTopBtn = document.getElementById('backToTopBtn');
+                const homeSection = document.getElementById('home');
+                const homeSectionBottom = homeSection.offsetTop + homeSection.offsetHeight;
+
+                // Show button only when scrolled past the home section
+                if (window.scrollY > homeSectionBottom) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+        </script>
+    </footer>
+
+    <script>
+        // Set the current year dynamically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
             const loadingScreen = document.querySelector('.loading-screen');
 
@@ -1399,7 +1519,7 @@
 
 
 
-<!--
+    <!--
     <script type="text/javascript">
         const form = document.getElementById('contactForm');
         const confirmationMessage = document.getElementById('confirmationMessage');
@@ -1523,7 +1643,7 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script2.js"></script>
-    
+
 </body>
 
 </html>
