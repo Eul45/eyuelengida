@@ -721,6 +721,7 @@
                 inset -4px -4px 8px rgba(19, 95, 216, 0.35);
             text-decoration: none;
             /* This removes the underline */
+            display: inline-block;
         }
 
 
@@ -1168,6 +1169,10 @@
                         style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 20px;">
                     <h1>Eyuel Engida</h1>
                     <p>Aspiring Engineer & Innovator in Tech</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn-donate">View My Work</a>
+                        <a href="#contact" class="btn-secondary">Contact Me</a>
+                    </div>
                     <style>
                         .hero-buttons {
                             display: flex;
@@ -1205,8 +1210,6 @@
                             }
                         }
                     </style>
-                    
-                               
                 </div>
                 <div class="hero-image">
                     <svg viewBox="0 0 200 200" width="100%" height="auto">
@@ -1440,11 +1443,12 @@
                         <label for="message">Your message:</label>
                         <textarea name="message" rows="5" placeholder="Type your message here..." required></textarea>
                     </div>
-                     <div class="col-12">
+                    <div class="col-12">
                         <button class="cta-button" type="submit" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">
                             <i class="fas fa-paper-plane"></i> Send Message
                         </button>
                     </div>
+
                 </form>
 
                 <!-- Success and Failure Messages -->
