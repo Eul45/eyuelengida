@@ -814,45 +814,152 @@
         }
 
         /* Contact Section */
-        .contact {
-            padding: 5rem 0;
-        }
+        /* Contact Section */
+.contact {
+    padding: 5rem 0;
+}
 
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            transform: scale(0.95);
-            transition: all 0.3s ease;
-        }
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+}
 
-        .contact-form:hover {
-            transform: scale(1);
-        }
+.contact-form:hover {
+    transform: scale(1);
+}
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
 
-        input,
-        textarea {
-            width: 100%;
-            padding: 1rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            color: var(--text);
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+input,
+textarea {
+    width: 100%;
+    padding: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: var(--text);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.3px;
+    font-weight: 300;
+}
 
-        input:focus,
-        textarea:focus {
-            outline: none;
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
+/* Enhanced focus states */
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Progress indicator on focus */
+input:focus::after,
+textarea:focus::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    left: 0;
+    bottom: -2px;
+    background: linear-gradient(90deg, var(--secondary), var(--accent), var(--primary));
+    animation: focusProgress 2s ease infinite;
+    z-index: 10;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Form label styling */
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+/* Add focus indicator animation */
+@keyframes focusProgress {
+    0% {
+        width: 0%;
+        background-position: 0% 50%;
+    }
+    50% {
+        width: 100%;
+        background-position: 100% 50%;
+    }
+    100% {
+        width: 0%;
+        background-position: 0% 50%;
+    }
+}
+
+/* Focus indicator as a pseudo-element */
+.form-group::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, var(--secondary), var(--accent), var(--secondary));
+    background-size: 200% 200%;
+    transition: width 0.3s ease;
+    border-radius: 0 0 4px 4px;
+    opacity: 0;
+}
+
+.form-group:focus-within::after {
+    width: 100%;
+    opacity: 1;
+    animation: gradientFlow 2s ease infinite;
+}
+
+/* Gradient animation */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Enhanced placeholder styling */
+input::placeholder,
+textarea::placeholder {
+    color: rgba(223, 230, 233, 0.4); /* Based on --text: #dfe6e9 */
+    font-style: italic;
+    transition: all 0.3s ease;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+    opacity: 0.7;
+    transform: translateX(5px);
+    color: var(--accent);
+}
+
+/* Highlight effect on focus */
+.form-group:focus-within label {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+input:focus,
+textarea:focus {
+    background: rgba(9, 132, 227, 0.05); /* Based on --secondary: #0984e3 */
+    border-color: var(--accent);
+}
 
         .social-links {
             display: flex;
