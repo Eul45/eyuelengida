@@ -10,7 +10,7 @@ Visit my live website here: [eyuelengida.vercel.app](https://eyuelengida.vercel.
 
 ## 🎥 Message Submission Demo
 Watch the demo of the message submission feature here:
-[assets/message-submission-video.mp4)](https://github.com/Eul45/eyuelengida/blame/main/assets/message-submission-video.mp4)
+[assets/message-submission-video.mp4)](https://github.com/Eul45/eyuelengida/blame/main/assets/message-submission-video.gif)
 
 ## 🚀 Project Overview
 The website is designed to reflect my journey and professional growth. It includes sections about my experience, projects, and skills. Built with simplicity and responsiveness in mind, it works seamlessly on any device.
