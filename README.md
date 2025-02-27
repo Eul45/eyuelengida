@@ -8,6 +8,10 @@ Visit my live website here: [eyuelengida.vercel.app](https://eyuelengida.vercel.
 ## 📸 Website Preview
 ![Website Screenshot](assets/website-screenshot.png)
 
+## 🎥 Message Submission Demo
+Watch the demo of the message submission feature below:
+![Message Submission Video](assets/message-submission-video.mp4)
+
 ## 🚀 Project Overview
 The website is designed to reflect my journey and professional growth. It includes sections about my experience, projects, and skills. Built with simplicity and responsiveness in mind, it works seamlessly on any device.
 
@@ -34,10 +38,10 @@ This will run the project locally on your machine.
 
 ## 📫 Contact
 Feel free to reach out:
-- Email: [eyutechservices@gmail.com](mailto:your-email@example.com)
+- Email: [eyutechservices@gmail.com](mailto:eyutechservices@gmail.com)
 - LinkedIn: [Eyuel Engida](https://www.linkedin.com/in/eyuel-engida-77155a317)
 
-Thanks for checking out my repository! 
+Thanks for checking out my repository!
 
 ---
 
