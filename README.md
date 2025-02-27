@@ -34,8 +34,8 @@ This will run the project locally on your machine.
 
 ## 📫 Contact
 Feel free to reach out:
-- Email: [your-email@example.com](mailto:your-email@example.com)
-- LinkedIn: [Eyuel Engida](https://www.linkedin.com/in/eyuelengida)
+- Email: [eyutechservices@gmail.com](mailto:your-email@example.com)
+- LinkedIn: [Eyuel Engida](https://www.linkedin.com/in/eyuel-engida-77155a317)
 
 Thanks for checking out my repository! 
 
