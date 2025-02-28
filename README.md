@@ -1,4 +1,11 @@
-# Eyuel Engida's Personal Website
+# My personal website 
+ 
+                                                            ███████╗██╗   ██╗██╗   ██╗███████╗██╗     
+                                                            ██╔════╝╚██╗ ██╔╝██║   ██║██╔════╝██║     
+                                                            █████╗   ╚████╔╝ ██║   ██║█████╗  ██║     
+                                                            ██╔══╝    ╚██╔╝  ██║   ██║██╔══╝  ██║     
+                                                            ███████╗   ██║   ╚██████╔╝███████╗███████╗
+                                                            ╚══════╝   ╚═╝    ╚═════╝ ╚══════╝╚══════╝
 
 Welcome to my personal website repository! This site showcases my skills, projects, and passion for tech innovation. I’m Eyuel Engida, a developer and engineer, and this is where I share my work with the world.
 
