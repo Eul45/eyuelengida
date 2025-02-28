@@ -615,7 +615,7 @@
             margin-bottom: 2rem;
         }
 
-        .cta-button {
+       .cta-button {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -679,7 +679,60 @@
             transform: translateY(-2px) scale(0.98);
         }
 
+        .tablet-link {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #008CFF;
+            text-decoration: none;
+            margin-left: 15px;
+            margin-top: 10px;
+            padding: 5px 10px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0, 140, 255, 0.08), rgba(0, 224, 198, 0.12));
+            transition: all 0.3s ease;
+            vertical-align: middle;
+            border: 1px solid rgba(0, 140, 255, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 140, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
 
+        .tablet-link:hover {
+            background: linear-gradient(135deg, rgba(0, 140, 255, 0.12), rgba(0, 224, 198, 0.18));
+            transform: translateY(-2px);
+            box-shadow: 0 3px 6px rgba(0, 140, 255, 0.15);
+            border: 1px solid rgba(0, 140, 255, 0.3);
+        }
+
+        .tablet-link:active {
+            transform: translateY(0);
+        }
+
+        .tablet-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg,
+                    transparent,
+                    rgba(0, 224, 198, 0.1),
+                    transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .tablet-link:hover::before {
+            transform: translateX(100%);
+        }
+
+        .tablet-icon {
+            margin-right: 5px;
+            position: relative;
+            top: -1px;
+        }
 
 
 
@@ -1571,7 +1624,7 @@ textarea:focus {
         </div>
     </section>
 
-    <section id="projects" class="projects">
+     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title animate-item">Featured Projects</h2>
             <div class="project-grid">
@@ -1580,6 +1633,13 @@ textarea:focus {
                     <p>A comprehensive Amharic Bible verse application with daily readings and study tools.</p>
                     <a href="https://ethiopian-bible-verse.en.uptodown.com/android" class="cta-button"
                         target="_blank">View here</a>
+                    <a href="https://com-eulzz-verses.en.uptodown.com/android" class="tablet-link" target="_blank">
+                        <svg class="tablet-icon" viewBox="0 0 24 24" width="14" height="14">
+                            <path fill="currentColor"
+                                d="M19,18H5V6H19M21,4H3C1.89,4 1,4.89 1,6V18A2,2 0 0,0 3,20H21A2,2 0 0,0 23,18V6C23,4.89 22.1,4 21,4Z" />
+                        </svg>
+                        Tablet version
+                    </a>
                 </div>
                 <div class="project-card">
                     <h3>Quiz App</h3>
