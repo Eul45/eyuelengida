@@ -9,7 +9,7 @@ Visit my live website here: [eyuelengida.vercel.app](https://eyuelengida.vercel.
 ![Website Screenshot](assets/website-screenshot.png)
 
 ## 🎥 Message Submission Demo
-Watch the demo of the message submission feature here:
+
 https://github.com/user-attachments/assets/e0560b53-62c4-467c-9a29-f48f340c6b93
 
 ## 🚀 Project Overview
