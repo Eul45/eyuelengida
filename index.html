@@ -832,32 +832,114 @@
 
 
         /* Projects Section */
-        .projects {
-            padding: 5rem 0;
-        }
+.projects {
+    padding: 5rem 0;
+}
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
 
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 1.5rem;
-            position: relative;
-            overflow: hidden;
-            transform: scale(0.95);
-            transition: all 0.3s ease;
-        }
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+}
 
-        .project-card:hover {
-            transform: translateY(-5px) scale(1);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
+.project-card:hover {
+    transform: translateY(-5px) scale(1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
 
+/* Additional CSS for Unique Digitals project card */
+.project-card.unique-digital {
+ /* border: 2px solid #3498db; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  padding: 20px;
+  border-radius: 8px;
+ 
+  margin-top: 20px;  /* optional: ensures spacing consistency with other cards */
+}
+
+.project-card.unique-digital:hover {
+  transform: translateY(-5px);
+}
+
+/* Google Play Store card styling */
+.project-card.playstore-card {
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 0;
+  overflow: hidden;
+}
+
+.project-card.playstore-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.playstore-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.playstore-image {
+  width: 150px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  margin: 0 auto;
+  display: block;
+}
+
+
+.playstore-text {
+  padding: 1.5rem;
+}
+
+.playstore-text h3 {
+  margin-top: 0;
+}
+
+.playstore-text p {
+  margin-bottom: 15px;
+}
+
+.playstore-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #00c6fb 0%, #005bea 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: none;
+  margin-top: 10px;
+}
+
+.playstore-button:hover {
+  background: linear-gradient(135deg, #00b0e1 0%, #0051d0 100%);
+  box-shadow: 0 5px 15px rgba(0, 91, 234, 0.4);
+  transform: translateY(-2px);
+}
+
+.playstore-icon {
+  margin-right: 8px;
+}
         /* Skills Section */
         .skills {
             padding: 5rem 0;
@@ -1624,63 +1706,63 @@ textarea:focus {
         </div>
     </section>
 
-     <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title animate-item">Featured Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>Amharic Bible Verse</h3>
-                    <p>A comprehensive Amharic Bible verse application with daily readings and study tools.</p>
-                    <a href="https://ethiopian-bible-verse.en.uptodown.com/android" class="cta-button"
-                        target="_blank">View here</a>
-                    <a href="https://com-eulzz-verses.en.uptodown.com/android" class="tablet-link" target="_blank">
-                        <svg class="tablet-icon" viewBox="0 0 24 24" width="14" height="14">
-                            <path fill="currentColor"
-                                d="M19,18H5V6H19M21,4H3C1.89,4 1,4.89 1,6V18A2,2 0 0,0 3,20H21A2,2 0 0,0 23,18V6C23,4.89 22.1,4 21,4Z" />
-                        </svg>
-                        Tablet version
-                    </a>
+    <section id="projects" class="projects">
+    <div class="container">
+        <h2 class="section-title animate-item">Featured Projects</h2>
+        <div class="project-grid">
+            <!-- Google Play Store Card - Now First -->
+            <div class="project-card playstore-card">
+                <div class="playstore-content">
+                    <img src="playstore2.png" alt="Google Play Store Apps" class="playstore-image">
+                    <div class="playstore-text">
+                        <h3>My Google Play Store Apps</h3>
+                        <p>Clean design. Smooth experience apps!</p>
+                        <a href="https://play.google.com/store/apps/dev?id=5861407922346282493" class="playstore-button" target="_blank">
+                            <svg class="playstore-icon" viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                            </svg>
+                            View on Play Store
+                        </a>
+                    </div>
                 </div>
-                <div class="project-card">
-                    <h3>Quiz App</h3>
-                    <p>An interactive quiz application to test your knowledge across various subjects.</p>
-                    <a href="https://com-eulzz-quizz.en.uptodown.com/android" class="cta-button" target="_blank">View
-                        here</a>
-                </div>
-                <!-- New Daily Quotes App Card -->
-                <div class="project-card">
-                    <h3>Daily Quotes</h3>
-                    <p>Get inspired daily with quotes to start your day positively and stay motivated!</p>
-                    <a href="https://mini-daily-quotes.en.uptodown.com/android" class="cta-button" target="_blank">View
-                        here</a>
-                </div>
-                <!-- New webiste project -->
-                <!-- Unique Digitals Project Card -->
-<div class="project-card unique-digital">
-  <h3>Unique Digitals</h3>
-  <p>A cutting-edge website built for my client, offering a modern and responsive design that delivers a seamless user experience.</p>
-  <a href="https://uniquedigitals.vercel.app/" class="cta-button" target="_blank">Visit Website</a>
-</div>
-<!-- New webiste project Ends -->
-<style>
- /* Additional CSS for Unique Digitals project card */
-.project-card.unique-digital {
- /* border: 2px solid #3498db; */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  padding: 20px;
-  border-radius: 8px;
- 
-  margin-top: 20px;  /* optional: ensures spacing consistency with other cards */
-}
-
-.project-card.unique-digital:hover {
-  transform: translateY(-5px);
-}
-</style>
             </div>
+            <div class="project-card">
+                <h3>Amharic Bible Verse</h3>
+                <p>A comprehensive Amharic Bible verse application with daily readings and study tools.</p>
+                <a href="https://ethiopian-bible-verse.en.uptodown.com/android" class="cta-button"
+                    target="_blank">View here</a>
+                <a href="https://com-eulzz-verses.en.uptodown.com/android" class="tablet-link" target="_blank">
+                    <svg class="tablet-icon" viewBox="0 0 24 24" width="14" height="14">
+                        <path fill="currentColor"
+                            d="M19,18H5V6H19M21,4H3C1.89,4 1,4.89 1,6V18A2,2 0 0,0 3,20H21A2,2 0 0,0 23,18V6C23,4.89 22.1,4 21,4Z" />
+                    </svg>
+                    Tablet version
+                </a>
+            </div>
+            <div class="project-card">
+                <h3>Quiz App</h3>
+                <p>An interactive quiz application to test your knowledge across various subjects.</p>
+                <a href="https://com-eulzz-quizz.en.uptodown.com/android" class="cta-button" target="_blank">View
+                    here</a>
+            </div>
+            <!-- New Daily Quotes App Card -->
+            <div class="project-card">
+                <h3>Daily Quotes</h3>
+                <p>Get inspired daily with quotes to start your day positively and stay motivated!</p>
+                <a href="https://mini-daily-quotes.en.uptodown.com/android" class="cta-button" target="_blank">View
+                    here</a>
+            </div>
+            <!-- New webiste project -->
+            <!-- Unique Digitals Project Card -->
+            <div class="project-card unique-digital">
+              <h3>Unique Digitals</h3>
+              <p>A cutting-edge website built for my client, offering a modern and responsive design that delivers a seamless user experience.</p>
+              <a href="https://uniquedigitals.vercel.app/" class="cta-button" target="_blank">Visit Website</a>
+            </div>
+            <!-- New webiste project Ends -->
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- 
 <section id="projects" class="projects">
