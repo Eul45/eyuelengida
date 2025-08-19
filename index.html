@@ -1728,7 +1728,7 @@ textarea:focus {
                 </div>
             </div>
 
-            <!-- New EyuX App Card - Added as second card with centered icon, isolated styles -->
+           <!-- New EyuX App Card - Added as second card with centered icon, isolated styles -->
             <div class="project-card">
                 <h3 style="text-align: center; margin-bottom: 10px;">
                     <img 
@@ -1739,7 +1739,21 @@ textarea:focus {
 EyuX : Smart AI assistance
                 </h3>
                 <p>EyuX: The AI assistant with switchable personas and powerful tools.</p>
-                <a href="https://eyux.uptodown.com/" class="cta-button" target="_blank">View here</a>
+                
+                <!-- Button container for vertically aligned side-by-side layout -->
+                <div style="display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 1rem;">
+                    
+                    <!-- Main Button - a margin-top override is added to align it properly -->
+                    <a href="https://eyux.uptodown.com/" class="cta-button" target="_blank" style="margin-top: 0;">View here</a>
+                    
+                    <!-- New, smaller button for Desktop Version - margin is reset -->
+                    <a href="https://eyux-ai-assistance.en.uptodown.com/windows" class="tablet-link" target="_blank" style="margin: 0;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 5px;">
+                            <path d="M20,18H4V6H20M20,4H4A2,2 0 0,0 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6A2,2 0 0,0 20,4Z" />
+                        </svg>
+                        For Desktop
+                    </a>
+                </div>
             </div>
 
             <div class="project-card">
@@ -2290,3 +2304,4 @@ EyuX : Smart AI assistance
 </body>
 
 </html>
+
