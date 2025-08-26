@@ -424,17 +424,30 @@
             box-shadow: 0 0 15px var(--accent);
         }
 
-        .logo-text {
-            font-size: 1.2em;
-            color: var(--accent);
-            transition: all 0.3s ease;
-            position: relative;
-        }
+       .logo-text {
+    font-family: 'Orbitron', sans-serif; /* Use the new font */
+    font-size: 1.5em; /* A bit larger */
+    font-weight: 700;
+    line-height: 1; /* Adjust line height for better alignment */
 
-        .logo-text:hover {
-            text-shadow: 0 0 10px var(--accent);
-            transform: scale(1.1);
-        }
+    /* The cool gradient effect */
+    background: linear-gradient(45deg, var(--accent), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes the text transparent to show the gradient */
+
+    /* A subtle glow */
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.5), 0 0 15px rgba(0, 255, 136, 0.2);
+
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.logo-text:hover {
+    /* Enhance the glow on hover */
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.8), 0 0 20px rgba(0, 255, 136, 0.4);
+    transform: scale(1.1);
+}
 
         @keyframes pulse {
             0% {
@@ -1551,6 +1564,7 @@ textarea:focus {
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="https://eyuapps.neocities.org/images/logo.png" type="image/png">
 </head>
@@ -2321,5 +2335,6 @@ textarea:focus {
 </body>
 
 </html>
+
 
 
