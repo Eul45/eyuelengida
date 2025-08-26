@@ -1,4 +1,5 @@
 
+
 <html>
 
 <head>
@@ -893,6 +894,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  justify-content: center; 
 }
 .playstore-image {
   width: 150px;
@@ -940,6 +942,19 @@
 
 .playstore-icon {
   margin-right: 8px;
+}
+.project-icon {
+    width: 64px; /* Adjust size as you like */
+    height: 64px;
+    border-radius: 12px; /* Soft rounded corners for the icon */
+    display: block; /* Allows centering with margin */
+    margin: 0 auto 15px; /* Centers the icon horizontally and adds space below it */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a subtle shadow */
+}
+
+/* This ensures the text and button inside the card are centered properly */
+.project-card {
+    text-align: center; 
 }
         /* Skills Section */
         .skills {
@@ -1711,7 +1726,8 @@ textarea:focus {
     <div class="container">
         <h2 class="section-title animate-item">Featured Projects</h2>
         <div class="project-grid">
-            <!-- Google Play Store Card - Now First -->
+
+            <!-- Google Play Store Card -->
             <div class="project-card playstore-card">
                 <div class="playstore-content">
                     <img src="playstore2.png" alt="Google Play Store Apps" class="playstore-image">
@@ -1729,25 +1745,14 @@ textarea:focus {
                 </div>
             </div>
 
-           <!-- New EyuX App Card - Added as second card with centered icon, isolated styles -->
+            <!-- EyuX App Card -->
             <div class="project-card">
-                <h3 style="text-align: center; margin-bottom: 10px;">
-                    <img 
-                        src="https://img.utdstc.com/icon/b96/a48/b96a48876e1a05ec41bd7e6585770d0c00cea79c7e81786d25b79491b209d2b5"
-                        alt="EyuX Icon"
-                        style="width: 40px; height: auto; border-radius: 8px; display: block; margin: 0 auto 5px;">
-                   
-EyuX : Smart AI assistance
-                </h3>
+                <img src="https://img.utdstc.com/icon/b96/a48/b96a48876e1a05ec41bd7e6585770d0c00cea79c7e81786d25b79491b209d2b5" alt="EyuX Icon" class="project-icon">
+                <h3 style="text-align: center;">EyuX: Smart AI assistance</h3>
                 <p>EyuX: The AI assistant with switchable personas and powerful tools.</p>
-                
-                <!-- Button container for vertically aligned side-by-side layout -->
+            <br>
                 <div style="display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 1rem;">
-                    
-                    <!-- Main Button - a margin-top override is added to align it properly -->
                     <a href="https://eyux.uptodown.com/" class="cta-button" target="_blank" style="margin-top: 0;">View here</a>
-                    
-                    <!-- New, smaller button for Desktop Version - margin is reset -->
                     <a href="https://eyux-ai-assistance.en.uptodown.com/windows" class="tablet-link" target="_blank" style="margin: 0;">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 5px;">
                             <path d="M20,18H4V6H20M20,4H4A2,2 0 0,0 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6A2,2 0 0,0 20,4Z" />
@@ -1757,10 +1762,11 @@ EyuX : Smart AI assistance
                 </div>
             </div>
 
+            <!-- Amharic Bible Verse Card -->
             <div class="project-card">
-                <h3 style="text-align: center;">Amharic Bible Verse</h3>
-                <br>
-                <p>A comprehensive Amharic Bible verse application with daily readings and study tools.</p>
+                 <img src="https://img.utdstc.com/icon/3d9/649/3d9649e66c99a1f2b08fc531333a8ebdf963307f03ecf3dc01c35c6dba6f4864" alt="Amharic Bible Verse Icon" class="project-icon">
+                <h3 style="text-align: center;">የመጽሐፍ ቅዱስ ጥቅሶች</h3>
+                <p>Your daily companion for Amharic Bible verses and study tools.</p>
                 <a href="https://ethiopian-bible-verse.en.uptodown.com/android" class="cta-button" target="_blank">View here</a>
                 <a href="https://com-eulzz-verses.en.uptodown.com/android" class="tablet-link" target="_blank">
                     <svg class="tablet-icon" viewBox="0 0 24 24" width="14" height="14">
@@ -1770,27 +1776,27 @@ EyuX : Smart AI assistance
                 </a>
             </div>
 
-            <!-- New ZenCapture Card -->
+            <!-- ZenCapture Card -->
             <div class="project-card">
+                <img src="https://img.utdstc.com/icon/358/3e0/3583e087f219453597d26c8b1a16044ff6797501a9f0688b01e1a8daaaaba12c" alt="ZenCapture Icon" class="project-icon">
                 <h3 style="text-align: center;">ZenCapture</h3>
-                <br>
                 <p>A very fast note-taking and quick capture for your daily ideas on Windows.</p>
                 <a href="https://zencapture.en.uptodown.com/windows" class="cta-button" target="_blank">View here</a>
             </div>
-            <!-- End of New ZenCapture Card -->
-
+            
+            <!-- NEWLY UPDATED Quiz App Card -->
             <div class="project-card">
+                <img src="https://img.utdstc.com/icon/9ea/35f/9ea35f2f9ea3846dd6bf12bfeebff955d85603068d28a1771cae97f9f9f01a1b" alt="Quiz App Icon" class="project-icon">
                 <h3 style="text-align: center;">Quiz App</h3>
-                <br>
-                <p>An interactive quiz application to test your knowledge across various subjects.</p>
+                <p>Challenge yourself with different quizzes and test your knowledge.</p>
                 <a href="https://com-eulzz-quizz.en.uptodown.com/android" class="cta-button" target="_blank">View here</a>
             </div>
 
-            <!-- Daily Quotes App Card -->
+            <!-- NEWLY UPDATED Daily Quotes App Card -->
             <div class="project-card">
+                <img src="https://img.utdstc.com/icon/5d7/dc3/5d7dc32243e1e7c1cdeb3cccf93ae1d9404f8aaf9f490115736fb7ad099a5f8c" alt="Mini Daily Quotes Icon" class="project-icon">
                 <h3 style="text-align: center;">Daily Quotes</h3>
-                <br>
-                <p>Get inspired daily with quotes to start your day positively and stay motivated!</p>
+                <p>Providing you with daily inspiration and wisdom from various authors.</p>
                 <a href="https://mini-daily-quotes.en.uptodown.com/android" class="cta-button" target="_blank">View here</a>
             </div>
 
@@ -1804,9 +1810,6 @@ EyuX : Smart AI assistance
         </div>
     </div>
 </section>
-
-
-
 
 
     <section id="skills" class="skills">
