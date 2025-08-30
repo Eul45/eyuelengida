@@ -1,5 +1,6 @@
 
 
+
 <html>
 
 <head>
@@ -1559,6 +1560,42 @@ textarea:focus {
             width: auto;
             max-width: 400px;
         }
+               /* ===== Custom Cursor Start ===== */
+        body, a, button, input, textarea, .cta-button, .btn-donate, .indicator-dot, .animated-button {
+            cursor: none !important;
+        }
+
+        #custom-cursor-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 10001;
+            opacity: 1;
+            /* The 'transform' property has been removed from this transition */
+            transition: opacity 0.3s ease;
+        }
+
+        #custom-cursor {
+            width: 32px;
+            height: 32px;
+            fill: var(--accent);
+            stroke: var(--secondary);
+            transform: rotate(-120deg);
+            /* The transition is now only on the SVG for the hover effect */
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        #custom-cursor-container.cursor-hidden {
+            opacity: 0;
+            /* The shrink effect on disappear is still here */
+            transform: scale(0.5);
+        }
+
+        body.cursor-hovered #custom-cursor {
+            transform: rotate(-110deg) scale(1.5);
+        }
+        /* ===== Custom Cursor End ===== */
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
@@ -1567,6 +1604,13 @@ textarea:focus {
 </head>
 
 <body>
+         <!-- ===== Custom Cursor Start ===== -->
+    <div id="custom-cursor-container">
+        <svg id="custom-cursor" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 21 Q 10 14 3 3 L 22 12 Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    </div>
+    <!-- ===== Custom Cursor End ===== -->
     <div class="loading-screen">
         <div class="loading-container">
             <div class="cyber-circle"></div>
@@ -2328,6 +2372,38 @@ textarea:focus {
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
+      <!-- ===== Custom Cursor Script Start ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cursorContainer = document.getElementById('custom-cursor-container');
+            
+            // This sets the cursor's position directly without any animation delay.
+            // It's wrapped in requestAnimationFrame for the best performance.
+            const moveCursor = (e) => {
+                requestAnimationFrame(() => {
+                    cursorContainer.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+                });
+            };
+
+            window.addEventListener('mousemove', moveCursor);
+
+            // --- Smart Disappear/Reappear Logic (Unchanged) ---
+            document.body.addEventListener('mouseleave', () => {
+                cursorContainer.classList.add('cursor-hidden');
+            });
+            document.body.addEventListener('mouseenter', () => {
+                cursorContainer.classList.remove('cursor-hidden');
+            });
+
+            // --- Hover Effect Logic (Unchanged) ---
+            const interactiveElements = document.querySelectorAll('a, button, input, textarea, .cta-button, .btn-donate, .indicator-dot, .animated-button');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hovered'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hovered'));
+            });
+        });
+    </script>
+    <!-- ===== Custom Cursor Script End ===== -->
 
 </body>
 
