@@ -1560,40 +1560,59 @@ textarea:focus {
             width: auto;
             max-width: 400px;
         }
-               /* ===== Custom Cursor Start ===== */
-        body, a, button, input, textarea, .cta-button, .btn-donate, .indicator-dot, .animated-button {
-            cursor: none !important;
-        }
+           /* ===== Custom Cursor Start ===== */
 
+        /*
+           By default, we HIDE the custom cursor. This will be the state
+           for mobile and tablet devices.
+        */
         #custom-cursor-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 10001;
-            opacity: 1;
-            /* The 'transform' property has been removed from this transition */
-            transition: opacity 0.3s ease;
+            display: none;
         }
 
-        #custom-cursor {
-            width: 32px;
-            height: 32px;
-            fill: var(--accent);
-            stroke: var(--secondary);
-            transform: rotate(-120deg);
-            /* The transition is now only on the SVG for the hover effect */
-            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        
-        #custom-cursor-container.cursor-hidden {
-            opacity: 0;
-            /* The shrink effect on disappear is still here */
-            transform: scale(0.5);
-        }
+        /*
+           This is the key: This media query checks if the user's primary
+           input device is a 'fine' pointer (like a mouse or trackpad).
+           All the custom cursor styles will ONLY be applied on these devices.
+        */
+        @media (pointer: fine) {
 
-        body.cursor-hovered #custom-cursor {
-            transform: rotate(-110deg) scale(1.5);
+            /* First, we make the cursor container visible for mouse devices */
+            #custom-cursor-container {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+                z-index: 10001;
+                opacity: 1;
+                transition: opacity 0.3s ease;
+            }
+
+            /* Now we place all the previous styles inside the query */
+            body, a, button, input, textarea, .cta-button, .btn-donate, .indicator-dot, .animated-button {
+                cursor: none !important;
+            }
+
+            #custom-cursor {
+                width: 32px;
+                height: 32px;
+                fill: var(--accent);
+                stroke: var(--secondary);
+                /* This is where you can continue to adjust your angle! */
+                transform: rotate(-120deg); 
+                transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            }
+            
+            #custom-cursor-container.cursor-hidden {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            body.cursor-hovered #custom-cursor {
+                /* Adjust the hover angle here as well */
+                transform: rotate(-110deg) scale(1.5);
+            }
         }
         /* ===== Custom Cursor End ===== */
     </style>
