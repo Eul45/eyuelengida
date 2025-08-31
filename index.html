@@ -1562,22 +1562,13 @@ textarea:focus {
         }
            /* ===== Custom Cursor Start ===== */
 
-        /*
-           By default, we HIDE the custom cursor. This will be the state
-           for mobile and tablet devices.
-        */
-        #custom-cursor-container {
-            display: none;
-        }
+             @media (pointer: fine) {
 
-        /*
-           This is the key: This media query checks if the user's primary
-           input device is a 'fine' pointer (like a mouse or trackpad).
-           All the custom cursor styles will ONLY be applied on these devices.
-        */
-        @media (pointer: fine) {
-
-            /* First, we make the cursor container visible for mouse devices */
+            /*
+               This is the key change. We now make the cursor INVISIBLE and
+               slightly smaller by default. It will wait for the user's mouse
+               to enter the page before appearing.
+            */
             #custom-cursor-container {
                 display: block;
                 position: fixed;
@@ -1585,11 +1576,12 @@ textarea:focus {
                 left: 0;
                 pointer-events: none;
                 z-index: 10001;
-                opacity: 1;
-                transition: opacity 0.3s ease;
+                opacity: 0; /* Changed from 1 to 0 to be hidden initially */
+                transform: scale(0.5); /* Start slightly smaller for a nice entry animation */
+                transition: opacity 0.3s ease, transform 0.3s ease; /* Ensure transform is animated */
             }
 
-            /* Now we place all the previous styles inside the query */
+            /* The rest of the styles remain mostly the same */
             body, a, button, input, textarea, .cta-button, .btn-donate, .indicator-dot, .animated-button {
                 cursor: none !important;
             }
@@ -1599,18 +1591,14 @@ textarea:focus {
                 height: 32px;
                 fill: var(--accent);
                 stroke: var(--secondary);
-                /* This is where you can continue to adjust your angle! */
                 transform: rotate(-120deg); 
                 transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             }
             
-            #custom-cursor-container.cursor-hidden {
-                opacity: 0;
-                transform: scale(0.5);
-            }
+            /* This class is no longer needed since we control opacity directly */
+            /* #custom-cursor-container.cursor-hidden { ... } */
 
             body.cursor-hovered #custom-cursor {
-                /* Adjust the hover angle here as well */
                 transform: rotate(-110deg) scale(1.5);
             }
         }
@@ -2394,25 +2382,29 @@ textarea:focus {
       <!-- ===== Custom Cursor Script Start ===== -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // This checks if the device is a touch device. If so, the script stops here.
+            if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                return;
+            }
+
             const cursorContainer = document.getElementById('custom-cursor-container');
             
-            // This sets the cursor's position directly without any animation delay.
-            // It's wrapped in requestAnimationFrame for the best performance.
             const moveCursor = (e) => {
                 requestAnimationFrame(() => {
-                    cursorContainer.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+                    cursorContainer.style.transform = `translate(${e.clientX}px, ${e.clientY}px) scale(1)`;
                 });
             };
 
-            window.addEventListener('mousemove', moveCursor);
-
-            // --- Smart Disappear/Reappear Logic (Unchanged) ---
-            document.body.addEventListener('mouseleave', () => {
-                cursorContainer.classList.add('cursor-hidden');
-            });
+            // --- Smart Appear/Disappear Logic ---
             document.body.addEventListener('mouseenter', () => {
-                cursorContainer.classList.remove('cursor-hidden');
+                cursorContainer.style.opacity = '1';
             });
+            document.body.addEventListener('mouseleave', () => {
+                cursorContainer.style.opacity = '0';
+            });
+
+            // The 'mousemove' event now also ensures the cursor is visible and at full size
+            window.addEventListener('mousemove', moveCursor);
 
             // --- Hover Effect Logic (Unchanged) ---
             const interactiveElements = document.querySelectorAll('a, button, input, textarea, .cta-button, .btn-donate, .indicator-dot, .animated-button');
@@ -2427,6 +2419,7 @@ textarea:focus {
 </body>
 
 </html>
+
 
 
 
