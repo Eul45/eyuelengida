@@ -926,11 +926,18 @@
     position: relative;
     overflow: hidden;
     transform: scale(0.95);
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(0, 206, 201, 0.1);
-    backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
+    will-change: transform;
+}
+
+/* Desktop-only backdrop filter */
+@media (min-width: 769px) {
+    .project-card {
+        backdrop-filter: blur(10px);
+    }
 }
 
 .project-card-content {
@@ -953,9 +960,16 @@
 }
 
 .project-card:hover {
-    transform: translateY(-8px) scale(1);
-    box-shadow: 0 15px 35px rgba(0, 206, 201, 0.2);
-    border-color: rgba(0, 206, 201, 0.3);
+    transform: scale(1);
+    box-shadow: 0 20px 40px rgba(0, 206, 201, 0.3);
+    border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .project-card:hover {
+        transform: scale(0.98);
+        box-shadow: 0 10px 20px rgba(0, 206, 201, 0.2);
+    }
 }
 
 .project-card:hover::before {
@@ -975,10 +989,21 @@
     border-bottom: 2px solid rgba(0, 206, 201, 0.2);
 }
 
-.project-card:hover .project-image {
-    transform: scale(1.02);
-    border-bottom-color: var(--accent);
-    filter: brightness(1.1);
+/* Desktop image hover effects */
+@media (min-width: 769px) {
+    .project-card:hover .project-image {
+        transform: scale(1.02);
+        border-bottom-color: var(--accent);
+        filter: brightness(1.1);
+    }
+}
+
+/* Simplified mobile image hover */
+@media (max-width: 768px) {
+    .project-card:hover .project-image {
+        border-bottom-color: var(--accent);
+        filter: brightness(1.05);
+    }
 }
 
 /* Image container for better control */
@@ -1004,15 +1029,29 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 2;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
-.project-card:hover .category-chip {
-    background: rgba(0, 206, 201, 0.9);
-    transform: scale(1.05);
+/* Desktop-only backdrop filter for chips */
+@media (min-width: 769px) {
+    .category-chip {
+        backdrop-filter: blur(10px);
+    }
+    
+    .project-card:hover .category-chip {
+        background: rgba(0, 206, 201, 0.9);
+        transform: scale(1.05);
+        transition: all 0.3s ease;
+    }
+}
+
+/* Simplified mobile chip hover */
+@media (max-width: 768px) {
+    .project-card:hover .category-chip {
+        background: rgba(0, 206, 201, 0.9);
+    }
 }
 
 /* Project Tags */
@@ -2194,11 +2233,11 @@ textarea:focus {
             </button>
         </div>
         
-        <div class="project-grid active" id="projectGrid">
+        <div class="project-grid active" id="projectGrid" style="opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease;">
             <!-- Play Store Collection Card -->
             <div class="project-card" data-category="store">
                 <div class="project-image-container">
-                    <img src="34.png" alt="Google Play Store Apps" class="project-image">
+                    <img src="34.png" alt="Google Play Store Apps" class="project-image" loading="lazy">
                     <div class="category-chip">Store</div>
                 </div>
                 <div class="project-card-content">
@@ -2219,7 +2258,7 @@ textarea:focus {
             <!-- EyuX App Card -->
             <div class="project-card" data-category="android desktop">
                 <div class="project-image-container">
-                    <img src="EyuX.png" alt="EyuX AI Assistant" class="project-image">
+                    <img src="EyuX.png" alt="EyuX AI Assistant" class="project-image" loading="lazy">
                     <div class="category-chip">AI App</div>
                 </div>
                 <div class="project-card-content">
@@ -2244,7 +2283,7 @@ textarea:focus {
             <!-- Amharic Bible Verse Card -->
             <div class="project-card" data-category="android">
                 <div class="project-image-container">
-                    <img src="0.png" alt="Amharic Bible Verses" class="project-image">
+                    <img src="0.png" alt="Amharic Bible Verses" class="project-image" loading="lazy">
                     <div class="category-chip">Android</div>
                 </div>
                 <div class="project-card-content">
@@ -2269,7 +2308,7 @@ textarea:focus {
             <!-- ZenCapture Card -->
             <div class="project-card" data-category="desktop">
                 <div class="project-image-container">
-                    <img src="M.jpg" alt="ZenCapture Note Taking" class="project-image">
+                    <img src="M.jpg" alt="ZenCapture Note Taking" class="project-image" loading="lazy">
                     <div class="category-chip">Desktop</div>
                 </div>
                 <div class="project-card-content">
@@ -2291,7 +2330,7 @@ textarea:focus {
             <!-- Quiz App Card -->
             <div class="project-card" data-category="android">
                 <div class="project-image-container">
-                    <img src="53.png" alt="Quiz App" class="project-image">
+                    <img src="53.png" alt="Quiz App" class="project-image" loading="lazy">
                     <div class="category-chip">Android</div>
                 </div>
                 <div class="project-card-content">
@@ -2313,7 +2352,7 @@ textarea:focus {
             <!-- Daily Quotes App Card -->
             <div class="project-card" data-category="android">
                 <div class="project-image-container">
-                    <img src="D.jpg" alt="Daily Quotes App" class="project-image">
+                    <img src="D.jpg" alt="Daily Quotes App" class="project-image" loading="lazy">
                     <div class="category-chip">Android</div>
                 </div>
                 <div class="project-card-content">
@@ -2335,7 +2374,7 @@ textarea:focus {
             <!-- Quick Dictionary AI Explainer Extension Card -->
             <div class="project-card" data-category="extension">
                 <div class="project-image-container">
-                    <img src="11.png" alt="Quick Dictionary + AI Explainer" class="project-image">
+                    <img src="11.png" alt="Quick Dictionary + AI Explainer" class="project-image" loading="lazy">
                     <div class="category-chip">Extension</div>
                 </div>
                 <div class="project-card-content">
@@ -2357,7 +2396,7 @@ textarea:focus {
             <!-- Unique Digitals Website Card -->
             <div class="project-card" data-category="web">
                 <div class="project-image-container">
-                    <img src="U.png" alt="Unique Digitals Website" class="project-image">
+                    <img src="U.png" alt="Unique Digitals Website" class="project-image" loading="lazy">
                     <div class="category-chip">Website</div>
                 </div>
                 <div class="project-card-content">
@@ -2693,6 +2732,35 @@ textarea:focus {
             const progressBar = document.getElementById('progressBar');
             const sections = document.querySelectorAll('section');
             const dots = document.querySelectorAll('.indicator-dot');
+
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-item');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animatable elements
+            document.querySelectorAll('.section-title, .project-card').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Show project grid after DOM is ready
+            document.addEventListener('DOMContentLoaded', function() {
+                const projectGrid = document.getElementById('projectGrid');
+                if (projectGrid) {
+                    setTimeout(() => {
+                        projectGrid.style.opacity = '1';
+                        projectGrid.style.transform = 'translateY(0)';
+                    }, 100);
+                }
+            });
 
             // Intersection Observer for section animations
             const sectionObserver = new IntersectionObserver((entries) => {
