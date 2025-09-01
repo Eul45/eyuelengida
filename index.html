@@ -912,7 +912,7 @@
 
 /* Enhanced Project Cards */
 .project-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 15px;
     padding: 0;
     position: relative;
@@ -920,8 +920,8 @@
     transform: translateY(0);
     opacity: 1;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Remove backdrop-filter for mobile compatibility */
 }
 
 .project-card.visible {
@@ -970,17 +970,19 @@
 /* Project Content */
 .project-content {
     padding: 1.5rem;
+    background: rgba(26, 26, 26, 0.9);
+    color: #ffffff;
 }
 
 .project-title {
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: var(--text);
+    color: #ffffff;
 }
 
 .project-description {
-    color: rgba(223, 230, 233, 0.8);
+    color: #ffffff;
     line-height: 1.6;
     margin-bottom: 1.5rem;
     font-size: 0.95rem;
@@ -1059,11 +1061,19 @@
     .filter-btn {
         padding: 0.6rem 1rem;
         font-size: 0.9rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.3);
     }
     
     .project-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+    
+    .project-card {
+        background: rgba(255, 255, 255, 0.15);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     
     .project-header {
@@ -1072,14 +1082,17 @@
     
     .project-content {
         padding: 1.2rem;
+        background: rgba(26, 26, 26, 0.95);
     }
     
     .project-title {
         font-size: 1.2rem;
+        color: #ffffff;
     }
     
     .project-description {
         font-size: 0.9rem;
+        color: #ffffff;
     }
     
     .project-actions {
@@ -1089,6 +1102,15 @@
     
     .project-btn {
         padding: 0.9rem 1rem;
+        background: linear-gradient(135deg, #0984e3, #00cec9);
+        color: white;
+        border: none;
+    }
+    
+    .project-btn-secondary {
+        background: transparent;
+        border: 2px solid #00cec9;
+        color: #00cec9;
     }
 }
 
