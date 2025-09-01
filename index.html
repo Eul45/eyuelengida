@@ -864,13 +864,13 @@
     opacity: 1 !important;
 }
 
-.tab-button {
+.tab-indicator {
     padding: 12px 24px;
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(0, 206, 201, 0.3);
     border-radius: 25px;
     color: var(--text);
-    cursor: pointer;
+    cursor: none;
     transition: all 0.3s ease;
     font-weight: 500;
     font-size: 14px;
@@ -881,7 +881,7 @@
     opacity: 1 !important;
 }
 
-.tab-button::before {
+.tab-indicator::before {
     content: '';
     position: absolute;
     top: 0;
@@ -890,23 +890,6 @@
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(0, 206, 201, 0.1), transparent);
     transition: left 0.6s ease;
-}
-
-.tab-button:hover {
-    background: rgba(0, 206, 201, 0.1);
-    border-color: var(--accent);
-    transform: translateY(-2px);
-}
-
-.tab-button:hover::before {
-    left: 100%;
-}
-
-.tab-button.active {
-    background: linear-gradient(135deg, var(--accent), var(--secondary));
-    color: #ffffff;
-    border-color: var(--accent);
-    box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3);
 }
 
 /* Project Grid */
@@ -1130,7 +1113,7 @@
         opacity: 1 !important;
     }
 
-    .tab-button {
+    .tab-indicator {
         padding: 8px 16px;
         font-size: 12px;
         display: inline-block !important;
@@ -1191,7 +1174,7 @@
         opacity: 1 !important;
     }
 
-    .tab-button {
+    .tab-indicator {
         padding: 10px;
         font-size: 11px;
         text-align: center;
@@ -2265,26 +2248,23 @@ textarea:focus {
     <div class="container">
         <h2 class="section-title animate-item">Featured Projects</h2>
         
-        <!-- Project Category Tabs -->
+        <!-- Project Category Indicators -->
         <div class="project-tabs">
-            <button class="tab-button active" data-category="all">
-                <i class="fas fa-th-large"></i> All Projects
-            </button>
-            <button class="tab-button" data-category="android">
+            <div class="tab-indicator">
                 <i class="fab fa-android"></i> Android Apps
-            </button>
-            <button class="tab-button" data-category="desktop">
+            </div>
+            <div class="tab-indicator">
                 <i class="fas fa-desktop"></i> Desktop Apps
-            </button>
-            <button class="tab-button" data-category="web">
+            </div>
+            <div class="tab-indicator">
                 <i class="fas fa-globe"></i> Websites
-            </button>
-            <button class="tab-button" data-category="extension">
+            </div>
+            <div class="tab-indicator">
                 <i class="fas fa-puzzle-piece"></i> Extensions
-            </button>
-            <button class="tab-button" data-category="store">
+            </div>
+            <div class="tab-indicator">
                 <i class="fas fa-store"></i> App Store
-            </button>
+            </div>
         </div>
         
         <div class="project-grid active" id="projectGrid">
@@ -2744,43 +2724,10 @@ textarea:focus {
     </script>  -->
 
     <script>
-        // Project Tab Filtering Functionality
+        // Project Tab Filtering Functionality - REMOVED
         document.addEventListener('DOMContentLoaded', function () {
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const projectCards = document.querySelectorAll('.project-card');
-            const projectGrid = document.getElementById('projectGrid');
-
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Remove active class from all buttons
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
-                    button.classList.add('active');
-
-                    const category = button.getAttribute('data-category');
-
-                    // Add fade out effect
-                    projectGrid.style.opacity = '0';
-                    projectGrid.style.transform = 'translateY(20px)';
-
-                    setTimeout(() => {
-                        // Filter projects
-                        projectCards.forEach(card => {
-                            const cardCategories = card.getAttribute('data-category');
-                            
-                            if (category === 'all' || cardCategories.includes(category)) {
-                                card.style.display = 'block';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-
-                        // Add fade in effect
-                        projectGrid.style.opacity = '1';
-                        projectGrid.style.transform = 'translateY(0)';
-                    }, 200);
-                });
-            });
+            // Tab filtering functionality has been removed
+            // Tabs are now static indicators only
 
             // Progress bar and section highlighting
             const progressBar = document.getElementById('progressBar');
@@ -3088,7 +3035,6 @@ textarea:focus {
 </body>
 
 </html>
-
 
 
 
