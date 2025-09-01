@@ -917,8 +917,8 @@
     padding: 0;
     position: relative;
     overflow: hidden;
-    transform: translateY(20px);
-    opacity: 0;
+    transform: translateY(0);
+    opacity: 1;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -1146,9 +1146,6 @@
     opacity: 0;
     transform: translateY(20px) scale(0.9);
     pointer-events: none;
-    margin: 0;
-    height: 0;
-    overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -2640,14 +2637,15 @@ textarea:focus {
             const filterBtns = document.querySelectorAll('.filter-btn');
             const projectCards = document.querySelectorAll('.project-card');
             
-            // Initialize all cards as visible
-            setTimeout(() => {
-                projectCards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.classList.add('visible');
-                    }, index * 100);
-                });
-            }, 500);
+            // Initialize all cards as visible immediately for mobile compatibility
+            projectCards.forEach((card, index) => {
+                card.classList.add('visible');
+                // Add staggered animation only if JavaScript is working properly
+                setTimeout(() => {
+                    card.style.transform = 'translateY(0)';
+                    card.style.opacity = '1';
+                }, index * 50);
+            });
             
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
