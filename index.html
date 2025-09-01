@@ -805,8 +805,8 @@
             font-size: 2rem;
             /* Decreased font size */
             margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
+            opacity: 1;
+            transform: translateY(0);
             position: relative;
         }
 
@@ -849,15 +849,19 @@
         /* Enhanced Projects Section */
 .projects {
     padding: 5rem 0;
+    display: block !important;
+    visibility: visible !important;
 }
 
 /* Project Category Tabs */
 .project-tabs {
-    display: flex;
+    display: flex !important;
     justify-content: center;
     gap: 1rem;
     margin: 2rem 0;
     flex-wrap: wrap;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .tab-button {
@@ -872,6 +876,9 @@
     font-size: 14px;
     position: relative;
     overflow: hidden;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .tab-button::before {
@@ -904,13 +911,14 @@
 
 /* Project Grid */
 .project-grid {
-    display: grid;
+    display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
     transition: all 0.5s ease;
+    visibility: visible !important;
 }
 
 .project-grid.active {
@@ -928,9 +936,11 @@
     transform: scale(0.95);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(0, 206, 201, 0.1);
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     will-change: transform;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 /* Desktop-only backdrop filter */
@@ -1106,19 +1116,40 @@
 
 /* Responsive Projects Styling */
 @media (max-width: 768px) {
+    .projects {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
     .project-tabs {
         gap: 0.5rem;
         margin: 1.5rem 0;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 
     .tab-button {
         padding: 8px 16px;
         font-size: 12px;
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 
     .project-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        display: grid !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .project-card {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 
     .project-image {
@@ -1146,16 +1177,39 @@
 }
 
 @media (max-width: 480px) {
+    .projects {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
     .project-tabs {
         grid-template-columns: repeat(2, 1fr);
-        display: grid;
+        display: grid !important;
         gap: 0.5rem;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 
     .tab-button {
         padding: 10px;
         font-size: 11px;
         text-align: center;
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .project-grid {
+        display: grid !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .project-card {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 
     .project-image {
