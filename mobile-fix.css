@@ -1,0 +1,46 @@
+/* Mobile-specific fixes for project cards */
+@media (max-width: 768px) {
+    /* Ensure project cards are visible by default on mobile */
+    .project-card {
+        display: block !important;
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+        height: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 10px 0 !important;
+    }
+
+    /* Ensure project grid displays correctly on mobile */
+    .projects-grid {
+        display: block !important;
+    }
+
+    /* Make sure filter buttons are visible and clickable */
+    .filter-btn {
+        padding: 10px 15px !important;
+        margin: 5px !important;
+        font-size: 14px !important;
+    }
+
+    /* Make sure project images are visible */
+    .project-card img {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 200px !important;
+        object-fit: cover !important;
+    }
+
+    /* Ensure project content is visible */
+    .project-info {
+        padding: 15px !important;
+    }
+
+    /* Make sure links are tappable */
+    .project-links a {
+        display: inline-block !important;
+        padding: 8px 15px !important;
+        margin: 5px !important;
+    }
+}
