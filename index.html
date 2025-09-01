@@ -2,6 +2,7 @@
 
 
 
+
 <html>
 
 <head>
@@ -1474,46 +1475,153 @@ textarea:focus {
             animation: heartbeat 4s ease-in-out infinite;
         }
 
+        /* Compact Footer Styling */
         footer {
-            background-color: #333;
-            color: #fff;
+            background: var(--bg);
+            color: var(--text);
             text-align: center;
-            padding: 15px 0;
+            padding: 30px 0 20px;
+            border-top: 1px solid rgba(0, 206, 201, 0.2);
         }
 
         footer .container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .developer-info {
+            text-align: center;
         }
 
         .footer-title {
             font-size: 18px;
-            /* Make this sentence larger */
-            font-weight: bold;
+            font-weight: 600;
             margin-bottom: 5px;
+            background: linear-gradient(45deg, var(--accent), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Compact Coffee Section */
+        .coffee-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+
+        .coffee-button {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .coffee-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 206, 201, 0.4);
+        }
+
+        /* Compact QR Code */
+        .qr-code-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .qr-code-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .copyright-section {
+            border-top: 1px solid rgba(223, 230, 233, 0.1);
+            padding-top: 15px;
+            margin-top: 10px;
+            width: 100%;
         }
 
         footer p {
             margin: 5px 0;
             font-size: 14px;
-            /* Default font size for other sentences */
+            color: var(--text);
+            opacity: 0.8;
         }
 
 
 
 
-        /* Responsive styling for mobile and larger screens */
+        /* Responsive Footer Styling */
         @media (max-width: 768px) {
             footer {
-                font-size: 12px;
-                padding: 10px 0;
+                padding: 25px 0 15px;
+            }
+
+            .footer-content {
+                gap: 15px;
+            }
+
+            .footer-title {
+                font-size: 16px;
+            }
+
+            .coffee-section {
+                gap: 12px;
+                margin: 12px 0;
+            }
+
+            .coffee-button {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+
+            .qr-code-container {
+                padding: 6px;
             }
         }
 
-        @media (min-width: 769px) {
-            footer {
-                font-size: 14px;
+        @media (max-width: 480px) {
+            .coffee-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .coffee-button {
+                width: auto;
+                min-width: 180px;
             }
         }
 
@@ -2051,8 +2159,29 @@ textarea:focus {
 
     <footer>
         <div class="container">
-            <p class="footer-title">Crafted by Eyuel Engida</p>
-            <p>&copy; <span id="currentYear"></span> - All rights reserved.</p>
+            <div class="footer-content">
+                <div class="developer-info">
+                    <h3 class="footer-title">Crafted by Eyuel Engida</h3>
+                </div>
+                
+                <!-- Compact Buy Me a Coffee Section -->
+                <div class="coffee-section">
+                    <a href="https://buymeacoffee.com/eyuelengida" target="_blank" class="coffee-button">
+                        <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy Me a Coffee" style="height: 18px; width: auto; margin-right: 8px;">
+                        Buy Me a Coffee
+                    </a>
+                    
+                    <!-- Compact QR Code Section -->
+                    <div class="qr-code-container">
+                        <img src="bmc_qr.png" alt="Buy Me a Coffee QR Code" style="width: 60px; height: 60px; display: block;">
+                        <p style="color: #0a0a0a; margin: 4px 0 0; font-size: 10px; font-weight: 500; line-height: 1.2;">Scan to support</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright-section">
+                <p>&copy; <span id="currentYear"></span> - All rights reserved.</p>
+            </div>
         </div>
         <a href="#home" class="back-to-top" id="backToTopBtn">
             <div class="back-to-top-rectangle">
