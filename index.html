@@ -912,21 +912,34 @@
 
 /* Enhanced Project Cards */
 .project-card {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     padding: 0;
     position: relative;
     overflow: hidden;
-    transform: translateY(0);
-    opacity: 1;
+    transform: translateY(20px);
+    opacity: 0;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    /* Remove backdrop-filter for mobile compatibility */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: block;
 }
 
 .project-card.visible {
     transform: translateY(0);
     opacity: 1;
+}
+
+/* Ensure cards are visible by default on mobile */
+@media (max-width: 768px) {
+    .project-card {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .project-card.hidden {
+        display: none !important;
+    }
 }
 
 .project-card:hover {
@@ -970,19 +983,17 @@
 /* Project Content */
 .project-content {
     padding: 1.5rem;
-    background: rgba(26, 26, 26, 0.9);
-    color: #ffffff;
 }
 
 .project-title {
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #ffffff;
+    color: var(--text);
 }
 
 .project-description {
-    color: #ffffff;
+    color: rgba(223, 230, 233, 0.8);
     line-height: 1.6;
     margin-bottom: 1.5rem;
     font-size: 0.95rem;
@@ -1051,14 +1062,8 @@
     color: white;
 }
 
-/* Mobile Responsive Design - Force visibility */
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
-    /* Disable custom cursor completely on mobile */
-    body, a, button, input, textarea, .cta-button, .btn-donate, .indicator-dot, .animated-button,
-    .project-card, .project-btn, .filter-btn {
-        cursor: auto !important;
-    }
-    
     .project-filters {
         gap: 0.5rem;
         margin: 1.5rem 0 2rem 0;
@@ -1067,12 +1072,6 @@
     .filter-btn {
         padding: 0.6rem 1rem;
         font-size: 0.9rem;
-        background: rgba(255, 255, 255, 0.2) !important;
-        border: 2px solid rgba(255, 255, 255, 0.4) !important;
-        color: #ffffff !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
     }
     
     .project-grid {
@@ -1080,91 +1079,29 @@
         gap: 1.5rem;
     }
     
-    .project-card {
-        background: rgba(255, 255, 255, 0.2) !important;
-        border: 2px solid rgba(255, 255, 255, 0.4) !important;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-        z-index: 1 !important;
-    }
-    
     .project-header {
         height: 180px;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
-    
-    .project-preview {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        width: 100% !important;
-        height: 100% !important;
     }
     
     .project-content {
         padding: 1.2rem;
-        background: rgba(26, 26, 26, 0.95) !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
     }
     
     .project-title {
         font-size: 1.2rem;
-        color: #ffffff !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
     }
     
     .project-description {
         font-size: 0.9rem;
-        color: #ffffff !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
     }
     
     .project-actions {
         flex-direction: column;
         gap: 0.8rem;
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
     }
     
     .project-btn {
         padding: 0.9rem 1rem;
-        background: linear-gradient(135deg, #0984e3, #00cec9) !important;
-        color: white !important;
-        border: none !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        text-decoration: none !important;
-    }
-    
-    .project-btn-secondary {
-        background: transparent !important;
-        border: 2px solid #00cec9 !important;
-        color: #00cec9 !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
-    
-    .tech-tag {
-        display: inline-block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        background: rgba(9, 132, 227, 0.3) !important;
-        color: #ffffff !important;
-        border: 1px solid rgba(9, 132, 227, 0.5) !important;
     }
 }
 
@@ -1222,6 +1159,9 @@
     opacity: 0;
     transform: translateY(20px) scale(0.9);
     pointer-events: none;
+    margin: 0;
+    height: 0;
+    overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1945,7 +1885,7 @@ textarea:focus {
            input device is a 'fine' pointer (like a mouse or trackpad).
            All the custom cursor styles will ONLY be applied on these devices.
         */
-        @media (pointer: fine) and (min-width: 769px) {
+        @media (pointer: fine) {
 
             /* First, we make the cursor container visible for mouse devices */
             #custom-cursor-container {
@@ -1961,11 +1901,6 @@ textarea:focus {
 
             /* Now we place all the previous styles inside the query */
             body, a, button, input, textarea, .cta-button, .btn-donate, .indicator-dot, .animated-button {
-                cursor: none !important;
-            }
-            
-            /* Ensure project elements are visible on desktop with custom cursor */
-            .project-card, .project-btn, .filter-btn {
                 cursor: none !important;
             }
 
@@ -2718,14 +2653,27 @@ textarea:focus {
             const filterBtns = document.querySelectorAll('.filter-btn');
             const projectCards = document.querySelectorAll('.project-card');
             
-            // Initialize all cards as visible immediately for mobile compatibility
-            projectCards.forEach((card, index) => {
-                card.classList.add('visible');
-                // Add staggered animation only if JavaScript is working properly
-                setTimeout(() => {
-                    card.style.transform = 'translateY(0)';
-                    card.style.opacity = '1';
-                }, index * 50);
+            // Initialize all cards as visible
+            const initializeCards = () => {
+                projectCards.forEach((card, index) => {
+                    // On mobile, make cards immediately visible
+                    if (window.innerWidth <= 768) {
+                        card.classList.add('visible');
+                        card.classList.remove('hidden');
+                    } else {
+                        // On desktop, use animation delay
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, index * 100);
+                    }
+                });
+            };
+            
+            setTimeout(initializeCards, 500);
+            
+            // Handle window resize to reinitialize cards
+            window.addEventListener('resize', () => {
+                initializeCards();
             });
             
             filterBtns.forEach(btn => {
@@ -2743,9 +2691,15 @@ textarea:focus {
                         
                         if (shouldShow) {
                             card.classList.remove('hidden');
-                            setTimeout(() => {
+                            // On mobile, make cards immediately visible
+                            if (window.innerWidth <= 768) {
                                 card.classList.add('visible');
-                            }, index * 50);
+                            } else {
+                                // On desktop, use animation delay
+                                setTimeout(() => {
+                                    card.classList.add('visible');
+                                }, index * 50);
+                            }
                         } else {
                             card.classList.remove('visible');
                             card.classList.add('hidden');
@@ -2970,6 +2924,7 @@ textarea:focus {
 </body>
 
 </html>
+
 
 
 
