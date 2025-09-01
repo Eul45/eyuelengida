@@ -846,31 +846,290 @@
 
 
 
-        /* Projects Section */
+        /* Enhanced Projects Section */
 .projects {
     padding: 5rem 0;
 }
 
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+/* Project Category Tabs */
+.project-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
 }
 
+.tab-button {
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(0, 206, 201, 0.3);
+    border-radius: 25px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 14px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 206, 201, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.tab-button:hover {
+    background: rgba(0, 206, 201, 0.1);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.tab-button:hover::before {
+    left: 100%;
+}
+
+.tab-button.active {
+    background: linear-gradient(135deg, var(--accent), var(--secondary));
+    color: #ffffff;
+    border-color: var(--accent);
+    box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3);
+}
+
+/* Project Grid */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.project-grid.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced Project Cards */
 .project-card {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    padding: 1.5rem;
+    border-radius: 15px;
+    padding: 0;
     position: relative;
     overflow: hidden;
     transform: scale(0.95);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid rgba(0, 206, 201, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--secondary));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-5px) scale(1);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px) scale(1);
+    box-shadow: 0 15px 35px rgba(0, 206, 201, 0.2);
+    border-color: rgba(0, 206, 201, 0.3);
+}
+
+.project-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Project Banner Image Styling */
+.project-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px 15px 0 0;
+    display: block;
+    margin: 0;
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid rgba(0, 206, 201, 0.2);
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.02);
+    border-bottom-color: var(--accent);
+    filter: brightness(1.1);
+}
+
+/* Image container for better control */
+.project-image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 15px 15px 0 0;
+    position: relative;
+    background: rgba(0, 206, 201, 0.1);
+}
+
+/* Category indicator chip */
+.category-chip {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .category-chip {
+    background: rgba(0, 206, 201, 0.9);
+    transform: scale(1.05);
+}
+
+/* Project Tags */
+.project-tags {
+    display: flex;
+    gap: 8px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.project-tag {
+    padding: 4px 12px;
+    background: rgba(0, 206, 201, 0.1);
+    border: 1px solid rgba(0, 206, 201, 0.3);
+    border-radius: 20px;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.project-tag:hover {
+    background: rgba(0, 206, 201, 0.2);
+    transform: scale(1.05);
+}
+
+/* Project Title */
+.project-card h3 {
+    color: var(--text);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Project Description */
+.project-card p {
+    color: rgba(223, 230, 233, 0.8);
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Project Buttons Container */
+.project-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* Responsive Projects Styling */
+@media (max-width: 768px) {
+    .project-tabs {
+        gap: 0.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .tab-button {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .project-image {
+        height: 150px;
+        margin: 0;
+    }
+
+    .project-image-container {
+        height: 150px;
+    }
+
+    .project-tags {
+        gap: 6px;
+    }
+
+    .project-tag {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+
+    .project-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-tabs {
+        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+        gap: 0.5rem;
+    }
+
+    .tab-button {
+        padding: 10px;
+        font-size: 11px;
+        text-align: center;
+    }
+
+    .project-image {
+        height: 120px;
+    }
+
+    .project-image-container {
+        height: 120px;
+    }
+
+    .project-card-content {
+        padding: 1rem;
+    }
 }
 
 /* Additional CSS for Unique Digitals project card */
@@ -1912,107 +2171,209 @@ textarea:focus {
 <section id="projects" class="projects">
     <div class="container">
         <h2 class="section-title animate-item">Featured Projects</h2>
-               <div class="project-grid">
-            <!-- Google Play Store Card -->
-            <div class="project-card playstore-card">
-                <div class="playstore-content">
-                    <img src="playstore2.png" alt="Google Play Store Apps" class="playstore-image">
-                    <div class="playstore-text">
-                        <h3 style="text-align: center;">My Google Play Store Apps</h3>
-                        <br>
-                        <p>Clean design. Smooth experience apps!</p>
-                        <a href="https://play.google.com/store/apps/dev?id=5861407922346282493" class="playstore-button" target="_blank">
-                            <svg class="playstore-icon" viewBox="0 0 24 24" width="20" height="20">
-                                <path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
-                            </svg>
-                            View on Play Store
+        
+        <!-- Project Category Tabs -->
+        <div class="project-tabs">
+            <button class="tab-button active" data-category="all">
+                <i class="fas fa-th-large"></i> All Projects
+            </button>
+            <button class="tab-button" data-category="android">
+                <i class="fab fa-android"></i> Android Apps
+            </button>
+            <button class="tab-button" data-category="desktop">
+                <i class="fas fa-desktop"></i> Desktop Apps
+            </button>
+            <button class="tab-button" data-category="web">
+                <i class="fas fa-globe"></i> Websites
+            </button>
+            <button class="tab-button" data-category="extension">
+                <i class="fas fa-puzzle-piece"></i> Extensions
+            </button>
+            <button class="tab-button" data-category="store">
+                <i class="fas fa-store"></i> App Store
+            </button>
+        </div>
+        
+        <div class="project-grid active" id="projectGrid">
+            <!-- Play Store Collection Card -->
+            <div class="project-card" data-category="store">
+                <div class="project-image-container">
+                    <img src="34.png" alt="Google Play Store Apps" class="project-image">
+                    <div class="category-chip">Store</div>
+                </div>
+                <div class="project-card-content">
+                    <h3>My Google Play Store Apps</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Play Store</span>
+                        <span class="project-tag">Collection</span>
+                    </div>
+                    <p>Clean design. Smooth experience apps!</p>
+                    <div class="project-buttons">
+                        <a href="https://play.google.com/store/apps/dev?id=5861407922346282493" class="cta-button" target="_blank">
+                            <i class="fab fa-google-play"></i> View on Play Store
                         </a>
                     </div>
                 </div>
             </div>
 
             <!-- EyuX App Card -->
-            <div class="project-card">
-                <img src="https://img.utdstc.com/icon/b96/a48/b96a48876e1a05ec41bd7e6585770d0c00cea79c7e81786d25b79491b209d2b5" alt="EyuX Icon" class="project-icon">
-                <h3 style="text-align: center;">EyuX: Smart AI assistance</h3>
-                <p>EyuX: The AI assistant with switchable personas and powerful tools.</p>
-                <br>
-                <div style="display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 1rem;">
-                    <a href="https://eyux.uptodown.com/" class="cta-button" target="_blank" style="margin-top: 0;">View here</a>
-                    <a href="https://eyux-ai-assistance.en.uptodown.com/windows" class="tablet-link" target="_blank" style="margin: 0;">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 5px;">
-                            <path d="M20,18H4V6H20M20,4H4A2,2 0 0,0 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6A2,2 0 0,0 20,4Z" />
-                        </svg>
-                        For Desktop
-                    </a>
+            <div class="project-card" data-category="android desktop">
+                <div class="project-image-container">
+                    <img src="EyuX.png" alt="EyuX AI Assistant" class="project-image">
+                    <div class="category-chip">AI App</div>
+                </div>
+                <div class="project-card-content">
+                    <h3>EyuX: Smart AI Assistant</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">AI</span>
+                        <span class="project-tag">Android</span>
+                        <span class="project-tag">Desktop</span>
+                    </div>
+                    <p>The AI assistant with switchable personas and powerful tools.</p>
+                    <div class="project-buttons">
+                        <a href="https://eyux.uptodown.com/" class="cta-button" target="_blank">
+                            <i class="fab fa-android"></i> Android
+                        </a>
+                        <a href="https://eyux-ai-assistance.en.uptodown.com/windows" class="tablet-link" target="_blank">
+                            <i class="fas fa-desktop"></i> Desktop
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <!-- Amharic Bible Verse Card -->
-            <div class="project-card">
-                <img src="https://img.utdstc.com/icon/3d9/649/3d9649e66c99a1f2b08fc531333a8ebdf963307f03ecf3dc01c35c6dba6f4864" alt="Amharic Bible Verse Icon" class="project-icon">
-                <h3 style="text-align: center;">የመጽሐፍ ቅዱስ ጥቅሶች</h3>
-                <p>Your daily companion for Amharic Bible verses and study tools.</p>
-                <a href="https://ethiopian-bible-verse.en.uptodown.com/android" class="cta-button" target="_blank">View here</a>
-                <a href="https://com-eulzz-verses.en.uptodown.com/android" class="tablet-link" target="_blank">
-                    <svg class="tablet-icon" viewBox="0 0 24 24" width="14" height="14">
-                        <path fill="currentColor" d="M19,18H5V6H19M21,4H3C1.89,4 1,4.89 1,6V18A2,2 0 0,0 3,20H21A2,2 0 0,0 23,18V6C23,4.89 22.1,4 21,4Z" />
-                    </svg>
-                    Tablet version
-                </a>
+            <div class="project-card" data-category="android">
+                <div class="project-image-container">
+                    <img src="0.png" alt="Amharic Bible Verses" class="project-image">
+                    <div class="category-chip">Android</div>
+                </div>
+                <div class="project-card-content">
+                    <h3>የመጽሐፍ ቅዱስ ጥቅሶች</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Bible</span>
+                        <span class="project-tag">Amharic</span>
+                        <span class="project-tag">Android</span>
+                    </div>
+                    <p>Your daily companion for Amharic Bible verses and study tools.</p>
+                    <div class="project-buttons">
+                        <a href="https://ethiopian-bible-verse.en.uptodown.com/android" class="cta-button" target="_blank">
+                            <i class="fab fa-android"></i> Phone
+                        </a>
+                        <a href="https://com-eulzz-verses.en.uptodown.com/android" class="tablet-link" target="_blank">
+                            <i class="fas fa-tablet-alt"></i> Tablet
+                        </a>
+                    </div>
+                </div>
             </div>
 
             <!-- ZenCapture Card -->
-            <div class="project-card">
-                <img src="https://img.utdstc.com/icon/358/3e0/3583e087f219453597d26c8b1a16044ff6797501a9f0688b01e1a8daaaaba12c" alt="ZenCapture Icon" class="project-icon">
-                <h3 style="text-align: center;">ZenCapture</h3>
-                <p>A very fast note-taking and quick capture for your daily ideas on Windows.</p>
-                <a href="https://zencapture.en.uptodown.com/windows" class="cta-button" target="_blank">View here</a>
+            <div class="project-card" data-category="desktop">
+                <div class="project-image-container">
+                    <img src="M.jpg" alt="ZenCapture Note Taking" class="project-image">
+                    <div class="category-chip">Desktop</div>
+                </div>
+                <div class="project-card-content">
+                    <h3>ZenCapture</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Productivity</span>
+                        <span class="project-tag">Windows</span>
+                        <span class="project-tag">Notes</span>
+                    </div>
+                    <p>A very fast note-taking and quick capture for your daily ideas on Windows.</p>
+                    <div class="project-buttons">
+                        <a href="https://zencapture.en.uptodown.com/windows" class="cta-button" target="_blank">
+                            <i class="fab fa-windows"></i> Download
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <!-- NEWLY UPDATED Quiz App Card -->
-            <div class="project-card">
-                <img src="https://img.utdstc.com/icon/9ea/35f/9ea35f2f9ea3846dd6bf12bfeebff955d85603068d28a1771cae97f9f9f01a1b" alt="Quiz App Icon" class="project-icon">
-                <h3 style="text-align: center;">Quiz App</h3>
-                <p>Challenge yourself with different quizzes and test your knowledge.</p>
-                <a href="https://com-eulzz-quizz.en.uptodown.com/android" class="cta-button" target="_blank">View here</a>
+            <!-- Quiz App Card -->
+            <div class="project-card" data-category="android">
+                <div class="project-image-container">
+                    <img src="53.png" alt="Quiz App" class="project-image">
+                    <div class="category-chip">Android</div>
+                </div>
+                <div class="project-card-content">
+                    <h3>Quiz App</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Education</span>
+                        <span class="project-tag">Android</span>
+                        <span class="project-tag">Quiz</span>
+                    </div>
+                    <p>Challenge yourself with different quizzes and test your knowledge.</p>
+                    <div class="project-buttons">
+                        <a href="https://com-eulzz-quizz.en.uptodown.com/android" class="cta-button" target="_blank">
+                            <i class="fab fa-android"></i> Download
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <!-- NEWLY UPDATED Daily Quotes App Card -->
-            <div class="project-card">
-                <img src="https://img.utdstc.com/icon/5d7/dc3/5d7dc32243e1e7c1cdeb3cccf93ae1d9404f8aaf9f490115736fb7ad099a5f8c" alt="Mini Daily Quotes Icon" class="project-icon">
-                <h3 style="text-align: center;">Daily Quotes</h3>
-                <p>Providing you with daily inspiration and wisdom from various authors.</p>
-                <a href="https://mini-daily-quotes.en.uptodown.com/android" class="cta-button" target="_blank">View here</a>
+            <!-- Daily Quotes App Card -->
+            <div class="project-card" data-category="android">
+                <div class="project-image-container">
+                    <img src="D.jpg" alt="Daily Quotes App" class="project-image">
+                    <div class="category-chip">Android</div>
+                </div>
+                <div class="project-card-content">
+                    <h3>Daily Quotes</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Inspiration</span>
+                        <span class="project-tag">Android</span>
+                        <span class="project-tag">Daily</span>
+                    </div>
+                    <p>Providing you with daily inspiration and wisdom from various authors.</p>
+                    <div class="project-buttons">
+                        <a href="https://mini-daily-quotes.en.uptodown.com/android" class="cta-button" target="_blank">
+                            <i class="fab fa-android"></i> Download
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <!-- Quick Dictionary AI Explainer Add-on Card -->
-            <div class="project-card">
-                <img src="addon.png" alt="Quick Dictionary + AI Explainer Icon" class="project-icon">
-              <h3 style="text-align: center;">
-  <i class="fas fa-puzzle-piece" style="margin-right:12px;"></i>
-  Quick Dictionary + AI Explainer
-</h3>
-
-
-                <p>An AI-powered Firefox add-on (Extension) to get instant definitions and explanations for words and sentences.</p>
-                <a href="https://addons.mozilla.org/en-US/firefox/addon/quick-dictionary-ai-explainer/" 
-   class="cta-button" 
-   target="_blank">
-   <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/firefox.svg" 
-        alt="Firefox" 
-        style="width:18px; height:18px; vertical-align:middle; margin-right:6px;">
-   Firefox Add-ons
-</a>
-
+            <!-- Quick Dictionary AI Explainer Extension Card -->
+            <div class="project-card" data-category="extension">
+                <div class="project-image-container">
+                    <img src="11.png" alt="Quick Dictionary + AI Explainer" class="project-image">
+                    <div class="category-chip">Extension</div>
+                </div>
+                <div class="project-card-content">
+                    <h3>Quick Dictionary + AI Explainer</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">AI</span>
+                        <span class="project-tag">Firefox</span>
+                        <span class="project-tag">Extension</span>
+                    </div>
+                    <p>An AI-powered Firefox add-on to get instant definitions and explanations for words and sentences.</p>
+                    <div class="project-buttons">
+                        <a href="https://addons.mozilla.org/en-US/firefox/addon/quick-dictionary-ai-explainer/" class="cta-button" target="_blank">
+                            <i class="fab fa-firefox"></i> Firefox Add-ons
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <!-- Unique Digitals Project Card -->
-            <div class="project-card unique-digital">
-                <h3 style="text-align: center;">Unique Digitals</h3>
-                <br>
-                <p>A cutting-edge website built for client, offering a modern and responsive design that delivers a seamless user experience.</p>
-                <a href="https://uniquedigitals.vercel.app/" class="cta-button" target="_blank">Visit Website</a>
+            <!-- Unique Digitals Website Card -->
+            <div class="project-card" data-category="web">
+                <div class="project-image-container">
+                    <img src="U.png" alt="Unique Digitals Website" class="project-image">
+                    <div class="category-chip">Website</div>
+                </div>
+                <div class="project-card-content">
+                    <h3>Unique Digitals</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Website</span>
+                        <span class="project-tag">Client Work</span>
+                        <span class="project-tag">Modern</span>
+                    </div>
+                    <p>A cutting-edge website built for client, offering a modern and responsive design that delivers a seamless user experience.</p>
+                    <div class="project-buttons">
+                        <a href="https://uniquedigitals.vercel.app/" class="cta-button" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Visit Website
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -2290,7 +2651,44 @@ textarea:focus {
     </script>  -->
 
     <script>
+        // Project Tab Filtering Functionality
         document.addEventListener('DOMContentLoaded', function () {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const projectCards = document.querySelectorAll('.project-card');
+            const projectGrid = document.getElementById('projectGrid');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+
+                    const category = button.getAttribute('data-category');
+
+                    // Add fade out effect
+                    projectGrid.style.opacity = '0';
+                    projectGrid.style.transform = 'translateY(20px)';
+
+                    setTimeout(() => {
+                        // Filter projects
+                        projectCards.forEach(card => {
+                            const cardCategories = card.getAttribute('data-category');
+                            
+                            if (category === 'all' || cardCategories.includes(category)) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+
+                        // Add fade in effect
+                        projectGrid.style.opacity = '1';
+                        projectGrid.style.transform = 'translateY(0)';
+                    }, 200);
+                });
+            });
+
             // Progress bar and section highlighting
             const progressBar = document.getElementById('progressBar');
             const sections = document.querySelectorAll('section');
