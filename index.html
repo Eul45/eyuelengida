@@ -908,8 +908,8 @@
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: translateY(0);
     transition: all 0.5s ease;
 }
 
@@ -2233,7 +2233,7 @@ textarea:focus {
             </button>
         </div>
         
-        <div class="project-grid active" id="projectGrid" style="opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease;">
+        <div class="project-grid active" id="projectGrid">
             <!-- Play Store Collection Card -->
             <div class="project-card" data-category="store">
                 <div class="project-image-container">
@@ -2751,16 +2751,7 @@ textarea:focus {
                 observer.observe(el);
             });
 
-            // Show project grid after DOM is ready
-            document.addEventListener('DOMContentLoaded', function() {
-                const projectGrid = document.getElementById('projectGrid');
-                if (projectGrid) {
-                    setTimeout(() => {
-                        projectGrid.style.opacity = '1';
-                        projectGrid.style.transform = 'translateY(0)';
-                    }, 100);
-                }
-            });
+            // Project grid is now visible by default - no need for delayed showing
 
             // Intersection Observer for section animations
             const sectionObserver = new IntersectionObserver((entries) => {
