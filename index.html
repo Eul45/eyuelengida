@@ -54,8 +54,6 @@
     <meta name="twitter:image"
         content="https://raw.githubusercontent.com/Eul45/EyuAppsmian2/refs/heads/main/images/Screenshot%202025-02-26%20205634.jpg">
     <link rel="stylesheet" href="styles2.css">
-    <link rel="stylesheet" href="projects-fix.css">
-    <link rel="stylesheet" href="mobile-fix.css">
 
 
 
@@ -623,6 +621,7 @@
             margin-bottom: 1rem;
             background: linear-gradient(to right, var(--accent), var(--secondary));
             -webkit-background-clip: text;
+            background-clip: text;
             color: transparent;
         }
 
@@ -853,57 +852,6 @@
     background: linear-gradient(135deg, rgba(9, 132, 227, 0.02) 0%, rgba(0, 206, 201, 0.02) 100%);
 }
 
-/* Project Category Filter */
-.project-filters {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin: 2rem 0 3rem 0;
-}
-
-.filter-btn {
-    padding: 0.8rem 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
-    color: var(--text);
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-weight: 500;
-    position: relative;
-    overflow: hidden;
-}
-
-.filter-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.5s;
-}
-
-.filter-btn:hover::before {
-    left: 100%;
-}
-
-.filter-btn:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 206, 201, 0.2);
-}
-
-.filter-btn.active {
-    background: linear-gradient(135deg, var(--secondary), var(--accent));
-    border-color: var(--accent);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 206, 201, 0.3);
-}
-
 /* Project Grid with Animation */
 .project-grid {
     display: grid;
@@ -1054,16 +1002,7 @@
 
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
-    .project-filters {
-        gap: 0.5rem;
-        margin: 1.5rem 0 2rem 0;
-    }
-    
-    .filter-btn {
-        padding: 0.6rem 1rem;
-        font-size: 0.9rem;
-    }
-    
+     
     .project-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -1096,17 +1035,7 @@
 }
 
 @media (max-width: 480px) {
-    .project-filters {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
-    }
-    
-    .filter-btn {
-        width: 200px;
-        text-align: center;
-    }
-    
+     
     .project-grid {
         gap: 1rem;
     }
@@ -2037,18 +1966,64 @@ textarea:focus {
         </div>
     </section>
 
-    <section id="projects" class="section projects-container">
+    <section id="projects" class="section">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <img src="profile5.png" alt="Eyuel Engida"
-                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 20px;">
-                    <h1>My Projects</h1>
-                    <p>Here are some of my projects</p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn-donate">View My Work</a>
-                        <a href="#contact" class="btn-secondary">Contact Me</a>
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <div class="projects-container">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="EyuX.png" alt="AI Assistant Interface" class="project-preview">
                     </div>
+                    <div class="project-content">
+                        <h3 class="project-title">EyuX: Smart AI Assistant</h3>
+                        <p class="project-description">Advanced AI assistant featuring switchable personas, powerful automation tools, and intelligent conversation capabilities.</p>
+                        <div class="project-actions">
+                            <a href="https://eyux.uptodown.com/" class="btn btn-primary" target="_blank">
+                                <i class="fas fa-mobile-alt"></i> Mobile App
+                            </a>
+                            <a href="https://eyux-ai-assistance.en.uptodown.com/windows" class="btn btn-secondary" target="_blank">
+                                <i class="fas fa-desktop"></i> Desktop
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="0.png" alt="Bible Study App" class="project-preview">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">የመጽሐፍ ቅዱስ ጥቅሶች</h3>
+                        <p class="project-description">Daily companion for Amharic Bible verses featuring study tools and daily devotions.</p>
+                        <div class="project-actions">
+                            <a href="https://ethiopian-bible-verse.en.uptodown.com/android" class="btn btn-primary" target="_blank">
+                                <i class="fas fa-mobile-alt"></i> Get App
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="M.jpg" alt="Note Taking App" class="project-preview">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ZenCapture</h3>
+                        <p class="project-description">Lightning-fast note-taking and idea capture application for Windows.</p>
+                        <div class="project-actions">
+                            <a href="https://zencapture.en.uptodown.com/windows" class="btn btn-primary" target="_blank">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
                     <style>
                         .hero-buttons {
                             display: flex;
@@ -2108,6 +2083,133 @@ textarea:focus {
                         </text>
                     </svg>
 
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="0.png" alt="Bible Study App" class="project-preview">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">የመጽሐፍ ቅዱስ ጥቅሶች</h3>
+                        <p class="project-description">Daily companion for Amharic Bible verses featuring study tools, daily devotions, and comprehensive verse collections for spiritual growth.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Amharic</span>
+                            <span class="tech-tag">Offline</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://ethiopian-bible-verse.en.uptodown.com/android" class="project-btn project-btn-primary" target="_blank">
+                                <i class="fas fa-mobile-alt"></i> Phone App
+                            </a>
+                            <a href="https://com-eulzz-verses.en.uptodown.com/android" class="project-btn project-btn-secondary" target="_blank">
+                                <i class="fas fa-tablet-alt"></i> Tablet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="M.jpg" alt="Note Taking App" class="project-preview">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ZenCapture</h3>
+                        <p class="project-description">Lightning-fast note-taking and idea capture application for Windows, designed for seamless workflow integration and instant thought recording.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">tauri</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Windows</span>
+                            <span class="tech-tag">Productivity</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://zencapture.en.uptodown.com/windows" class="project-btn project-btn-primary" target="_blank">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="53.png" alt="Quiz Application" class="project-preview">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Interactive Quiz App</h3>
+                        <p class="project-description">Engaging quiz application with multiple categories, difficulty levels, and real-time scoring to challenge and expand your knowledge base.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Material UI</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://com-eulzz-quizz.en.uptodown.com/android" class="project-btn project-btn-primary" target="_blank">
+                                <i class="fas fa-play"></i> Try Quiz
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="D.jpg" alt="Daily Quotes App" class="project-preview">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Daily Inspiration</h3>
+                        <p class="project-description">Curated collection of motivational quotes and wisdom from renowned authors, delivered daily to inspire and motivate your journey.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">Notifications</span>
+                            <span class="tech-tag">Widget</span>
+                            <span class="tech-tag">Offline</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://mini-daily-quotes.en.uptodown.com/android" class="project-btn project-btn-primary" target="_blank">
+                                <i class="fas fa-heart"></i> Get Inspired
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="11.png" alt="Browser Extension" class="project-preview">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Dictionary + AI Explainer</h3>
+                        <p class="project-description">Intelligent Firefox extension providing instant word definitions and AI-powered explanations for complex sentences and phrases.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">WebExtensions</span>
+                            <span class="tech-tag">AI API</span>
+                            <span class="tech-tag">Firefox</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://addons.mozilla.org/en-US/firefox/addon/quick-dictionary-ai-explainer/" class="project-btn project-btn-primary" target="_blank">
+                                <i class="fab fa-firefox-browser"></i> Install Extension
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="U.png" alt="Modern Website Design" class="project-preview">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Unique Digitals</h3>
+                        <p class="project-description">Modern, responsive website built for client featuring cutting-edge design principles, seamless user experience, and optimized performance.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Vercel</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://uniquedigitals.vercel.app/" class="project-btn project-btn-primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Visit Site
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2153,476 +2255,169 @@ textarea:focus {
                         </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-<section id="projects" class="projects">
-    <div class="container">
-        <h2 class="section-title animate-item">Featured Projects</h2>
-        
-        <!-- Project Category Filters -->
-        <div class="project-filters">
-            <button class="filter-btn active" data-filter="all">
-                <i class="fas fa-th"></i> All Projects
-            </button>
-            <button class="filter-btn" data-filter="mobile">
-                <i class="fas fa-mobile-alt"></i> Mobile Apps
-            </button>
-            <button class="filter-btn" data-filter="web">
-                <i class="fas fa-globe"></i> Websites
-            </button>
-            <button class="filter-btn" data-filter="extension">
-                <i class="fas fa-puzzle-piece"></i> Extensions
-            </button>
-            <button class="filter-btn" data-filter="desktop">
-                <i class="fas fa-desktop"></i> Desktop Apps
-            </button>
-        </div>
-        
-        <div class="project-grid">
-            <!-- Google Play Store Collection -->
-            <div class="project-card" data-category="mobile">
-                <div class="project-header">
-                    <img src="34e.png" alt="Mobile Apps Collection" class="project-preview">
-                    <div class="project-category-badge">Mobile Apps</div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Google Play Store Collection</h3>
-                    <p class="project-description">A comprehensive collection of mobile applications featuring clean design, smooth user experience, and innovative functionality across various categories.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React Native</span>
-                        <span class="tech-tag">Java</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">Play Store</span>
+                <!-- EyuX AI Assistant -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="EyuX.png" alt="AI Assistant Interface" class="project-preview">
                     </div>
-                    <div class="project-actions">
-                        <a href="https://play.google.com/store/apps/dev?id=5861407922346282493" class="project-btn project-btn-primary" target="_blank">
-                            <i class="fab fa-google-play"></i> View Store
-                        </a>
+                    <div class="project-content">
+                        <h3 class="project-title">EyuX: Smart AI Assistant</h3>
+                        <p class="project-description">Advanced AI assistant featuring switchable personas, powerful automation tools, and intelligent conversation capabilities for both mobile and desktop platforms.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">AI/ML</span>
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Electron</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://eyux.uptodown.com/" class="project-btn project-btn-primary" target="_blank">
+                                <i class="fas fa-mobile-alt"></i> Mobile App
+                            </a>
+                            <a href="https://eyux-ai-assistance.en.uptodown.com/windows" class="project-btn project-btn-secondary" target="_blank">
+                                <i class="fas fa-desktop"></i> Desktop
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- EyuX AI Assistant -->
-            <div class="project-card" data-category="mobile desktop">
-                <div class="project-header">
-                    <img src="EyuX1.png" alt="AI Assistant Interface" class="project-preview">
-                    <div class="project-category-badge">AI Assistant</div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">EyuX: Smart AI Assistant</h3>
-                    <p class="project-description">Advanced AI assistant featuring switchable personas, powerful automation tools, and intelligent conversation capabilities for both mobile and desktop platforms.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">AI/ML</span>
-                        <span class="tech-tag">React Native</span>
-                        <span class="tech-tag">Electron</span>
-                        <span class="tech-tag">NLP</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://eyux.uptodown.com/" class="project-btn project-btn-primary" target="_blank">
-                            <i class="fas fa-mobile-alt"></i> Mobile App
-                        </a>
-                        <a href="https://eyux-ai-assistance.en.uptodown.com/windows" class="project-btn project-btn-secondary" target="_blank">
-                            <i class="fas fa-desktop"></i> Desktop
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Amharic Bible Verses App -->
-            <div class="project-card" data-category="mobile">
-                <div class="project-header">
-                    <img src="01.png" alt="Bible Study App" class="project-preview">
-                    <div class="project-category-badge">Religious App</div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">የመጽሐፍ ቅዱስ ጥቅሶች</h3>
-                    <p class="project-description">Daily companion for Amharic Bible verses featuring study tools, daily devotions, and comprehensive verse collections for spiritual growth.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Android</span>
-                        <span class="tech-tag">SQLite</span>
-                        <span class="tech-tag">Amharic</span>
-                        <span class="tech-tag">Offline</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://ethiopian-bible-verse.en.uptodown.com/android" class="project-btn project-btn-primary" target="_blank">
-                            <i class="fas fa-mobile-alt"></i> Phone App
-                        </a>
-                        <a href="https://com-eulzz-verses.en.uptodown.com/android" class="project-btn project-btn-secondary" target="_blank">
-                            <i class="fas fa-tablet-alt"></i> Tablet
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ZenCapture Desktop App -->
-            <div class="project-card" data-category="desktop">
-                <div class="project-header">
-                    <img src="M1.jpg" alt="Note Taking App" class="project-preview">
-                    <div class="project-category-badge">Productivity</div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">ZenCapture</h3>
-                    <p class="project-description">Lightning-fast note-taking and idea capture application for Windows, designed for seamless workflow integration and instant thought recording.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">tauri</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Windows</span>
-                        <span class="tech-tag">Productivity</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://zencapture.en.uptodown.com/windows" class="project-btn project-btn-primary" target="_blank">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Interactive Quiz App -->
-            <div class="project-card" data-category="mobile">
-                <div class="project-header">
-                    <img src="513.png" alt="Quiz Application" class="project-preview">
-                    <div class="project-category-badge">Education</div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Interactive Quiz App</h3>
-                    <p class="project-description">Engaging quiz application with multiple categories, difficulty levels, and real-time scoring to challenge and expand your knowledge base.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Android</span>
-                        <span class="tech-tag">Java</span>
-                        <span class="tech-tag">SQLite</span>
-                        <span class="tech-tag">Material UI</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://com-eulzz-quizz.en.uptodown.com/android" class="project-btn project-btn-primary" target="_blank">
-                            <i class="fas fa-play"></i> Try Quiz
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Daily Inspiration App -->
-            <div class="project-card" data-category="mobile">
-                <div class="project-header">
-                    <img src="D1.jpg" alt="Daily Quotes App" class="project-preview">
-                    <div class="project-category-badge">Lifestyle</div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Daily Inspiration</h3>
-                    <p class="project-description">Curated collection of motivational quotes and wisdom from renowned authors, delivered daily to inspire and motivate your journey.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Android</span>
-                        <span class="tech-tag">Notifications</span>
-                        <span class="tech-tag">Widget</span>
-                        <span class="tech-tag">Offline</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://mini-daily-quotes.en.uptodown.com/android" class="project-btn project-btn-primary" target="_blank">
-                            <i class="fas fa-heart"></i> Get Inspired
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Firefox AI Dictionary Extension -->
-            <div class="project-card" data-category="extension">
-                <div class="project-header">
-                    <img src="11111.png" alt="Browser Extension" class="project-preview">
-                    <div class="project-category-badge">Browser Extension</div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Dictionary + AI Explainer</h3>
-                    <p class="project-description">Intelligent Firefox extension providing instant word definitions and AI-powered explanations for complex sentences and phrases.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">WebExtensions</span>
-                        <span class="tech-tag">AI API</span>
-                        <span class="tech-tag">Firefox</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://addons.mozilla.org/en-US/firefox/addon/quick-dictionary-ai-explainer/" class="project-btn project-btn-primary" target="_blank">
-                            <i class="fab fa-firefox-browser"></i> Install Extension
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Unique Digitals Website -->
-            <div class="project-card" data-category="web">
-                <div class="project-header">
-                    <img src="U1.png" alt="Modern Website Design" class="project-preview">
-                    <div class="project-category-badge">Client Project</div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Unique Digitals</h3>
-                    <p class="project-description">Modern, responsive website built for client featuring cutting-edge design principles, seamless user experience, and optimized performance.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Next.js</span>
-                        <span class="tech-tag">Tailwind CSS</span>
-                        <span class="tech-tag">Vercel</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://uniquedigitals.vercel.app/" class="project-btn project-btn-primary" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> Visit Site
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title animate-item">Technical Skills</h2>
-            <div class="skill-categories">
-                <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--progress: 95%"></div>
-                    </div>
-                    <p>HTML, CSS, JavaScript, TypeScript</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Mobile Development</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--progress: 85%"></div>
-                    </div>
-                    <p>React Native, Expo, Java</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--progress: 70%"></div>
-                    </div>
-                    <p>Node.js, Firebase</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--progress: 80%"></div>
-                    </div>
-                    <p>Git, EAS, Photoshop, Figma</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Frameworks</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--progress: 90%"></div>
-                    </div>
-                    <p>React Native, Expo, Spring Boot</p>
                 </div>
 
-                <div class="skill-category">
-                    <h3>Other Skills</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--progress: 75%"></div>
+                <!-- Amharic Bible Verses App -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="0.png" alt="Bible Study App" class="project-preview">
                     </div>
-                    <p>UI/UX Design, Prompt Engineering</p>
+                    <div class="project-content">
+                        <h3 class="project-title">የመጽሐፍ ቅዱስ ጥቅሶች</h3>
+                        <p class="project-description">Daily companion for Amharic Bible verses featuring study tools, daily devotions, and comprehensive verse collections for spiritual growth.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Amharic</span>
+                            <span class="tech-tag">Offline</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://ethiopian-bible-verse.en.uptodown.com/android" class="project-btn project-btn-primary" target="_blank">
+                                <i class="fas fa-mobile-alt"></i> Phone App
+                            </a>
+                            <a href="https://com-eulzz-verses.en.uptodown.com/android" class="project-btn project-btn-secondary" target="_blank">
+                                <i class="fas fa-tablet-alt"></i> Tablet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ZenCapture Desktop App -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="M.jpg" alt="Note Taking App" class="project-preview">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ZenCapture</h3>
+                        <p class="project-description">Lightning-fast note-taking and idea capture application for Windows, designed for seamless workflow integration and instant thought recording.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">tauri</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Windows</span>
+                            <span class="tech-tag">Productivity</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://zencapture.en.uptodown.com/windows" class="project-btn project-btn-primary" target="_blank">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Quiz App -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="53.png" alt="Quiz Application" class="project-preview">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Interactive Quiz App</h3>
+                        <p class="project-description">Engaging quiz application with multiple categories, difficulty levels, and real-time scoring to challenge and expand your knowledge base.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Material UI</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://com-eulzz-quizz.en.uptodown.com/android" class="project-btn project-btn-primary" target="_blank">
+                                <i class="fas fa-play"></i> Try Quiz
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Inspiration App -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="D.jpg" alt="Daily Quotes App" class="project-preview">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Daily Inspiration</h3>
+                        <p class="project-description">Curated collection of motivational quotes and wisdom from renowned authors, delivered daily to inspire and motivate your journey.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">Notifications</span>
+                            <span class="tech-tag">Widget</span>
+                            <span class="tech-tag">Offline</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://mini-daily-quotes.en.uptodown.com/android" class="project-btn project-btn-primary" target="_blank">
+                                <i class="fas fa-heart"></i> Get Inspired
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Firefox AI Dictionary Extension -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="11.png" alt="Browser Extension" class="project-preview">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Dictionary + AI Explainer</h3>
+                        <p class="project-description">Intelligent Firefox extension providing instant word definitions and AI-powered explanations for complex sentences and phrases.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">WebExtensions</span>
+                            <span class="tech-tag">AI API</span>
+                            <span class="tech-tag">Firefox</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://addons.mozilla.org/en-US/firefox/addon/quick-dictionary-ai-explainer/" class="project-btn project-btn-primary" target="_blank">
+                                <i class="fab fa-firefox-browser"></i> Install Extension
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unique Digitals Website -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="U.png" alt="Modern Website Design" class="project-preview">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Unique Digitals</h3>
+                        <p class="project-description">Modern, responsive website built for client featuring cutting-edge design principles, seamless user experience, and optimized performance.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Vercel</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://uniquedigitals.vercel.app/" class="project-btn project-btn-primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Visit Site
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-    <!-- Certificates Section -->
-    <section id="certificates" class="certificates">
-        <div class="container">
-            <h2 class="section-title animate-item">Certifications</h2>
-            <div class="certificates-grid">
-                <div class="certificate-card">
-                    <img src="images.png" alt="Udacity Icon" class="certificate-icon">
-                    <h3 class="certificate-title">Udacity Certificate 1</h3>
-                    <p>Data Analysis Fundamentals</p>
-                    <a href="https://www.udacity.com/certificate/e/b3fa2532-abe4-11ef-adb1-83635f014422" target="_blank"
-                        class="certificate-link">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Certificate
-                    </a>
-                </div>
-                <div class="certificate-card">
-                    <img src="images.png" alt="Udacity Icon" class="certificate-icon">
-                    <h3 class="certificate-title">Udacity Certificate 2</h3>
-                    <p>Advanced Web Development</p>
-                    <a href="https://www.udacity.com/certificate/e/a533081e-4da4-11ef-b1a2-27e471d9bb2d" target="_blank"
-                        class="certificate-link">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Certificate
-                    </a>
-                </div>
-                <div class="certificate-card">
-                    <img src="images.png" alt="Udacity Icon" class="certificate-icon">
-                    <h3 class="certificate-title">Udacity Certificate 3</h3>
-                    <p>Mobile App Development</p>
-                    <a href="https://www.udacity.com/certificate/e/08e347b8-a02d-11ef-b475-ffe960d45cab" target="_blank"
-                        class="certificate-link">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Certificate
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title animate-item">Contact Me</h2>
-            <div class="profile-and-form">
-                <!-- Profile Image -->
-                <div class="profile">
-                    <img src="profile7.jpg" alt="Eyuel Engida" class="profile-icon">
-                </div>
-
-                <!-- Contact Form -->
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="email">Your email:</label>
-                        <input type="email" name="email" placeholder="Enter your email address" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Your message:</label>
-                        <textarea name="message" rows="5" placeholder="Type your message here..." required></textarea>
-                    </div>
-                    <div class="col-12">
-                        <button type="submit" class="button">
-                            <span class="default">Send</span>
-                            <span class="success">Processing...</span>
-                            <div class="left"></div>
-                            <div class="right"></div>
-                        </button>
-                        <a class="dribbble" href="https://dribbble.com/ai" target="_blank"><img
-                                src="https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg"
-                                alt=""></a>
-                    </div>
-
-                </form>
-
-                <!-- Success and Failure Messages -->
-                <div id="alerts-container">
-                    <div id="success-message" class="alert alert-success d-none">
-                        <i class="fas fa-check-circle"></i> Message sent successfully!
-                    </div>
-                    <div id="failure-message" class="alert alert-danger d-none">
-                        <i class="fas fa-times-circle"></i> Failed to send message. Please try again.
-                    </div>
-                </div>
-                <!-- Success and Failure Messages -->
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p class="footer-title">Crafted by Eyuel Engida</p>
-            <p>&copy; <span id="currentYear"></span> - All rights reserved.</p>
-        </div>
-        <a href="#home" class="back-to-top" id="backToTopBtn">
-            <div class="back-to-top-rectangle">
-                <i class="fas fa-arrow-up"></i>
-            </div>
-        </a>
-        <style>
-            .back-to-top {
-                position: fixed;
-                bottom: 30px;
-                right: 30px;
-                z-index: 99;
-                text-decoration: none;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                opacity: 0;
-                visibility: hidden;
-                transition: opacity 0.3s, visibility 0.3s;
-            }
-
-            .back-to-top.visible {
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .back-to-top-rectangle {
-                width: 50px;
-                height: 50px;
-                background: linear-gradient(145deg, var(--secondary), var(--accent));
-                border-radius: 5px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                color: var(--text);
-                box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
-                transition: all 0.3s ease;
-            }
-
-            .back-to-top-rectangle:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 8px 20px rgba(0, 255, 136, 0.5);
-            }
-        </style>
-        <script>
-            // Control back to top button visibility
-            window.addEventListener('scroll', function () {
-                const backToTopBtn = document.getElementById('backToTopBtn');
-                const homeSection = document.getElementById('home');
-                const homeSectionBottom = homeSection.offsetTop + homeSection.offsetHeight;
-
-                // Show button only when scrolled past the home section
-                if (window.scrollY > homeSectionBottom) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
-            });
-        </script>
-    </footer>
-
-    <script>
-        // Set the current year dynamically
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const loadingScreen = document.querySelector('.loading-screen');
-
-            // Ensure body is locked during loading
-            document.body.style.overflow = 'hidden';
-
-            // Hide loading screen after delay
-            setTimeout(() => {
-                loadingScreen.classList.add('fade-out');
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                    document.body.style.overflow = 'visible';
-                }, 1000);
-            }, 3000);
-        });
-    </script>
-
-
-
-
-    <!--
-    <script type="text/javascript">
-        const form = document.getElementById('contactForm');
-        const confirmationMessage = document.getElementById('confirmationMessage');
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            emailjs.sendForm('service_q5lu7qc', 'ukx3eur', form, 'user_XHUyCWZav0x8Ym42W')
-                .then(function (response) {
-                    confirmationMessage.style.display = 'block';
-                    form.style.display = 'none';
-                    console.log('Form submission successful');
-                }, function (error) {
-                    alert('Failed to send message. Please try again later.');
-                    console.error('Error:', error);
-                });
-        });
-    </script>  -->
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -2695,230 +2490,12 @@ textarea:focus {
                     sections[index].scrollIntoView({ behavior: 'smooth' });
                 });
             });
-            
-            // Project filtering is now handled by projects-fix.js for reliability
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const projectCards = document.querySelectorAll('.project-card');
-            
-            // Show all cards immediately on page load
-            projectCards.forEach(card => {
-                card.classList.remove('hidden');
-            });
-            
-            // Simple filter function
-            function filterProjects(filterValue) {
-                projectCards.forEach(card => {
-                    const categories = card.getAttribute('data-category') || '';
-                    
-                    if (filterValue === 'all') {
-                        // Show all cards
-                        card.classList.remove('hidden');
-                    } else {
-                        // Show only matching categories
-                        if (categories.includes(filterValue)) {
-                            card.classList.remove('hidden');
-                        } else {
-                            card.classList.add('hidden');
-                        }
-                    }
-                });
-            }
-            
-            // Add click handlers to filter buttons
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const filter = btn.getAttribute('data-filter');
-                    
-                    // Update active button
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    
-                    // Filter projects
-                    filterProjects(filter);
-                });
-            });
-
-            // Social icons animation
-            document.querySelectorAll('.social-links a').forEach(link => {
-                link.addEventListener('mouseenter', function () {
-                    this.style.transform = 'translateY(-5px) rotate(5deg)';
-                });
-
-                link.addEventListener('mouseleave', function () {
-                    this.style.transform = 'translateY(0) rotate(0)';
-                });
-            });
-
-            // Mobile menu handling
-            //cutp418@gmail.com
-            const hamburger = document.querySelector('.hamburger');
-            const navLinks = document.querySelector('.nav-links');
-
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                navLinks.classList.toggle('active');
-            });
-
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                });
-            });
-        });
-
-    </script>
-
-
-    <script>
-        document.querySelectorAll('.button').forEach(button => {
-            // Helper to get a CSS custom property value
-            let getVar = variable => getComputedStyle(button).getPropertyValue(variable);
-
-            button.addEventListener('click', e => {
-                // Prevent the animation from starting unless all required fields are filled.
-                // First, try to find the closest parent form.
-                const form = button.closest('form');
-
-                // If a form exists, use HTML5 form validation.
-                if (form) {
-                    if (!form.checkValidity()) {
-                        // This will show the browser's native validation messages.
-                        form.reportValidity();
-                        return;  // Stop processing if the form is invalid.
-                    }
-                } else {
-                    // If no form exists, manually check all required inputs in the document.
-                    const requiredInputs = document.querySelectorAll('input[required]');
-                    let allFilled = true;
-                    requiredInputs.forEach(input => {
-                        if (!input.value.trim()) {
-                            allFilled = false;
-                        }
-                    });
-                    if (!allFilled) {
-                        // Optionally, show a custom message or simply exit.
-                        alert("Please fill all required fields.");
-                        return;
-                    }
-                }
-
-                // If we pass the validation, proceed with the GSAP animation.
-                if (!button.classList.contains('active')) {
-                    button.classList.add('active');
-                    gsap.to(button, {
-                        keyframes: [{
-                            '--left-wing-first-x': 50,
-                            '--left-wing-first-y': 100,
-                            '--right-wing-second-x': 50,
-                            '--right-wing-second-y': 100,
-                            duration: 0.2,
-                            onComplete() {
-                                gsap.set(button, {
-                                    '--left-wing-first-y': 0,
-                                    '--left-wing-second-x': 40,
-                                    '--left-wing-second-y': 100,
-                                    '--left-wing-third-x': 0,
-                                    '--left-wing-third-y': 100,
-                                    '--left-body-third-x': 40,
-                                    '--right-wing-first-x': 50,
-                                    '--right-wing-first-y': 0,
-                                    '--right-wing-second-x': 60,
-                                    '--right-wing-second-y': 100,
-                                    '--right-wing-third-x': 100,
-                                    '--right-wing-third-y': 100,
-                                    '--right-body-third-x': 60
-                                });
-                            }
-                        },
-                        {
-                            '--left-wing-third-x': 20,
-                            '--left-wing-third-y': 90,
-                            '--left-wing-second-y': 90,
-                            '--left-body-third-y': 90,
-                            '--right-wing-third-x': 80,
-                            '--right-wing-third-y': 90,
-                            '--right-body-third-y': 90,
-                            '--right-wing-second-y': 90,
-                            duration: 0.2
-                        },
-                        {
-                            '--rotate': 50,
-                            '--left-wing-third-y': 95,
-                            '--left-wing-third-x': 27,
-                            '--right-body-third-x': 45,
-                            '--right-wing-second-x': 45,
-                            '--right-wing-third-x': 60,
-                            '--right-wing-third-y': 83,
-                            duration: 0.25
-                        },
-                        {
-                            '--rotate': 55,
-                            '--plane-x': -8,
-                            '--plane-y': 24,
-                            duration: 0.2
-                        },
-                        {
-                            '--rotate': 40,
-                            '--plane-x': 45,
-                            '--plane-y': -180,
-                            '--plane-opacity': 0,
-                            duration: 0.3,
-                            onComplete() {
-                                setTimeout(() => {
-                                    button.removeAttribute('style');
-                                    gsap.fromTo(button, {
-                                        opacity: 0,
-                                        y: -8
-                                    }, {
-                                        opacity: 1,
-                                        y: 0,
-                                        clearProps: true,
-                                        duration: 0.3,
-                                        onComplete() {
-                                            button.classList.remove('active');
-                                        }
-                                    });
-                                }, 2000);
-                            }
-                        }
-                        ]
-                    });
-                    gsap.to(button, {
-                        keyframes: [{
-                            '--text-opacity': 0,
-                            '--border-radius': 0,
-                            '--left-wing-background': getVar('--primary-darkest'),
-                            '--right-wing-background': getVar('--primary-darkest'),
-                            duration: 0.1
-                        },
-                        {
-                            '--left-wing-background': getVar('--primary'),
-                            '--right-wing-background': getVar('--primary'),
-                            duration: 0.1
-                        },
-                        {
-                            '--left-body-background': getVar('--primary-dark'),
-                            '--right-body-background': getVar('--primary-darkest'),
-                            duration: 0.4
-                        },
-                        {
-                            '--success-opacity': 1,
-                            '--success-scale': 1,
-                            duration: 0.25,
-                            delay: 0.25
-                        }
-                        ]
-                    });
-                }
-            });
         });
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="projects-fix.js"></script>
     <script>
         // Your existing JavaScript code
         document.addEventListener('DOMContentLoaded', function () {
@@ -2955,7 +2532,6 @@ textarea:focus {
 </body>
 
 </html>
-
 
 
 
