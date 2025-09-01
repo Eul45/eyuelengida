@@ -910,36 +910,24 @@
     margin-top: 2rem;
 }
 
-/* Enhanced Project Cards */
+/* Enhanced Project Cards - Simplified */
 .project-card {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     padding: 0;
     position: relative;
     overflow: hidden;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     display: block;
-}
-
-.project-card.visible {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease;
 }
 
-/* Ensure cards are visible by default on mobile */
-@media (max-width: 768px) {
-    .project-card {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    .project-card.hidden {
-        display: none !important;
-    }
+/* Simple hide/show for filtering */
+.project-card.hidden {
+    display: none;
 }
 
 .project-card:hover {
@@ -1152,25 +1140,6 @@
     .project-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-}
-
-/* Animation for filtered items */
-.project-card.hidden {
-    opacity: 0;
-    transform: translateY(20px) scale(0.9);
-    pointer-events: none;
-    margin: 0;
-    height: 0;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.project-card.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    pointer-events: auto;
-    height: auto;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Additional CSS for Unique Digitals project card */
@@ -2649,62 +2618,45 @@ textarea:focus {
                 });
             });
             
-            // Project filtering functionality
+            // Simple Project filtering functionality - rebuilt for reliability
             const filterBtns = document.querySelectorAll('.filter-btn');
             const projectCards = document.querySelectorAll('.project-card');
             
-            // Initialize all cards as visible
-            const initializeCards = () => {
-                projectCards.forEach((card, index) => {
-                    // On mobile, make cards immediately visible
-                    if (window.innerWidth <= 768) {
-                        card.classList.add('visible');
-                        card.classList.remove('hidden');
-                    } else {
-                        // On desktop, use animation delay
-                        setTimeout(() => {
-                            card.classList.add('visible');
-                        }, index * 100);
-                    }
-                });
-            };
-            
-            setTimeout(initializeCards, 500);
-            
-            // Handle window resize to reinitialize cards
-            window.addEventListener('resize', () => {
-                initializeCards();
+            // Show all cards immediately on page load
+            projectCards.forEach(card => {
+                card.classList.remove('hidden');
             });
             
+            // Simple filter function
+            function filterProjects(filterValue) {
+                projectCards.forEach(card => {
+                    const categories = card.getAttribute('data-category') || '';
+                    
+                    if (filterValue === 'all') {
+                        // Show all cards
+                        card.classList.remove('hidden');
+                    } else {
+                        // Show only matching categories
+                        if (categories.includes(filterValue)) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            }
+            
+            // Add click handlers to filter buttons
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const filter = btn.getAttribute('data-filter');
                     
-                    // Update active filter button
+                    // Update active button
                     filterBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     
-                    // Filter project cards
-                    projectCards.forEach((card, index) => {
-                        const categories = card.getAttribute('data-category');
-                        const shouldShow = filter === 'all' || (categories && categories.includes(filter));
-                        
-                        if (shouldShow) {
-                            card.classList.remove('hidden');
-                            // On mobile, make cards immediately visible
-                            if (window.innerWidth <= 768) {
-                                card.classList.add('visible');
-                            } else {
-                                // On desktop, use animation delay
-                                setTimeout(() => {
-                                    card.classList.add('visible');
-                                }, index * 50);
-                            }
-                        } else {
-                            card.classList.remove('visible');
-                            card.classList.add('hidden');
-                        }
-                    });
+                    // Filter projects
+                    filterProjects(filter);
                 });
             });
 
