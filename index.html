@@ -845,13 +845,30 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
         /* Enhanced Projects Section */
+/* Enhanced Projects Section */
 .projects {
     padding: 5rem 0;
     background: linear-gradient(135deg, rgba(9, 132, 227, 0.02) 0%, rgba(0, 206, 201, 0.02) 100%);
 }
 
-/* Project Category Filter */
+/* Project Category Filter (No major changes here, looks good) */
 .project-filters {
     display: flex;
     justify-content: center;
@@ -912,7 +929,7 @@
 
 /* Enhanced Project Cards */
 .project-card {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.08); /* Keep this general background */
     border-radius: 15px;
     padding: 0;
     position: relative;
@@ -921,12 +938,16 @@
     opacity: 1;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    /* Remove backdrop-filter for mobile compatibility */
+    display: flex; /* Ensure it's a flex container */
+    flex-direction: column; /* Stack header and content */
+    text-align: center; /* Center content by default */
 }
 
 .project-card.visible {
     transform: translateY(0);
     opacity: 1;
+    height: auto; /* Important for dynamic content */
+    pointer-events: auto; /* Ensure it's clickable */
 }
 
 .project-card:hover {
@@ -941,6 +962,7 @@
     height: 200px;
     overflow: hidden;
     border-radius: 15px 15px 0 0;
+    flex-shrink: 0; /* Prevent header from shrinking */
 }
 
 .project-preview {
@@ -948,6 +970,7 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
+    display: block; /* Remove any potential extra space */
 }
 
 .project-card:hover .project-preview {
@@ -972,6 +995,10 @@
     padding: 1.5rem;
     background: rgba(26, 26, 26, 0.9);
     color: #ffffff;
+    flex-grow: 1; /* Allow content to grow */
+    display: flex; /* Make content a flex container */
+    flex-direction: column; /* Stack elements inside content */
+    justify-content: space-between; /* Distribute space */
 }
 
 .project-title {
@@ -986,6 +1013,7 @@
     line-height: 1.6;
     margin-bottom: 1.5rem;
     font-size: 0.95rem;
+    flex-grow: 1; /* Allow description to take available space */
 }
 
 /* Project Tech Stack */
@@ -994,6 +1022,7 @@
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
+    justify-content: center; /* Center the tech tags */
 }
 
 .tech-tag {
@@ -1011,6 +1040,7 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+    margin-top: auto; /* Push actions to the bottom */
 }
 
 .project-btn {
@@ -1057,56 +1087,58 @@
         gap: 0.5rem;
         margin: 1.5rem 0 2rem 0;
     }
-    
+
     .filter-btn {
         padding: 0.6rem 1rem;
         font-size: 0.9rem;
         background: rgba(255, 255, 255, 0.1);
         border: 2px solid rgba(255, 255, 255, 0.3);
     }
-    
+
     .project-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
+
     .project-card {
-        background: rgba(255, 255, 255, 0.15);
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        /* Simplified background and border for mobile for consistency */
+        background: var(--bg); /* Use the main background color */
+        border: 1px solid rgba(255, 255, 255, 0.1); /* Lighter border */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     }
-    
+
     .project-header {
         height: 180px;
     }
-    
+
     .project-content {
         padding: 1.2rem;
-        background: rgba(26, 26, 26, 0.95);
+        background: var(--bg); /* Match content background to card background */
     }
-    
+
     .project-title {
         font-size: 1.2rem;
         color: #ffffff;
     }
-    
+
     .project-description {
         font-size: 0.9rem;
         color: #ffffff;
     }
-    
+
     .project-actions {
         flex-direction: column;
         gap: 0.8rem;
     }
-    
+
     .project-btn {
         padding: 0.9rem 1rem;
         background: linear-gradient(135deg, #0984e3, #00cec9);
         color: white;
         border: none;
+        width: 100%; /* Make buttons full width on mobile */
     }
-    
+
     .project-btn-secondary {
         background: transparent;
         border: 2px solid #00cec9;
@@ -1120,27 +1152,32 @@
         align-items: center;
         gap: 0.8rem;
     }
-    
+
     .filter-btn {
         width: 200px;
         text-align: center;
     }
-    
+
     .project-grid {
         gap: 1rem;
     }
-    
+
     .project-header {
         height: 160px;
     }
-    
+
     .project-content {
         padding: 1rem;
     }
-    
+
     .tech-tag {
         font-size: 0.75rem;
         padding: 0.25rem 0.6rem;
+    }
+    .project-actions {
+        /* Ensure buttons are full width and centered */
+        width: 100%;
+        align-items: center;
     }
 }
 
@@ -1150,7 +1187,7 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
-    
+
     .project-header {
         height: 180px;
     }
@@ -1169,6 +1206,14 @@
     transform: translateY(20px) scale(0.9);
     pointer-events: none;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Set height to 0 and overflow hidden to actually collapse it */
+    height: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: none; /* Remove border when hidden */
+    overflow: hidden;
 }
 
 .project-card.visible {
@@ -1177,7 +1222,28 @@
     pointer-events: auto;
     height: auto;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: var(--project-card-margin, 0); /* Use CSS variable for consistent margin */
+    margin-bottom: var(--project-card-margin, 0);
+    padding-top: initial;
+    padding-bottom: initial;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Restore border when visible */
 }
+
+/* Define a CSS variable for project card margin */
+.project-grid {
+    --project-card-margin: 2rem; /* Default margin between cards */
+}
+@media (max-width: 768px) {
+    .project-grid {
+        --project-card-margin: 1.5rem;
+    }
+}
+@media (max-width: 480px) {
+    .project-grid {
+        --project-card-margin: 1rem;
+    }
+}
+
 
 /* Additional CSS for Unique Digitals project card */
 .project-card.unique-digital {
@@ -1186,7 +1252,7 @@
   transition: transform 0.3s ease;
   padding: 20px;
   border-radius: 8px;
- 
+
   margin-top: 20px;  /* optional: ensures spacing consistency with other cards */
 }
 
@@ -1195,8 +1261,9 @@
 }
 
 /* Google Play Store card styling */
+/* Modified .project-card.playstore-card to fit the general .project-card structure */
 .project-card.playstore-card {
-  border: none;
+  border: none; /* Inherit border from main .project-card or set explicitly */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1209,24 +1276,30 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
+/* Ensure playstore-content fits the flex-column of project-card */
 .playstore-content {
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: center; 
+  justify-content: center;
+  padding: 1.5rem; /* Add padding here if needed */
 }
 .playstore-image {
   width: 150px;
   height: auto;
   object-fit: cover;
-  border-radius: 10px 10px 0 0;
-  margin: 0 auto;
+  border-radius: 10px; /* Keep consistent with card if desired */
+  margin: 0 auto 15px auto; /* Centers the icon horizontally and adds space below it */
   display: block;
 }
 
 
 .playstore-text {
-  padding: 1.5rem;
+  padding: 0; /* Remove padding here if it's in playstore-content */
+  flex-grow: 1; /* Allow text to grow */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .playstore-text h3 {
@@ -1273,7 +1346,7 @@
 
 /* This ensures the text and button inside the card are centered properly */
 .project-card {
-    text-align: center; 
+    text-align: center;
 }
         /* Skills Section */
         .skills {
@@ -2911,6 +2984,7 @@ textarea:focus {
 </body>
 
 </html>
+
 
 
 
