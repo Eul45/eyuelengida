@@ -54,6 +54,8 @@
     <meta name="twitter:image"
         content="https://raw.githubusercontent.com/Eul45/EyuAppsmian2/refs/heads/main/images/Screenshot%202025-02-26%20205634.jpg">
     <link rel="stylesheet" href="styles2.css">
+    <link rel="stylesheet" href="projects-fix.css">
+    <link rel="stylesheet" href="mobile-fix.css">
 
 
 
@@ -1364,6 +1366,13 @@ textarea:focus::after {
         background-position: 0% 50%;
     }
 }
+.project-preview {
+  width: 100%;        /* fills the width of its container */
+  height: 100%;       /* fills the height of its container */
+  object-fit: cover;  /* keeps aspect ratio, crops extra */
+  border-radius: 15px; /* optional, keep rounded corners if you like */
+  display: block;     /* remove extra spacing under image */
+}
 
 
 /* Focus indicator as a pseudo-element */
@@ -2028,6 +2037,82 @@ textarea:focus {
         </div>
     </section>
 
+    <section id="projects" class="section projects-container">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <img src="profile5.png" alt="Eyuel Engida"
+                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 20px;">
+                    <h1>My Projects</h1>
+                    <p>Here are some of my projects</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn-donate">View My Work</a>
+                        <a href="#contact" class="btn-secondary">Contact Me</a>
+                    </div>
+                    <style>
+                        .hero-buttons {
+                            display: flex;
+                            justify-content: center;
+                            gap: 20px;
+                            margin-top: 25px;
+                        }
+
+                        .btn-secondary {
+                            display: inline-block;
+                            padding: 0.9em 1.4em;
+                            background: transparent;
+                            color: var(--text);
+                            text-decoration: none;
+                            border-radius: 5em;
+                            font-weight: 600;
+                            border: 2px solid var(--secondary);
+                            transition: all 0.3s ease;
+                            min-width: 120px;
+                            min-height: 44px;
+                            text-align: center;
+                        }
+
+                        .btn-secondary:hover {
+                            background-color: var(--secondary);
+                            color: var(--bg);
+                            transform: translateY(-3px);
+                        }
+
+                        @media (max-width: 768px) {
+                            .hero-buttons {
+                                flex-direction: column;
+                                align-items: center;
+                                gap: 15px;
+                            }
+                        }
+                    </style>
+                </div>
+                <div class="hero-image">
+                    <svg viewBox="0 0 200 200" width="100%" height="auto">
+                        <!-- Outer circle -->
+                        <circle cx="100" cy="100" r="90" fill="var(--accent)" opacity="0.1">
+                            <animate attributeName="opacity" values="0.1;0.2;0.1" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <!-- Middle circle -->
+                        <circle cx="100" cy="100" r="70" fill="var(--secondary)" opacity="0.2">
+                            <animate attributeName="opacity" values="0.2;0.3;0.2" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <!-- Inner circle -->
+                        <circle cx="100" cy="100" r="50" fill="var(--accent)" opacity="0.3">
+                            <animate attributeName="opacity" values="0.3;0.4;0.3" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <!-- Centered "E" -->
+                        <text x="50%" y="50%" text-anchor="middle" dy=".35em" font-size="60" fill="var(--secondary)"
+                            font-weight="bold" font-family="Arial, sans-serif">
+                            E
+                        </text>
+                    </svg>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="about" class="about">
         <div class="container">
             <div class="about-content">
@@ -2611,7 +2696,7 @@ textarea:focus {
                 });
             });
             
-            // Simple Project filtering functionality - rebuilt for reliability
+            // Project filtering is now handled by projects-fix.js for reliability
             const filterBtns = document.querySelectorAll('.filter-btn');
             const projectCards = document.querySelectorAll('.project-card');
             
@@ -2832,9 +2917,10 @@ textarea:focus {
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script2.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
-      <!-- ===== Custom Cursor Script Start ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="projects-fix.js"></script>
     <script>
+        // Your existing JavaScript code
         document.addEventListener('DOMContentLoaded', function () {
             const cursorContainer = document.getElementById('custom-cursor-container');
             
@@ -2869,7 +2955,6 @@ textarea:focus {
 </body>
 
 </html>
-
 
 
 
