@@ -2497,27 +2497,57 @@ textarea:focus {
     <script src="script2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
-        // Your existing JavaScript code
-        document.addEventListener('DOMContentLoaded', function () {
+        // Handle loading screen and other page initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Loading screen handling
+            const loadingScreen = document.querySelector('.loading-screen');
+            const progressBar = document.querySelector('.loading-screen .progress');
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    hideLoadingScreen(loadingScreen);
+                }
+                progressBar.style.width = `${progress}%`;
+            }, 100);
+
+            // Also hide on window load in case content takes longer to load
+            window.addEventListener('load', function() {
+                clearInterval(interval);
+                hideLoadingScreen(loadingScreen);
+            });
+
+            // Function to hide loading screen with animation
+            function hideLoadingScreen(screen) {
+                screen.classList.add('fade-out');
+                setTimeout(() => {
+                    screen.style.display = 'none';
+                }, 1000);
+            }
+
+            // Initialize cursor if it exists
             const cursorContainer = document.getElementById('custom-cursor-container');
-            
-            // This sets the cursor's position directly without any animation delay.
-            // It's wrapped in requestAnimationFrame for the best performance.
-            const moveCursor = (e) => {
-                requestAnimationFrame(() => {
-                    cursorContainer.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            if (cursorContainer) {
+                // This sets the cursor's position directly without any animation delay.
+                // It's wrapped in requestAnimationFrame for the best performance.
+                const moveCursor = (e) => {
+                    requestAnimationFrame(() => {
+                        cursorContainer.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+                    });
+                };
+
+                window.addEventListener('mousemove', moveCursor);
+
+                // --- Smart Disappear/Reappear Logic (Unchanged) ---
+                document.body.addEventListener('mouseleave', () => {
+                    cursorContainer.classList.add('cursor-hidden');
                 });
-            };
-
-            window.addEventListener('mousemove', moveCursor);
-
-            // --- Smart Disappear/Reappear Logic (Unchanged) ---
-            document.body.addEventListener('mouseleave', () => {
-                cursorContainer.classList.add('cursor-hidden');
-            });
-            document.body.addEventListener('mouseenter', () => {
-                cursorContainer.classList.remove('cursor-hidden');
-            });
+                document.body.addEventListener('mouseenter', () => {
+                    cursorContainer.classList.remove('cursor-hidden');
+                });
+            } // End of cursorContainer if block
 
             // --- Hover Effect Logic (Unchanged) ---
             const interactiveElements = document.querySelectorAll('a, button, input, textarea, .cta-button, .btn-donate, .indicator-dot, .animated-button');
