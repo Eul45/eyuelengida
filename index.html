@@ -1988,7 +1988,16 @@ textarea:focus {
             bottom: 100px;
             right: 30px;
             z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .floating-coffee-widget.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
         .coffee-toggle {
@@ -2921,8 +2930,9 @@ textarea:focus {
         // Set the current year dynamically
         document.getElementById('currentYear').textContent = new Date().getFullYear();
         
-        // Floating Coffee Widget Toggle
+        // Floating Coffee Widget Toggle and Scroll-based Visibility
         document.addEventListener('DOMContentLoaded', function() {
+            const coffeeWidget = document.getElementById('coffeeWidget');
             const coffeeToggle = document.getElementById('coffeeToggle');
             const coffeeContent = document.getElementById('coffeeContent');
             
@@ -2932,11 +2942,37 @@ textarea:focus {
             
             // Close coffee widget when clicking outside
             document.addEventListener('click', function(event) {
-                const coffeeWidget = document.getElementById('coffeeWidget');
                 if (!coffeeWidget.contains(event.target)) {
                     coffeeContent.classList.remove('active');
                 }
             });
+            
+            // Show/hide coffee widget based on scroll position
+            function handleCoffeeWidgetVisibility() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight;
+                const homeSection = document.getElementById('home');
+                const homeSectionBottom = homeSection.offsetTop + homeSection.offsetHeight;
+                
+                // Show widget when user scrolls past home section AND is in bottom 40% of page
+                const scrollPercentage = (scrollTop + windowHeight) / documentHeight;
+                const pastHomeSection = scrollTop > homeSectionBottom;
+                const nearBottom = scrollPercentage > 0.6; // Show when 60% through the page
+                
+                if (pastHomeSection && nearBottom) {
+                    coffeeWidget.classList.add('visible');
+                } else {
+                    coffeeWidget.classList.remove('visible');
+                    coffeeContent.classList.remove('active'); // Also close the content panel
+                }
+            }
+            
+            // Listen for scroll events
+            window.addEventListener('scroll', handleCoffeeWidgetVisibility);
+            
+            // Initial check
+            handleCoffeeWidgetVisibility();
         });
     </script>
 
