@@ -1,3463 +1,6921 @@
 
+
+
+
 <html>
 
+
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Eyuel Engida - Tech Innovator & Engineer</title>
+
 <!--
+
                                                             
+
                                                             ███████╗██╗   ██╗██╗   ██╗███████╗██╗     
+
                                                             ██╔════╝╚██╗ ██╔╝██║   ██║██╔════╝██║     
+
                                                             █████╗   ╚████╔╝ ██║   ██║█████╗  ██║     
+
                                                             ██╔══╝    ╚██╔╝  ██║   ██║██╔══╝  ██║     
+
                                                             ███████╗   ██║   ╚██████╔╝███████╗███████╗
+
                                                             ╚══════╝   ╚═╝    ╚═════╝ ╚══════╝╚══════╝
 
+
+
     
+
                                                             
+
                                                 Project: https://github.com/Eul45/eyuelengida
+
                                                 Author: EYUEL 
+
                                                 Date: 2/27/2025
+
                                                             
+
                     
+
                                         tg: 👉 @eul_zzz
+
                                                                                                                                                  -->
 
+
+
     <!-- Meta tags for SEO and Social Media previews -->
+
     <meta property="og:title" content="Eyuel">
+
     <meta property="og:description" content="Learn more about Eyuel Engida, a passionate developer and innovator.">
+
     <meta property="og:image"
+
         content="https://raw.githubusercontent.com/Eul45/EyuAppsmian2/refs/heads/main/images/Screenshot%202025-02-26%20205634.jpg">
+
     <meta property="og:url" content="https://eyuelprofile.neocities.org/">
+
     <meta property="og:type" content="website">
+
     <meta name="twitter:card" content="summary_large_image">
+
     <meta name="twitter:title" content="Eyuel">
+
     <meta name="twitter:description" content="Learn more about Eyuel Engida, a passionate developer and innovator.">
+
     <meta name="twitter:image"
+
         content="https://raw.githubusercontent.com/Eul45/EyuAppsmian2/refs/heads/main/images/Screenshot%202025-02-26%20205634.jpg">
+
     <meta property="og:site_name" content="Eyuel">
+
        <link rel="icon" href="/images/favicon.png" type="image/png">
+
    <link rel="icon" href="https://eyuapps.neocities.org/images/logo.png" sizes="48x48" type="image/png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
 
     <link rel="stylesheet" href="styles2.css">
 
 
 
+
+
+
+
     <style>
+
         /* a little  bit messy here but works just fine*/
+
         /* Loading screen styles */
+
         :root {
+
             --primary: #000000;
+
             --secondary: #00ff88;
+
             --accent: #ff00ff;
+
             --text: #ffffff;
+
             --bg: #0a0a0a;
+
         }
+
+
 
         .loading-screen {
+
             position: fixed;
+
             top: 0;
+
             left: 0;
+
             width: 100%;
+
             height: 100vh;
+
             background: var(--bg);
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
             z-index: 99999;
+
         }
+
+
 
         .loading-container {
+
             position: relative;
+
             width: 300px;
+
             height: 300px;
+
         }
+
+
 
         .cyber-circle {
+
             position: absolute;
+
             border: 4px solid transparent;
+
             border-radius: 50%;
+
             animation: rotate 2s linear infinite;
+
         }
+
+
 
         .cyber-circle:nth-child(1) {
+
             width: 100%;
+
             height: 100%;
+
             border-top: 4px solid var(--secondary);
+
             border-right: 4px solid var(--accent);
+
         }
+
+
 
         .cyber-circle:nth-child(2) {
+
             width: 80%;
+
             height: 80%;
+
             top: 10%;
+
             left: 10%;
+
             border-bottom: 4px solid var(--secondary);
+
             border-left: 4px solid var(--accent);
+
             animation-direction: reverse;
+
         }
+
+
 
         .cyber-circle:nth-child(3) {
+
             width: 60%;
+
             height: 60%;
+
             top: 20%;
+
             left: 20%;
+
             border-left: 4px solid var(--secondary);
+
             border-top: 4px solid var(--accent);
+
         }
+
+
 
         .loading-logo {
+
             position: absolute;
+
             top: 50%;
+
             left: 50%;
+
             transform: translate(-50%, -50%);
+
             width: 80px;
+
             height: 80px;
+
             animation: pulse 2s infinite, glow 1.5s ease-in-out infinite alternate;
+
             filter: drop-shadow(0 0 8px var(--secondary));
+
         }
+
+
 
         .loading-logo img {
+
             width: 100%;
+
             height: 100%;
+
             object-fit: contain;
+
         }
+
+
 
         .loading-screen .progress-bar {
+
             position: absolute;
+
             bottom: 20%;
+
             left: 50%;
+
             transform: translateX(-50%);
+
             width: 200px;
+
             height: 4px;
+
             background: rgba(255, 255, 255, 0.1);
+
             overflow: hidden;
+
             border-radius: 4px;
+
             box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+
         }
+
+
 
         .loading-screen .progress {
+
             width: 0%;
+
             height: 100%;
+
             background: linear-gradient(90deg, var(--secondary), var(--accent));
+
             animation: progress 3s ease-in-out forwards;
+
         }
+
+
 
         @keyframes rotate {
+
             from {
+
                 transform: rotate(0deg);
+
             }
 
+
+
             to {
+
                 transform: rotate(360deg);
+
             }
+
         }
+
+
 
         @keyframes pulse {
+
             0% {
+
                 opacity: 1;
+
                 transform: translate(-50%, -50%) scale(1);
+
             }
+
+
 
             50% {
+
                 opacity: 0.8;
+
                 transform: translate(-50%, -50%) scale(0.95);
+
             }
 
+
+
             100% {
+
                 opacity: 1;
+
                 transform: translate(-50%, -50%) scale(1);
+
             }
+
         }
+
+
 
         @keyframes glow {
+
             from {
+
                 filter: drop-shadow(0 0 8px var(--secondary));
+
             }
 
+
+
             to {
+
                 filter: drop-shadow(0 0 12px var(--accent));
+
             }
+
         }
+
+
 
         @keyframes progress {
+
             0% {
+
                 width: 0%;
+
             }
+
+
 
             100% {
+
                 width: 100%;
+
             }
+
         }
+
+
 
         .loading-screen.fade-out {
+
             animation: fadeOut 1s forwards;
+
         }
+
+
 
         @keyframes fadeOut {
+
             to {
+
                 opacity: 0;
+
                 visibility: hidden;
+
             }
+
         }
+
     </style>
+
     <style>
+
         :root {
+
             --primary: #2d3436;
+
             --secondary: #0984e3;
+
             --accent: #00cec9;
+
             --text: #dfe6e9;
+
             --bg: #1a1a1a;
+
         }
+
+
 
         * {
+
             margin: 0;
+
             padding: 0;
+
             box-sizing: border-box;
+
             transition: all 0.3s ease;
+
         }
+
+
 
         /* Progress bar styles */
+
         .progress-container {
+
             position: fixed;
+
             top: 0;
+
             left: 0;
+
             /* Position the bar on the left side */
+
             z-index: 1001;
+
             height: 100%;
+
             /* Make it full-height */
+
             width: 4px;
+
             /* Narrow width for vertical style */
+
             background: rgba(255, 255, 255, 0.1);
+
         }
 
+
+
         .progress-bar {
+
             width: 100%;
+
             /* Full width to match the container */
+
             background: linear-gradient(to bottom, var(--accent), var(--secondary));
+
             /* Vertical gradient */
+
             height: 0%;
+
             /* Start with 0 height, as it will fill vertically */
+
             transition: height 0.2s ease;
+
             box-shadow: 0 0 10px var(--accent);
+
         }
+
+
+
 
 
         /* Active section indicator */
+
         .section-indicator {
+
             position: fixed;
+
             right: 20px;
+
             top: 50%;
+
             transform: translateY(-50%);
+
             display: flex;
+
             flex-direction: column;
+
             gap: 10px;
+
             z-index: 1000;
+
             padding: 10px;
+
             background: rgba(0, 0, 0, 0.1);
+
             border-radius: 20px;
+
             backdrop-filter: blur(5px);
+
         }
+
+
 
         .indicator-dot {
+
             width: 10px;
+
             height: 10px;
+
             border-radius: 50%;
+
             background: rgba(255, 255, 255, 0.3);
+
             cursor: pointer;
+
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
             position: relative;
+
         }
+
+
 
         .indicator-dot:hover {
+
             background: rgba(255, 255, 255, 0.5);
+
             transform: scale(1.2);
+
         }
+
+
 
         .indicator-dot::before {
+
             content: '';
+
             position: absolute;
+
             width: 100%;
+
             height: 100%;
+
             border-radius: 50%;
+
             background: inherit;
+
             animation: pulse 2s infinite;
+
             opacity: 0;
+
         }
+
+
 
         .indicator-dot.active {
+
             background: var(--accent);
+
             transform: scale(1.5);
+
             box-shadow: 0 0 10px var(--accent),
+
                 0 0 20px var(--accent),
+
                 0 0 30px var(--accent);
+
         }
+
+
 
         .indicator-dot.active::before {
+
             background: var(--accent);
+
             opacity: 1;
+
         }
+
+
 
         @keyframes pulse {
+
             0% {
+
                 transform: scale(1);
+
                 opacity: 0.8;
+
             }
+
+
 
             70% {
+
                 transform: scale(2);
+
                 opacity: 0;
+
             }
+
+
 
             100% {
+
                 transform: scale(2.5);
+
                 opacity: 0;
+
             }
+
         }
+
+
 
         /* Improved tooltip with auto-hide animation */
+
         .indicator-dot::after {
+
             content: attr(data-section);
+
             position: absolute;
+
             right: 20px;
+
             top: 50%;
+
             transform: translateY(-50%);
+
             background: rgba(0, 0, 0, 0.8);
+
             color: white;
+
             padding: 5px 10px;
+
             border-radius: 4px;
+
             font-size: 12px;
+
             white-space: nowrap;
+
             opacity: 0;
+
             visibility: hidden;
+
             transition: all 0.3s ease;
+
         }
 
+
+
         .indicator-dot:hover::after {
+
             opacity: 1;
+
             visibility: visible;
+
             right: 25px;
+
             animation: showHideTooltip 2s forwards;
+
         }
+
+
 
         @keyframes showHideTooltip {
 
+
+
             0%,
+
             70% {
+
                 opacity: 1;
+
                 visibility: visible;
+
             }
+
+
 
             100% {
+
                 opacity: 0;
+
                 visibility: hidden;
+
             }
+
         }
+
+
 
         body {
+
             font-family: 'Inter', sans-serif;
+
             background: var(--bg);
+
             color: var(--text);
+
             line-height: 1.6;
+
         }
+
+
 
         .container {
+
             max-width: 1200px;
+
             margin: 0 auto;
+
             padding: 0 2rem;
+
         }
+
+
 
         header {
+
             position: fixed;
+
             width: 100%;
+
             top: 0;
+
             background: rgba(26, 26, 26, 0.95);
+
             backdrop-filter: blur(10px);
+
             z-index: 1000;
+
         }
+
+
 
         nav {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             padding: 1rem 0;
+
         }
+
+
 
         .logo {
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             gap: 8px;
+
             transition: transform 0.3s ease;
+
         }
+
+
 
         .logo:hover {
+
             transform: scale(1.05);
+
         }
+
+
 
         .logo-img {
+
             width: 50px;
+
             height: 50px;
+
             border: 2px solid white;
+
             border-radius: 50%;
+
             object-fit: cover;
+
             margin-top: 12px;
+
             transition: all 0.3s ease;
+
             animation: pulse 2s infinite;
+
         }
+
+
 
         .logo-img:hover {
+
             border-color: var(--accent);
+
             transform: rotate(360deg);
+
             box-shadow: 0 0 15px var(--accent);
+
         }
 
+
+
       .logo-text {
+
     font-family: 'Orbitron', sans-serif;
+
     font-size: 1.5em;
+
     font-weight: 700;
+
     line-height: 1;
+
     background: linear-gradient(45deg, var(--accent), var(--secondary));
+
     -webkit-background-clip: text;
+
     background-clip: text;
+
     -webkit-text-fill-color: transparent;
+
+
 
     /* The text-shadow line is now gone from here */
 
+
+
     transition: all 0.3s ease;
+
     position: relative;
+
 }
+
+
 
 .logo-text:hover {
+
     /* Enhance the glow on hover */
+
     text-shadow: 0 0 8px rgba(0, 255, 136, 0.8), 0 0 20px rgba(0, 255, 136, 0.4);
+
     transform: scale(1.1);
+
 }
 
+
+
         @keyframes pulse {
+
             0% {
+
                 box-shadow: 0 0 0 0 rgba(var(--accent), 0.4);
+
             }
+
+
 
             70% {
+
                 box-shadow: 0 0 0 10px rgba(var(--accent), 0);
+
             }
 
+
+
             100% {
+
                 box-shadow: 0 0 0 0 rgba(var(--accent), 0);
+
             }
+
         }
+
+
 
         /* Improved Hamburger Menu */
+
         .hamburger {
+
             display: none;
+
             flex-direction: column;
+
             gap: 6px;
+
             cursor: none;
+
             padding: 10px;
+
             z-index: 1001;
+
             transition: transform 0.3s ease;
+
         }
+
+
 
         .hamburger:hover {
+
             transform: scale(1.1);
+
         }
+
+
 
         .hamburger span {
+
             display: block;
+
             width: 30px;
+
             height: 3px;
+
             background: var(--accent);
+
             transition: 0.3s;
+
             border-radius: 3px;
+
         }
+
+
 
         /* Hamburger Animation when Active */
+
         .hamburger.active span:nth-child(1) {
+
             transform: translateY(9px) rotate(45deg);
+
         }
+
+
 
         .hamburger.active span:nth-child(2) {
+
             opacity: 0;
+
         }
+
+
 
         .hamburger.active span:nth-child(3) {
+
             transform: translateY(-9px) rotate(-45deg);
+
         }
+
+
 
         /* Enhanced Nav Links with Modern Animations */
+
         .nav-links {
+
             display: flex;
+
             gap: 2rem;
+
             transition: transform 0.5s ease;
+
             align-items: center;
+
         }
+
+
 
         .nav-links a {
+
             position: relative;
+
             color: var(--text);
+
             text-decoration: none;
+
             font-weight: 500;
+
             padding: 12px 20px;
+
             border-radius: 25px;
+
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
             overflow: hidden;
+
             background: rgba(255, 255, 255, 0.02);
+
             border: 1px solid transparent;
+
             backdrop-filter: blur(5px);
+
         }
+
+
 
         /* Animated background gradient */
+
         .nav-links a::before {
+
             content: '';
+
             position: absolute;
+
             top: 0;
+
             left: -100%;
+
             width: 100%;
+
             height: 100%;
+
             background: linear-gradient(90deg, 
+
                 transparent, 
+
                 rgba(0, 206, 201, 0.1), 
+
                 transparent);
+
             transition: left 0.6s ease;
+
             z-index: -1;
+
         }
+
+
 
         /* Underline effect */
+
         .nav-links a::after {
+
             content: '';
+
             position: absolute;
+
             bottom: 8px;
+
             left: 50%;
+
             width: 0;
+
             height: 2px;
+
             background: var(--accent);
+
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
             transform: translateX(-50%);
+
             border-radius: 2px;
+
         }
+
+
 
         /* Hover effects */
+
         .nav-links a:hover {
+
             color: var(--accent);
+
             background: rgba(0, 206, 201, 0.08);
+
             border-color: rgba(0, 206, 201, 0.3);
+
             transform: translateY(-2px);
+
             box-shadow: 0 4px 15px rgba(0, 206, 201, 0.2);
+
         }
+
+
 
         .nav-links a:hover::before {
+
             left: 100%;
+
         }
+
+
 
         .nav-links a:hover::after {
+
             width: 60%;
+
         }
+
+
 
         /* Active link styling */
+
         .nav-links a.active {
+
             color: var(--accent);
+
             background: rgba(0, 206, 201, 0.12);
+
             border-color: var(--accent);
+
             box-shadow: 0 0 20px rgba(0, 206, 201, 0.3);
+
         }
+
+
 
         .nav-links a.active::after {
+
             width: 60%;
+
             background: var(--accent);
+
             box-shadow: 0 0 8px var(--accent);
+
         }
+
+
 
         /* Individual link colors with smooth transitions */
+
         .nav-links a:nth-child(1):hover {
+
             border-color: rgba(76, 175, 80, 0.4);
+
             box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+
         }
+
+
 
         .nav-links a:nth-child(1):hover::after {
+
             background: #4CAF50;
+
             box-shadow: 0 0 8px #4CAF50;
+
         }
+
+
 
         .nav-links a:nth-child(2):hover {
+
             border-color: rgba(33, 150, 243, 0.4);
+
             box-shadow: 0 4px 15px rgba(33, 150, 243, 0.2);
+
         }
+
+
 
         .nav-links a:nth-child(2):hover::after {
+
             background: #2196F3;
+
             box-shadow: 0 0 8px #2196F3;
+
         }
+
+
 
         .nav-links a:nth-child(3):hover {
+
             border-color: rgba(156, 39, 176, 0.4);
+
             box-shadow: 0 4px 15px rgba(156, 39, 176, 0.2);
+
         }
+
+
 
         .nav-links a:nth-child(3):hover::after {
+
             background: #9C27B0;
+
             box-shadow: 0 0 8px #9C27B0;
+
         }
+
+
 
         .nav-links a:nth-child(4):hover {
+
             border-color: rgba(255, 152, 0, 0.4);
+
             box-shadow: 0 4px 15px rgba(255, 152, 0, 0.2);
+
         }
+
+
 
         .nav-links a:nth-child(4):hover::after {
+
             background: #FF9800;
+
             box-shadow: 0 0 8px #FF9800;
+
         }
+
+
 
         .nav-links a:nth-child(5):hover {
+
             border-color: rgba(233, 30, 99, 0.4);
+
             box-shadow: 0 4px 15px rgba(233, 30, 99, 0.2);
+
         }
+
+
 
         .nav-links a:nth-child(5):hover::after {
+
             background: #E91E63;
+
             box-shadow: 0 0 8px #E91E63;
+
         }
+
+
 
         .nav-links a:nth-child(6):hover {
+
             border-color: rgba(0, 188, 212, 0.4);
+
             box-shadow: 0 4px 15px rgba(0, 188, 212, 0.2);
+
         }
+
+
 
         .nav-links a:nth-child(6):hover::after {
+
             background: #00BCD4;
+
             box-shadow: 0 0 8px #00BCD4;
+
         }
+
+
 
         /* Click animation */
+
         .nav-links a:active {
+
             transform: translateY(0) scale(0.95);
+
             transition: transform 0.1s ease;
+
         }
+
+
 
         /* Enhanced Mobile Menu Styles */
+
         @media (max-width: 768px) {
+
             .hamburger {
+
                 display: flex;
+
             }
+
+
 
             .nav-links {
+
                 position: fixed;
+
                 top: 0;
+
                 right: -100%;
+
                 height: 100vh;
+
                 width: 75%;
+
                 max-width: 320px;
+
                 background: rgba(26, 26, 26, 0.98);
+
                 backdrop-filter: blur(20px);
+
                 flex-direction: column;
+
                 gap: 1.5rem;
+
                 padding: 120px 30px 40px;
+
                 box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+
                 transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
                 border-left: 2px solid rgba(0, 206, 201, 0.2);
+
             }
+
+
 
             .nav-links.active {
+
                 right: 0;
+
             }
+
+
 
             .nav-links a {
+
                 padding: 15px 20px;
+
                 margin: 5px 0;
+
                 border-radius: 15px;
+
                 text-align: center;
+
                 font-size: 1.1rem;
+
                 background: rgba(255, 255, 255, 0.03);
+
                 border: 1px solid rgba(255, 255, 255, 0.1);
+
                 transform: translateX(50px);
+
                 opacity: 0;
+
                 animation: slideInMobile 0.3s ease forwards;
+
             }
+
+
 
             .nav-links.active a {
+
                 animation-delay: calc(var(--i) * 0.1s);
+
             }
+
+
 
             .nav-links a:nth-child(1) { --i: 1; }
+
             .nav-links a:nth-child(2) { --i: 2; }
+
             .nav-links a:nth-child(3) { --i: 3; }
+
             .nav-links a:nth-child(4) { --i: 4; }
+
             .nav-links a:nth-child(5) { --i: 5; }
+
             .nav-links a:nth-child(6) { --i: 6; }
 
+
+
             .nav-links a::after {
+
                 bottom: 5px;
+
                 left: 50%;
+
                 transform: translateX(-50%);
+
             }
+
+
 
             .nav-links a:hover {
+
                 transform: translateY(-1px) scale(1.02);
+
                 background: rgba(0, 206, 201, 0.1);
+
             }
+
         }
+
+
 
         @keyframes slideInMobile {
+
             to {
+
                 transform: translateX(0);
+
                 opacity: 1;
+
             }
+
         }
+
+
 
         /* Section Animation */
+
         section {
+
             opacity: 0;
+
             transform: translateY(50px);
+
             transition: all 0.8s ease-out;
+
         }
+
+
 
         section.visible {
+
             opacity: 1;
+
             transform: translateY(0);
+
         }
+
+
 
         /* Hero Section */
+
         .hero {
+
             min-height: 100vh;
+
             display: flex;
+
             align-items: center;
+
             padding-top: 80px;
+
         }
+
+
 
         .hero-content {
+
             display: grid;
+
             grid-template-columns: 1fr 1fr;
+
             gap: 4rem;
+
             align-items: center;
+
         }
+
+
 
         .hero-text h1 {
+
             font-size: 3.5rem;
+
             margin-bottom: 1rem;
+
             background: linear-gradient(to right, var(--accent), var(--secondary));
+
             -webkit-background-clip: text;
+
             background-clip: text;
+
             color: transparent;
+
         }
+
+
 
         .hero-text p {
+
             font-size: 1.2rem;
+
             margin-bottom: 2rem;
+
         }
+
+
 
        .cta-button {
+
             display: inline-flex;
+
             align-items: center;
+
             gap: 8px;
+
             padding: 1.2rem 2.5rem;
+
             background: linear-gradient(90deg, #008CFF, #00E0C6);
+
             color: white;
+
             text-decoration: none;
+
             border-radius: 20px;
+
             font-weight: 500;
+
             font-size: 1rem;
+
             border: none;
+
             cursor: pointer;
+
             margin-top: 2rem;
+
             height: 50px;
+
             min-width: 160px;
+
             text-align: center;
+
             justify-content: center;
+
             position: relative;
+
             overflow: hidden;
+
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
             background-size: 200% 100%;
+
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
         }
+
+
 
         .cta-button:hover {
+
             background-position: 100% 0;
+
             transform: translateY(-5px) scale(1.05);
+
             box-shadow: 0 8px 20px rgba(0, 140, 255, 0.3);
+
         }
+
+
 
         .cta-button::after {
+
             content: '';
+
             position: absolute;
+
             top: -50%;
+
             left: -50%;
+
             width: 200%;
+
             height: 200%;
+
             background: linear-gradient(45deg,
+
                     transparent 25%,
+
                     rgba(255, 255, 255, 0.1) 50%,
+
                     transparent 75%);
+
             transform: rotate(45deg);
+
             transition: all 0.4s ease;
+
         }
+
+
 
         .cta-button:hover::after {
+
             animation: shine 1.5s infinite;
+
         }
+
+
 
         @keyframes shine {
+
             0% {
+
                 left: -50%;
+
             }
+
+
 
             100% {
+
                 left: 150%;
+
             }
+
         }
+
+
 
         .cta-button:active {
+
             transform: translateY(-2px) scale(0.98);
+
         }
+
+
 
         .tablet-link {
+
             display: inline-flex;
+
             align-items: center;
+
             font-size: 0.8rem;
+
             color: #008CFF;
+
             text-decoration: none;
+
             margin-left: 15px;
+
             margin-top: 10px;
+
             padding: 5px 10px;
+
             border-radius: 12px;
+
             background: linear-gradient(135deg, rgba(0, 140, 255, 0.08), rgba(0, 224, 198, 0.12));
+
             transition: all 0.3s ease;
+
             vertical-align: middle;
+
             border: 1px solid rgba(0, 140, 255, 0.2);
+
             box-shadow: 0 2px 4px rgba(0, 140, 255, 0.05);
+
             position: relative;
+
             overflow: hidden;
+
         }
+
+
 
         .tablet-link:hover {
+
             background: linear-gradient(135deg, rgba(0, 140, 255, 0.12), rgba(0, 224, 198, 0.18));
+
             transform: translateY(-2px);
+
             box-shadow: 0 3px 6px rgba(0, 140, 255, 0.15);
+
             border: 1px solid rgba(0, 140, 255, 0.3);
+
         }
+
+
 
         .tablet-link:active {
+
             transform: translateY(0);
+
         }
+
+
 
         .tablet-link::before {
+
             content: '';
+
             position: absolute;
+
             top: 0;
+
             left: 0;
+
             width: 100%;
+
             height: 100%;
+
             background: linear-gradient(45deg,
+
                     transparent,
+
                     rgba(0, 224, 198, 0.1),
+
                     transparent);
+
             transform: translateX(-100%);
+
             transition: 0.6s;
+
         }
+
+
 
         .tablet-link:hover::before {
+
             transform: translateX(100%);
+
         }
 
+
+
         .tablet-icon {
+
             margin-right: 5px;
+
             position: relative;
+
             top: -1px;
+
         }
+
+
+
+
+
 
 
 
 
         /* About Section */
+
         .about {
+
             padding: 5rem 0;
+
             min-height: 100vh;
+
             display: flex;
+
             align-items: center;
+
         }
+
+
 
         .about-content {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             /* Changed from flex-start to center */
+
             gap: 4rem;
+
         }
+
+
 
         .about-text {
+
             flex: 1;
+
             margin-top: 0;
+
             /* Added to ensure no top margin */
+
         }
+
+
 
         .about-links {
+
             flex: 1;
+
             display: flex;
+
             flex-direction: column;
+
             justify-content: center;
+
             /* Added to center content vertically */
+
         }
+
+
 
         .website-preview {
+
             border: 2px solid var(--accent);
+
             border-radius: 10px;
+
             padding: 1.5rem;
+
             margin-bottom: 2rem;
+
             background: rgba(255, 255, 255, 0.05);
+
         }
+
+
 
         .social-links {
+
             display: flex;
+
             gap: 1rem;
+
             margin-top: 2rem;
+
         }
+
+
 
         /* Section Title Animation */
+
         .section-title {
+
             background: linear-gradient(45deg, var(--secondary), var(--accent));
+
             -webkit-background-clip: text;
+
             background-clip: text;
+
             color: transparent;
+
             font-size: 2rem;
+
             /* Decreased font size */
+
             margin-bottom: 2rem;
+
             opacity: 1;
+
             transform: translateY(0);
+
             position: relative;
+
         }
+
+
 
         .section-title::after {
+
             content: '';
+
             position: absolute;
+
             bottom: -10px;
+
             left: 0;
+
             width: 60px;
+
             height: 4px;
+
             background: linear-gradient(45deg, var(--secondary), var(--accent));
+
             border-radius: 2px;
+
         }
+
+
 
         .animate-item {
+
             animation: fadeInUp 0.8s ease forwards;
+
         }
+
+
 
         @keyframes fadeInUp {
+
             from {
+
                 opacity: 0;
+
                 transform: translateY(20px);
+
             }
+
+
 
             to {
+
                 opacity: 1;
+
                 transform: translateY(0);
+
             }
+
         }
 
+
+
         @media (max-width: 768px) {
+
             .about-content {
+
                 flex-direction: column;
+
                 gap: 2rem;
+
             }
+
         }
+
+
+
+
 
 
 
         /* Enhanced Projects Section */
+
 .projects {
+
     padding: 5rem 0;
+
     display: block !important;
+
     visibility: visible !important;
+
 }
+
+
 
 /* Project Category Tabs */
+
 .project-tabs {
+
     display: flex !important;
+
     justify-content: center;
+
     gap: 1rem;
+
     margin: 2rem 0;
+
     flex-wrap: wrap;
+
     visibility: visible !important;
+
     opacity: 1 !important;
+
 }
+
+
 
 .tab-indicator {
+
     padding: 12px 24px;
+
     background: rgba(255, 255, 255, 0.05);
+
     border: 2px solid rgba(0, 206, 201, 0.3);
+
     border-radius: 25px;
+
     color: var(--text);
+
     cursor: none;
+
     transition: all 0.3s ease;
+
     font-weight: 500;
+
     font-size: 14px;
+
     position: relative;
+
     overflow: hidden;
+
     display: inline-block !important;
+
     visibility: visible !important;
+
     opacity: 1 !important;
+
 }
+
+
 
 .tab-indicator::before {
+
     content: '';
+
     position: absolute;
+
     top: 0;
+
     left: -100%;
+
     width: 100%;
+
     height: 100%;
+
     background: linear-gradient(90deg, transparent, rgba(0, 206, 201, 0.1), transparent);
+
     transition: left 0.6s ease;
+
 }
+
+
 
 /* Project Grid */
+
 .project-grid {
+
     display: grid !important;
+
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
     gap: 2rem;
+
     margin-top: 2rem;
+
     opacity: 1 !important;
+
     transform: translateY(0) !important;
+
     transition: all 0.5s ease;
+
     visibility: visible !important;
+
 }
+
+
 
 .project-grid.active {
+
     opacity: 1;
+
     transform: translateY(0);
+
 }
+
+
 
 /* Enhanced Project Cards */
+
 .project-card {
+
     background: rgba(255, 255, 255, 0.05);
+
     border-radius: 15px;
+
     padding: 0;
+
     position: relative;
+
     overflow: hidden;
+
     transform: scale(0.95);
+
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+
     border: 1px solid rgba(0, 206, 201, 0.1);
+
     display: flex !important;
+
     flex-direction: column;
+
     will-change: transform;
+
     visibility: visible !important;
+
     opacity: 1 !important;
+
 }
+
+
 
 /* Desktop-only backdrop filter */
+
 @media (min-width: 769px) {
+
     .project-card {
+
         backdrop-filter: blur(10px);
+
     }
+
 }
+
+
 
 .project-card-content {
+
     padding: 1.5rem;
+
     flex: 1;
+
     display: flex;
+
     flex-direction: column;
+
 }
+
+
 
 .project-card::before {
+
     content: '';
+
     position: absolute;
+
     top: 0;
+
     left: 0;
+
     right: 0;
+
     height: 3px;
+
     background: linear-gradient(90deg, var(--accent), var(--secondary));
+
     transform: scaleX(0);
+
     transition: transform 0.3s ease;
+
 }
+
+
 
 .project-card:hover {
+
     transform: scale(1);
+
     box-shadow: 0 20px 40px rgba(0, 206, 201, 0.3);
+
     border-color: var(--accent);
+
 }
 
+
+
 @media (max-width: 768px) {
+
     .project-card:hover {
+
         transform: scale(0.98);
+
         box-shadow: 0 10px 20px rgba(0, 206, 201, 0.2);
+
     }
+
 }
+
+
 
 .project-card:hover::before {
+
     transform: scaleX(1);
+
 }
+
+
 
 /* Project Banner Image Styling */
+
 .project-image {
+
     width: 100%;
+
     height: 200px;
+
     border-radius: 15px 15px 0 0;
+
     display: block;
+
     margin: 0;
+
     object-fit: cover;
+
     object-position: center;
+
     transition: all 0.3s ease;
+
     border-bottom: 2px solid rgba(0, 206, 201, 0.2);
+
 }
+
+
 
 /* Desktop image hover effects */
+
 @media (min-width: 769px) {
+
     .project-card:hover .project-image {
+
         transform: scale(1.02);
+
         border-bottom-color: var(--accent);
+
         filter: brightness(1.1);
+
     }
+
 }
+
+
 
 /* Simplified mobile image hover */
+
 @media (max-width: 768px) {
+
     .project-card:hover .project-image {
+
         border-bottom-color: var(--accent);
+
         filter: brightness(1.05);
+
     }
+
 }
+
+
 
 /* Image container for better control */
+
 .project-image-container {
+
     width: 100%;
+
     height: 200px;
+
     overflow: hidden;
+
     border-radius: 15px 15px 0 0;
+
     position: relative;
+
     background: rgba(0, 206, 201, 0.1);
+
 }
+
+
 
 /* Category indicator chip */
+
 .category-chip {
+
     position: absolute;
+
     top: 10px;
+
     right: 10px;
+
     background: rgba(0, 0, 0, 0.8);
+
     color: white;
+
     padding: 4px 8px;
+
     border-radius: 12px;
+
     font-size: 11px;
+
     font-weight: 600;
+
     text-transform: uppercase;
+
     letter-spacing: 0.5px;
+
     border: 1px solid rgba(255, 255, 255, 0.2);
+
     z-index: 2;
+
     transition: background-color 0.3s ease;
+
 }
+
+
 
 /* Desktop-only backdrop filter for chips */
+
 @media (min-width: 769px) {
+
     .category-chip {
+
         backdrop-filter: blur(10px);
+
     }
+
     
+
     .project-card:hover .category-chip {
+
         background: rgba(0, 206, 201, 0.9);
+
         transform: scale(1.05);
+
         transition: all 0.3s ease;
+
     }
+
 }
+
+
 
 /* Simplified mobile chip hover */
+
 @media (max-width: 768px) {
+
     .project-card:hover .category-chip {
+
         background: rgba(0, 206, 201, 0.9);
+
     }
+
 }
+
+
 
 /* Project Tags */
+
 .project-tags {
+
     display: flex;
+
     gap: 8px;
+
     margin: 15px 0;
+
     flex-wrap: wrap;
+
     justify-content: center;
+
 }
+
+
 
 .project-tag {
+
     padding: 4px 12px;
+
     background: rgba(0, 206, 201, 0.1);
+
     border: 1px solid rgba(0, 206, 201, 0.3);
+
     border-radius: 20px;
+
     font-size: 11px;
+
     color: var(--accent);
+
     font-weight: 500;
+
     transition: all 0.3s ease;
+
 }
+
+
 
 .project-tag:hover {
+
     background: rgba(0, 206, 201, 0.2);
+
     transform: scale(1.05);
+
 }
+
+
 
 /* Project Title */
+
 .project-card h3 {
+
     color: var(--text);
+
     margin-bottom: 10px;
+
     font-size: 1.2rem;
+
     font-weight: 600;
+
 }
+
+
 
 /* Project Description */
+
 .project-card p {
+
     color: rgba(223, 230, 233, 0.8);
+
     line-height: 1.5;
+
     margin-bottom: 15px;
+
 }
+
+
 
 /* Project Buttons Container */
+
 .project-buttons {
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     gap: 12px;
+
     margin-top: 20px;
+
     flex-wrap: wrap;
+
 }
+
+
 
 /* Responsive Projects Styling */
+
 @media (max-width: 768px) {
+
     .projects {
+
         display: block !important;
+
         visibility: visible !important;
+
         opacity: 1 !important;
+
     }
+
+
 
     .project-tabs {
+
         gap: 0.5rem;
+
         margin: 1.5rem 0;
+
         display: flex !important;
+
         visibility: visible !important;
+
         opacity: 1 !important;
+
     }
+
+
 
     .tab-indicator {
+
         padding: 8px 16px;
+
         font-size: 12px;
+
         display: inline-block !important;
+
         visibility: visible !important;
+
         opacity: 1 !important;
+
     }
+
+
 
     .project-grid {
+
         grid-template-columns: 1fr;
+
         gap: 1.5rem;
+
         display: grid !important;
+
         visibility: visible !important;
+
         opacity: 1 !important;
+
     }
+
+
 
     .project-card {
+
         display: flex !important;
+
         visibility: visible !important;
+
         opacity: 1 !important;
+
     }
+
+
 
     .project-image {
+
         height: 150px;
+
         margin: 0;
+
     }
 
+
+
     .project-image-container {
+
         height: 150px;
+
     }
+
+
 
     .project-tags {
+
         gap: 6px;
+
     }
+
+
 
     .project-tag {
+
         font-size: 10px;
+
         padding: 3px 8px;
+
     }
+
+
 
     .project-buttons {
+
         flex-direction: column;
+
         gap: 8px;
+
     }
+
 }
+
+
 
 @media (max-width: 480px) {
+
     .projects {
+
         display: block !important;
+
         visibility: visible !important;
+
         opacity: 1 !important;
+
     }
+
+
 
     .project-tabs {
+
         grid-template-columns: repeat(2, 1fr);
+
         display: grid !important;
+
         gap: 0.5rem;
+
         visibility: visible !important;
+
         opacity: 1 !important;
+
     }
+
+
 
     .tab-indicator {
+
         padding: 10px;
+
         font-size: 11px;
+
         text-align: center;
+
         display: inline-block !important;
+
         visibility: visible !important;
+
         opacity: 1 !important;
+
     }
+
+
 
     .project-grid {
+
         display: grid !important;
+
         visibility: visible !important;
+
         opacity: 1 !important;
+
     }
+
+
 
     .project-card {
+
         display: flex !important;
+
         visibility: visible !important;
+
         opacity: 1 !important;
+
     }
+
+
 
     .project-image {
+
         height: 120px;
+
     }
+
+
 
     .project-image-container {
+
         height: 120px;
+
     }
+
+
 
     .project-card-content {
+
         padding: 1rem;
+
     }
+
 }
+
+
 
 /* Additional CSS for Unique Digitals project card */
+
 .project-card.unique-digital {
+
  /* border: 2px solid #3498db; */
+
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
   transition: transform 0.3s ease;
+
   padding: 20px;
+
   border-radius: 8px;
+
  
+
   margin-top: 20px;  /* optional: ensures spacing consistency with other cards */
+
 }
+
+
 
 .project-card.unique-digital:hover {
+
   transform: translateY(-5px);
+
 }
+
+
 
 /* Google Play Store card styling */
+
 .project-card.playstore-card {
+
   border: none;
+
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
   padding: 0;
+
   overflow: hidden;
+
 }
+
+
 
 .project-card.playstore-card:hover {
+
   transform: translateY(-5px);
+
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
 }
 
+
+
 .playstore-content {
+
   display: flex;
+
   flex-direction: column;
+
   height: 100%;
+
   justify-content: center; 
+
 }
+
 .playstore-image {
+
   width: 150px;
+
   height: auto;
+
   object-fit: cover;
+
   border-radius: 10px 10px 0 0;
+
   margin: 0 auto;
+
   display: block;
+
 }
+
+
+
 
 
 .playstore-text {
+
   padding: 1.5rem;
+
 }
+
+
 
 .playstore-text h3 {
+
   margin-top: 0;
+
 }
+
+
 
 .playstore-text p {
+
   margin-bottom: 15px;
+
 }
+
+
 
 .playstore-button {
+
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
+
   padding: 10px 20px;
+
   background: linear-gradient(135deg, #00c6fb 0%, #005bea 100%);
+
   color: white;
+
   text-decoration: none;
+
   border-radius: 30px;
+
   font-weight: 600;
+
   letter-spacing: 0.5px;
+
   transition: all 0.3s ease;
+
   border: none;
+
   margin-top: 10px;
+
 }
+
+
 
 .playstore-button:hover {
+
   background: linear-gradient(135deg, #00b0e1 0%, #0051d0 100%);
+
   box-shadow: 0 5px 15px rgba(0, 91, 234, 0.4);
+
   transform: translateY(-2px);
+
 }
+
+
 
 .playstore-icon {
+
   margin-right: 8px;
+
 }
+
 .project-icon {
+
     width: 64px; /* Adjust size as you like */
+
     height: 64px;
+
     border-radius: 12px; /* Soft rounded corners for the icon */
+
     display: block; /* Allows centering with margin */
+
     margin: 0 auto 15px; /* Centers the icon horizontally and adds space below it */
+
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a subtle shadow */
+
 }
+
+
 
 /* This ensures the text and button inside the card are centered properly */
+
 .project-card {
+
     text-align: center; 
+
 }
+
         /* Skills Section */
+
         .skills {
+
             padding: 5rem 0;
+
         }
+
+
 
         .skill-categories {
+
             display: grid;
+
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
             gap: 2rem;
+
         }
+
+
 
         .skill-category {
+
             background: rgba(255, 255, 255, 0.05);
+
             border-radius: 10px;
+
             padding: 1.5rem;
+
             transform: scale(0.95);
+
             transition: all 0.3s ease;
+
         }
+
+
 
         .skill-category:hover {
+
             transform: scale(1);
+
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
         }
+
+
 
         .skill-bar {
+
             height: 8px;
+
             background: rgba(255, 255, 255, 0.1);
+
             border-radius: 4px;
+
             margin: 0.5rem 0;
+
             overflow: hidden;
+
         }
+
+
 
         .skill-progress {
+
             height: 100%;
+
             background: linear-gradient(to right, var(--accent), var(--secondary));
+
             border-radius: 4px;
+
             width: 0;
+
             transition: width 1s ease-out;
+
         }
 
+
+
         /* Contact Section */
+
         /* Contact Section */
+
 .contact {
+
     padding: 5rem 0;
+
 }
+
+
 
 .contact-form {
+
     max-width: 600px;
+
     margin: 0 auto;
+
     transform: scale(0.95);
+
     transition: all 0.3s ease;
+
 }
+
+
 
 .contact-form:hover {
+
     transform: scale(1);
+
 }
+
+
 
 .form-group {
+
     margin-bottom: 1.5rem;
+
     position: relative;
+
 }
+
+
 
 input,
+
 textarea {
+
     width: 100%;
+
     padding: 1rem;
+
     font-family: 'Inter', sans-serif;
+
     font-size: 1rem;
+
     background: rgba(255, 255, 255, 0.08);
+
     border: 1px solid rgba(255, 255, 255, 0.15);
+
     border-radius: 8px;
+
     color: var(--text);
+
     transition: all 0.3s ease-in-out;
+
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
     letter-spacing: 0.3px;
+
     font-weight: 300;
+
 }
+
+
 
 /* Enhanced focus states */
+
 input:focus,
+
 textarea:focus {
+
     outline: none;
+
     border-color: var(--accent);
+
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
 }
+
+
 
 /* Progress indicator on focus */
+
 input:focus::after,
+
 textarea:focus::after {
+
     content: "";
+
     position: absolute;
+
     height: 2px;
+
     left: 0;
+
     bottom: -2px;
+
     background: linear-gradient(90deg, var(--secondary), var(--accent), var(--primary));
+
     animation: focusProgress 2s ease infinite;
+
     z-index: 10;
+
     border-radius: 0 0 8px 8px;
+
 }
+
+
 
 /* Form label styling */
+
 .form-group label {
+
     display: block;
+
     margin-bottom: 0.5rem;
+
     font-weight: 500;
+
     color: var(--text);
+
     font-size: 0.9rem;
+
     letter-spacing: 0.5px;
+
     transition: all 0.3s ease;
+
 }
+
+
 
 /* Add focus indicator animation */
+
 @keyframes focusProgress {
+
     0% {
+
         width: 0%;
+
         background-position: 0% 50%;
+
     }
+
     50% {
+
         width: 100%;
+
         background-position: 100% 50%;
+
     }
+
     100% {
+
         width: 0%;
+
         background-position: 0% 50%;
+
     }
+
 }
+
+
 
 /* Focus indicator as a pseudo-element */
+
 .form-group::after {
+
     content: "";
+
     position: absolute;
+
     height: 3px;
+
     width: 0;
+
     left: 0;
+
     bottom: 0;
+
     background: linear-gradient(90deg, var(--secondary), var(--accent), var(--secondary));
+
     background-size: 200% 200%;
+
     transition: width 0.3s ease;
+
     border-radius: 0 0 4px 4px;
+
     opacity: 0;
+
 }
+
+
 
 .form-group:focus-within::after {
+
     width: 100%;
+
     opacity: 1;
+
     animation: gradientFlow 2s ease infinite;
+
 }
+
+
 
 /* Gradient animation */
+
 @keyframes gradientFlow {
+
     0% {
+
         background-position: 0% 50%;
+
     }
+
     50% {
+
         background-position: 100% 50%;
+
     }
+
     100% {
+
         background-position: 0% 50%;
+
     }
+
 }
+
+
 
 /* Enhanced placeholder styling */
+
 input::placeholder,
+
 textarea::placeholder {
+
     color: rgba(223, 230, 233, 0.4); /* Based on --text: #dfe6e9 */
+
     font-style: italic;
+
     transition: all 0.3s ease;
+
 }
+
+
 
 input:focus::placeholder,
+
 textarea:focus::placeholder {
+
     opacity: 0.7;
+
     transform: translateX(5px);
+
     color: var(--accent);
+
 }
+
+
 
 /* Highlight effect on focus */
+
 .form-group:focus-within label {
+
     color: var(--accent);
+
     transform: translateY(-2px);
+
 }
+
+
 
 input:focus,
+
 textarea:focus {
+
     background: rgba(9, 132, 227, 0.05); /* Based on --secondary: #0984e3 */
+
     border-color: var(--accent);
+
 }
 
+
+
         .social-links {
+
             display: flex;
+
             justify-content: center;
+
             gap: 2rem;
+
             margin-top: 2rem;
+
         }
+
+
 
         .social-links a {
+
             color: var(--text);
+
             font-size: 1.5rem;
+
             position: relative;
+
             transition: transform 0.3s ease;
+
         }
+
+
 
         .social-links a:hover {
+
             transform: translateY(-5px);
+
             color: var(--accent);
+
         }
+
+
 
         .social-links a::after {
+
             content: '';
+
             position: absolute;
+
             bottom: -5px;
+
             left: 0;
+
             width: 100%;
+
             height: 2px;
+
             background: var(--accent);
+
             transform: scaleX(0);
+
             transition: transform 0.3s ease;
+
         }
+
+
 
         .social-links a:hover::after {
+
             transform: scaleX(1);
+
         }
+
+
 
         /* Flex layout for profile and form */
+
         .profile-and-form {
+
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
+
             gap: 20px;
+
             flex-wrap: wrap;
+
         }
 
+
+
         /*new button */
+
         .btn-donate {
+
             --clr-font-main: hsla(0 0% 20% / 100);
+
             --btn-bg-1: hsla(194 100% 69% / 1);
+
             --btn-bg-2: hsla(217 100% 56% / 1);
+
             --btn-bg-color: hsla(360 100% 100% / 1);
+
             --radii: 0.5em;
+
             cursor: pointer;
+
             padding: 0.9em 1.4em;
+
             min-width: 120px;
+
             min-height: 44px;
+
             font-size: var(--size, 1rem);
+
             font-weight: 500;
+
             transition: 0.8s;
+
             background-size: 280% auto;
+
             background-image: linear-gradient(325deg,
+
                     var(--btn-bg-2) 0%,
+
                     var(--btn-bg-1) 55%,
+
                     var(--btn-bg-2) 90%);
+
             border: none;
+
             border-radius: var(--radii);
+
             color: var(--btn-bg-color);
+
             box-shadow:
+
                 0px 0px 20px rgba(71, 184, 255, 0.5),
+
                 0px 5px 5px -1px rgba(58, 125, 233, 0.25),
+
                 inset 4px 4px 8px rgba(175, 230, 255, 0.5),
+
                 inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+
             text-decoration: none;
+
             /* This removes the underline */
+
             display: inline-block;
+
         }
+
+
+
+
 
 
 
         /* for the view here buttons*/
 
+
+
         .animated-button {
+
             position: relative;
+
             display: inline-block;
+
             padding: 12px 24px;
+
             border: none;
+
             font-size: 16px;
+
             background-color: inherit;
+
             border-radius: 100px;
+
             font-weight: 600;
+
             color: #ffffff40;
+
             box-shadow: 0 0 0 2px #ffffff20;
+
             cursor: pointer;
+
             overflow: hidden;
+
             transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+
         }
+
+
 
         .animated-button span:last-child {
+
             position: absolute;
+
             top: 50%;
+
             left: 50%;
+
             transform: translate(-50%, -50%);
+
             width: 20px;
+
             height: 20px;
+
             background-color: #2196F3;
+
             border-radius: 50%;
+
             opacity: 0;
+
             transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+
         }
+
+
 
         .animated-button span:first-child {
+
             position: relative;
+
             z-index: 1;
+
         }
+
+
 
         .animated-button:hover {
+
             box-shadow: 0 0 0 5px #2195f360;
+
             color: #ffffff;
+
         }
+
+
 
         .animated-button:active {
+
             scale: 0.95;
+
         }
 
+
+
         .animated-button:hover span:last-child {
+
             width: 150px;
+
             height: 150px;
+
             opacity: 1;
+
         }
+
+
+
 
 
         /*  --------------*/
 
 
 
+
+
+
+
         .btn-donate:hover {
+
             background-position: right top;
+
         }
+
+
 
         .btn-donate:is(:focus, :focus-visible, :active) {
+
             outline: none;
+
             box-shadow:
+
                 0 0 0 3px var(--btn-bg-color),
+
                 0 0 0 6px var(--btn-bg-2);
+
         }
 
+
+
         @media (prefers-reduced-motion: reduce) {
+
             .btn-donate {
+
                 transition: linear;
+
             }
+
         }
+
+
 
         /* here */
 
 
 
+
+
+
+
         .profile {
+
             flex: 1;
+
             text-align: center;
+
         }
+
+
 
         .profile-icon {
+
             width: 130px;
+
             height: 130px;
+
             border-radius: 50%;
+
             border: 2px solid #ccc;
+
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
         }
+
+
 
         #contact-form {
+
             flex: 2;
+
         }
+
+
 
         @media (max-width: 768px) {
+
             .profile-and-form {
+
                 flex-direction: column;
+
                 align-items: center;
+
             }
 
+
+
             #contact-form {
+
                 width: 100%;
+
             }
+
         }
+
+
+
 
 
         /* Certificates Section */
+
         .certificates {
+
             padding: 5rem 0;
+
             background: rgba(255, 255, 255, 0.02);
+
         }
+
+
 
         .certificates-grid {
+
             display: grid;
+
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
             gap: 2rem;
+
             margin-top: 2rem;
+
         }
+
+
 
         .certificate-card {
+
             background: rgba(255, 255, 255, 0.05);
+
             border-radius: 10px;
+
             padding: 2rem;
+
             text-align: center;
+
             transition: all 0.3s ease;
+
             border: 1px solid var(--accent);
+
         }
+
+
 
         .certificate-card:hover {
+
             transform: translateY(-10px);
+
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
         }
 
+
+
         .certificate-icon {
+
             width: 60px;
+
             /* Adjust as needed */
+
             height: 60px;
+
             margin-bottom: 10px;
+
             /* Add spacing if necessary */
+
         }
+
+
+
 
 
         .certificate-title {
+
             font-size: 1.2rem;
+
             color: var(--text);
+
             margin-bottom: 1rem;
+
         }
+
+
 
         .certificate-link {
+
             display: inline-flex;
+
             align-items: center;
+
             gap: 0.5rem;
+
             color: var(--secondary);
+
             text-decoration: none;
+
             font-weight: 500;
+
             transition: all 0.3s ease;
+
         }
+
+
 
         .certificate-link:hover {
+
             color: var(--accent);
+
         }
+
+
 
         .certificate-link i {
+
             font-size: 1.2rem;
+
         }
+
+
 
         @media (max-width: 768px) {
+
             .hero-content {
+
                 grid-template-columns: 1fr;
+
                 text-align: center;
+
             }
+
+
 
             .nav-links {
+
                 display: none;
+
                 position: fixed;
+
                 top: 0;
+
                 right: -100%;
+
                 width: 250px;
+
                 height: 100vh;
+
                 background: var(--primary);
+
                 padding: 80px 20px;
+
                 transition: 0.3s;
+
                 gap: 2rem;
+
                 align-items: center;
+
             }
+
+
 
             .nav-links.active {
+
                 display: flex;
+
                 right: 0;
+
                 flex-direction: column;
+
             }
+
+
 
             .hamburger {
+
                 display: flex;
+
             }
+
+
 
             .hamburger.active span:nth-child(1) {
+
                 transform: rotate(45deg) translate(8px, 8px);
+
             }
+
+
 
             .hamburger.active span:nth-child(2) {
+
                 opacity: 0;
+
             }
+
+
 
             .hamburger.active span:nth-child(3) {
+
                 transform: rotate(-45deg) translate(7px, -7px);
+
             }
+
+
 
             .section-indicator {
+
                 right: 10px;
+
             }
+
         }
+
+
 
         /* Heartbeat Animation */
+
         @keyframes heartbeat {
+
             0% {
+
                 transform: scale(1);
+
             }
+
+
 
             14% {
+
                 transform: scale(1.1);
+
             }
+
+
 
             28% {
+
                 transform: scale(1);
+
             }
+
+
 
             42% {
+
                 transform: scale(1.1);
+
             }
+
+
 
             70% {
+
                 transform: scale(1);
+
             }
+
         }
+
+
 
         .hero-image svg {
+
             animation: heartbeat 4s ease-in-out infinite;
+
         }
+
+
 
         /* Compact Footer Styling */
+
         footer {
+
             background: var(--bg);
+
             color: var(--text);
+
             text-align: center;
+
             padding: 30px 0 20px;
+
             border-top: 1px solid rgba(0, 206, 201, 0.2);
+
         }
+
+
 
         footer .container {
+
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
+
             max-width: 1200px;
+
             margin: 0 auto;
+
             padding: 0 2rem;
+
         }
 
+
+
         .footer-content {
+
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
+
             gap: 20px;
+
             width: 100%;
+
             margin-bottom: 20px;
+
         }
+
+
 
         .developer-info {
+
             text-align: center;
+
         }
+
+
 
         .footer-title {
+
             font-size: 18px;
+
             font-weight: 600;
+
             margin-bottom: 5px;
+
             background: linear-gradient(45deg, var(--accent), var(--secondary));
+
             -webkit-background-clip: text;
+
             background-clip: text;
+
             color: transparent;
+
         }
+
+
 
         /* Floating Coffee Widget */
+
         .floating-coffee-widget {
+
             position: fixed;
+
             bottom: 100px;
+
             right: 30px;
+
             z-index: 1000;
+
             opacity: 0;
+
             visibility: hidden;
+
             transform: translateY(20px);
+
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
         }
+
+
 
         .floating-coffee-widget.visible {
+
             opacity: 1;
+
             visibility: visible;
+
             transform: translateY(0);
+
         }
+
+
 
         .coffee-toggle {
+
             width: 50px;
+
             height: 50px;
+
             background: linear-gradient(135deg, var(--accent), var(--secondary));
+
             border-radius: 50%;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             cursor: none;
+
             box-shadow: 0 4px 20px rgba(0, 206, 201, 0.3);
+
             transition: all 0.3s ease;
+
             color: white;
+
             font-size: 18px;
+
         }
+
+
 
         .coffee-toggle:hover {
+
             transform: scale(1.1);
+
             box-shadow: 0 6px 25px rgba(0, 206, 201, 0.5);
+
         }
+
+
 
         .coffee-content {
+
             position: absolute;
+
             bottom: 60px;
+
             right: 0;
+
             background: rgba(26, 26, 26, 0.95);
+
             backdrop-filter: blur(15px);
+
             border-radius: 15px;
+
             padding: 15px;
+
             display: flex;
+
             flex-direction: column;
+
             gap: 10px;
+
             opacity: 0;
+
             visibility: hidden;
+
             transform: translateY(10px);
+
             transition: all 0.3s ease;
+
             border: 1px solid rgba(0, 206, 201, 0.2);
+
             min-width: 200px;
+
         }
+
+
 
         .coffee-content.active {
+
             opacity: 1;
+
             visibility: visible;
+
             transform: translateY(0);
+
         }
+
+
 
         .coffee-button {
+
             display: inline-flex;
+
             align-items: center;
+
             justify-content: center;
+
             background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+
             color: #ffffff;
+
             padding: 8px 16px;
+
             border-radius: 20px;
+
             text-decoration: none;
+
             font-weight: 600;
+
             font-size: 13px;
+
             box-shadow: 0 3px 10px rgba(0, 206, 201, 0.3);
+
             transition: all 0.3s ease;
+
             white-space: nowrap;
+
         }
+
+
 
         .coffee-button:hover {
+
             transform: translateY(-2px);
+
             box-shadow: 0 5px 15px rgba(0, 206, 201, 0.5);
+
         }
+
+
 
         .qr-code-container {
+
             background: rgba(255, 255, 255, 0.95);
+
             padding: 8px;
+
             border-radius: 10px;
+
             text-align: center;
+
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
+
             transition: all 0.3s ease;
+
         }
+
+
 
         .qr-code-container:hover {
+
             transform: scale(1.05);
+
         }
+
+
 
         /* Modern Footer Styling */
+
         .footer-content {
+
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
+
             gap: 15px;
+
             padding: 20px 0;
+
         }
+
+
 
         .developer-signature {
+
             display: flex;
+
             align-items: center;
+
             gap: 8px;
+
             font-size: 16px;
+
             font-weight: 500;
+
         }
+
+
 
         .code-brackets {
+
             color: var(--accent);
+
             font-family: 'Courier New', monospace;
+
             font-weight: bold;
+
             font-size: 18px;
+
         }
+
+
 
         .crafted-text {
+
             background: linear-gradient(45deg, var(--accent), var(--secondary));
+
             -webkit-background-clip: text;
+
             background-clip: text;
+
             color: transparent;
+
             font-weight: 600;
+
         }
+
+
 
         .copyright {
+
             opacity: 0.7;
+
             font-size: 14px;
+
         }
 
+
+
         .copyright p {
+
             margin: 0;
+
             color: var(--text);
+
         }
+
+
+
+
+
 
 
 
 
         /* Responsive Styles */
+
         @media (max-width: 768px) {
+
             footer {
+
                 padding: 20px 0 15px;
+
             }
+
+
 
             .footer-content {
+
                 gap: 12px;
+
                 padding: 15px 0;
+
             }
 
+
+
             .developer-signature {
+
                 font-size: 14px;
+
             }
+
+
 
             .code-brackets {
+
                 font-size: 16px;
+
             }
+
+
 
             .floating-coffee-widget {
+
                 bottom: 100px;
+
                 right: 20px;
+
             }
+
+
 
             .coffee-toggle {
+
                 width: 45px;
+
                 height: 45px;
+
                 font-size: 16px;
+
             }
 
+
+
             .coffee-content {
+
                 min-width: 180px;
+
                 right: -10px;
+
             }
+
         }
+
+
 
         @media (max-width: 480px) {
+
             .developer-signature {
+
                 flex-direction: column;
+
                 gap: 4px;
+
                 text-align: center;
+
             }
+
+
 
             .floating-coffee-widget {
+
                 bottom: 95px;
+
                 right: 15px;
+
             }
+
+
 
             .coffee-toggle {
+
                 width: 40px;
+
                 height: 40px;
+
                 font-size: 14px;
+
             }
+
+
 
             .coffee-content {
+
                 min-width: 160px;
+
                 right: -20px;
+
                 padding: 12px;
+
             }
+
+
 
             .coffee-button {
+
                 padding: 6px 12px;
+
                 font-size: 12px;
+
             }
+
+
 
             .coffee-button img {
+
                 height: 14px !important;
+
                 margin-right: 5px !important;
+
             }
+
+
 
             .qr-code-container {
+
                 padding: 6px;
+
             }
+
+
 
             .qr-code-container img {
+
                 width: 45px !important;
+
                 height: 45px !important;
+
             }
+
         }
+
+
 
         .d-none {
+
             display: none;
+
         }
+
+
 
         /* Base alert styling */
+
         .alert {
+
             margin: 0;
+
             padding: 10px 20px;
+
             border-radius: 5px;
+
             max-width: 90%;
+
             z-index: 1000;
+
         }
+
+
 
         /* Success alert */
+
         .alert-success {
+
             background-color: #198754;
+
             /* Green background */
+
             color: #d1e7dd;
+
             /* Light text */
+
             border-color: #badbcc;
+
             /* Light border */
+
         }
+
+
 
         /* Failure alert */
+
         .alert-danger {
+
             background-color: #a71d2a;
+
             /* Red background */
+
             color: #f8d7da;
+
             /* Light text */
+
             border-color: #f5c2c7;
+
             /* Light border */
+
         }
+
+
 
         /* Alert container for positioning */
+
         #alerts-container {
+
             display: flex;
+
             flex-direction: column;
+
             gap: 10px;
+
             position: fixed;
+
             bottom: 20px;
+
             left: 20px;
+
             width: auto;
+
             max-width: 400px;
+
         }
+
            /* ===== Custom Cursor Start ===== */
 
-        /*
-           By default, we HIDE the custom cursor. This will be the state
-           for mobile and tablet devices.
-        */
-        #custom-cursor-container {
-            display: none;
-        }
+
 
         /*
-           This is the key: This media query checks if the user's primary
-           input device is a 'fine' pointer (like a mouse or trackpad).
-           All the custom cursor styles will ONLY be applied on these devices.
+
+           By default, we HIDE the custom cursor. This will be the state
+
+           for mobile and tablet devices.
+
         */
+
+        #custom-cursor-container {
+
+            display: none;
+
+        }
+
+
+
+        /*
+
+           This is the key: This media query checks if the user's primary
+
+           input device is a 'fine' pointer (like a mouse or trackpad).
+
+           All the custom cursor styles will ONLY be applied on these devices.
+
+        */
+
         @media (pointer: fine) {
 
+
+
             /* First, we make the cursor container visible for mouse devices */
+
             #custom-cursor-container {
+
                 display: block;
+
                 position: fixed;
+
                 top: 0;
+
                 left: 0;
+
                 pointer-events: none;
+
                 z-index: 10001;
+
                 opacity: 1;
+
                 transition: opacity 0.3s ease;
+
             }
+
+
 
             /* Now we place all the previous styles inside the query */
+
             body, a, button, input, textarea, .cta-button, .btn-donate, .indicator-dot, .animated-button {
+
                 cursor: none !important;
+
             }
+
+
 
             #custom-cursor {
+
                 width: 32px;
+
                 height: 32px;
+
                 fill: var(--accent);
+
                 stroke: var(--secondary);
+
                 /* This is where you can continue to adjust your angle! */
+
                 transform: rotate(-120deg); 
+
                 transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+
             }
+
             
+
             #custom-cursor-container.cursor-hidden {
+
                 opacity: 0;
+
                 transform: scale(0.5);
+
             }
+
+
 
             body.cursor-hovered #custom-cursor {
+
                 /* Adjust the hover angle here as well */
+
                 transform: rotate(-110deg) scale(1.5);
+
             }
+
         }
+
         /* ===== Custom Cursor End ===== */
+
     </style>
+
   
+
 </head>
 
+
+
 <body>
+
          <!-- ===== Custom Cursor Start ===== -->
+
     <div id="custom-cursor-container">
+
         <svg id="custom-cursor" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
         <path d="M3 21 Q 10 14 3 3 L 22 12 Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
     </svg>
+
     </div>
+
     <!-- ===== Custom Cursor End ===== -->
+
     <div class="loading-screen">
+
         <div class="loading-container">
+
             <div class="cyber-circle"></div>
+
             <div class="cyber-circle"></div>
+
             <div class="cyber-circle"></div>
+
             <div class="loading-logo">
+
                 <img src="logo.png" alt="EE">
+
             </div>
+
             <div class="progress-bar">
+
                 <div class="progress"></div>
+
             </div>
+
         </div>
+
     </div>
+
     <!-- Progress Bar -->
+
     <div class="progress-container">
+
         <div class="progress-bar" id="progressBar"></div>
+
     </div>
+
+
 
     <!-- Section Indicator -->
+
     <div class="section-indicator">
+
         <div class="indicator-dot" data-section="home"></div>
+
         <div class="indicator-dot" data-section="about"></div>
+
         <div class="indicator-dot" data-section="projects"></div>
+
         <div class="indicator-dot" data-section="skills"></div>
+
         <div class="indicator-dot" data-section="certificates"></div>
+
         <div class="indicator-dot" data-section="contact"></div>
+
     </div>
 
+
+
     <header>
+
         <nav class="container">
+
             <div class="logo">
+
                 <img src="images/logo.png" alt="Logo" class="logo-img" />
+
                 <span class="logo-text">EE</span>
+
             </div>
+
             <div class="hamburger">
+
                 <span></span>
+
                 <span></span>
+
                 <span></span>
+
             </div>
+
             <div class="nav-links">
+
                 <a href="#home">Home</a>
+
                 <a href="#about">About</a>
+
                 <a href="#projects">Projects</a>
+
                 <a href="#skills">Skills</a>
+                <a href="blog.html">Blogs</a>
                 <a href="#certificates">Certificates</a>
+
+
                 <a href="#contact">Contact</a>
+
             </div>
+
         </nav>
+
     </header>
 
+
+
     <section id="home" class="hero">
+
         <div class="container">
+
             <div class="hero-content">
+
                 <div class="hero-text">
+
                     <img src="profile5.png" alt="Eyuel Engida"
+
                         style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 20px;">
+
                     <h1>Eyuel Engida</h1>
+
                     <p>Aspiring Engineer & Innovator in Tech</p>
+
                     <div class="hero-buttons">
+
                         <a href="#projects" class="btn-donate">View My Work</a>
+
                         <a href="#contact" class="btn-secondary">Contact Me</a>
+
                     </div>
+
                     <style>
+
                         .hero-buttons {
+
                             display: flex;
+
                             justify-content: center;
+
                             gap: 20px;
+
                             margin-top: 25px;
+
                         }
+
+
 
                         .btn-secondary {
+
                             display: inline-block;
+
                             padding: 0.9em 1.4em;
+
                             background: transparent;
+
                             color: var(--text);
+
                             text-decoration: none;
+
                             border-radius: 5em;
+
                             font-weight: 600;
+
                             border: 2px solid var(--secondary);
+
                             transition: all 0.3s ease;
+
                             min-width: 120px;
+
                             min-height: 44px;
+
                             text-align: center;
+
                         }
+
+
 
                         .btn-secondary:hover {
+
                             background-color: var(--secondary);
+
                             color: var(--bg);
+
                             transform: translateY(-3px);
+
                         }
+
+
 
                         @media (max-width: 768px) {
+
                             .hero-buttons {
+
                                 flex-direction: column;
+
                                 align-items: center;
+
                                 gap: 15px;
+
                             }
+
                         }
+
                     </style>
+
                 </div>
+
                 <div class="hero-image">
+
                     <svg viewBox="0 0 200 200" width="100%" height="auto">
+
                         <!-- Outer circle -->
+
                         <circle cx="100" cy="100" r="90" fill="var(--accent)" opacity="0.1">
+
                             <animate attributeName="opacity" values="0.1;0.2;0.1" dur="2s" repeatCount="indefinite" />
+
                         </circle>
+
                         <!-- Middle circle -->
+
                         <circle cx="100" cy="100" r="70" fill="var(--secondary)" opacity="0.2">
+
                             <animate attributeName="opacity" values="0.2;0.3;0.2" dur="2s" repeatCount="indefinite" />
+
                         </circle>
+
                         <!-- Inner circle -->
+
                         <circle cx="100" cy="100" r="50" fill="var(--accent)" opacity="0.3">
+
                             <animate attributeName="opacity" values="0.3;0.4;0.3" dur="2s" repeatCount="indefinite" />
+
                         </circle>
+
                         <!-- Centered "E" -->
+
                         <text x="50%" y="50%" text-anchor="middle" dy=".35em" font-size="60" fill="var(--secondary)"
+
                             font-weight="bold" font-family="Arial, sans-serif">
+
                             E
+
                         </text>
+
                     </svg>
 
+
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <section id="about" class="about">
+
         <div class="container">
+
             <div class="about-content">
+
                 <div class="about-text">
+
                     <h2 class="section-title animate-item">About Me</h2>
+
                     <p>Welcome! I’m passionate about tech and innovation, crafting intuitive mobile apps and web
+
                         solutions that make a difference.</p>
+
                 </div>
+
                 <div class="about-links">
+
                     <div class="website-preview">
+
                         <h3>My Personal Website</h3>
+
                         <p>Check out my other projects and work at:</p>
+
                         <a href="https://eyuapps.neocities.org/" target="_blank" class="cta-button">
+
                             <i class="fas fa-globe"></i> Visit EyuApps
+
                         </a>
+
                     </div>
+
+
 
                     <div class="social-links">
+
                         <a href="https://t.me/Eul_zzz" target="_blank" title="Telegram">
+
                             <i class="fab fa-telegram"></i>
+
                         </a>
+
                         <a href="https://www.linkedin.com/in/eyuel-engida-77155a317" target="_blank" title="LinkedIn">
+
                             <i class="fab fa-linkedin"></i>
+
                         </a>
+
                         <a href="https://www.instagram.com/eyuel_eng" target="_blank" title="Instagram">
+
     <i class="fab fa-instagram"></i>
+
 </a>
+
+
 
                         <a href="https://x.com/eul4525" target="_blank" title="X">
+
   <!-- Official X logo SVG -->
+
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+
     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+
   </svg>
+
 </a>
 
+
+
                         <a href="https://github.com/Eul45" target="_blank" title="GitHub">
+
                             <i class="fab fa-github"></i>
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
+
+
 <section id="projects" class="projects">
+
     <div class="container">
+
         <h2 class="section-title animate-item">Featured Projects</h2>
+
         
+
         <!-- Project Category Indicators -->
+
         <div class="project-tabs">
+
              <div class="tab-indicator">
+
                 <i class="fas fa-store"></i> App Store
+
             </div>
+
             <div class="tab-indicator">
+
                 <i class="fab fa-android"></i> Android Apps
+
             </div>
+
             <div class="tab-indicator">
+
                 <i class="fas fa-desktop"></i> Desktop Apps
+
             </div>
+
             
+
             <div class="tab-indicator">
+
                 <i class="fas fa-globe"></i> Websites
+
             </div>
+
             <div class="tab-indicator">
+
                 <i class="fas fa-puzzle-piece"></i> Extensions
+
             </div>
+
            
+
             <div class="tab-indicator">
+
                 <i class="fab fa-npm"></i> CLI / NPM
+
             </div>
+
         </div>
+
         
+
         <div class="project-grid active" id="projectGrid">
+
             <!-- Play Store Collection Card -->
+
             <div class="project-card" data-category="store">
+
                 <div class="project-image-container">
+
                     <img src="34.png" alt="Google Play Store Apps" class="project-image" loading="lazy">
+
                     <div class="category-chip">Store</div>
+
                 </div>
+
                 <div class="project-card-content">
+
                     <h3>My Google Play Store Apps</h3>
+
                     <div class="project-tags">
+
                         <span class="project-tag">Play Store</span>
+
                         <span class="project-tag">Collection</span>
+
                     </div>
+
                     <p>Clean design. Smooth experience apps!</p>
+
                     <div class="project-buttons">
+
                         <a href="https://play.google.com/store/apps/dev?id=5861407922346282493" class="cta-button" target="_blank">
+
                             <i class="fab fa-google-play"></i> View on Play Store
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <!-- EyuX App Card -->
+
             <div class="project-card" data-category="android desktop">
+
                 <div class="project-image-container">
+
                     <img src="EyuX.png" alt="EyuX AI Assistant" class="project-image" loading="lazy">
+
                     <div class="category-chip">AI App</div>
+
                 </div>
+
                 <div class="project-card-content">
+
                     <h3>EyuX: Smart AI Assistant</h3>
+
                     <div class="project-tags">
+
                         <span class="project-tag">AI</span>
+
                         <span class="project-tag">Android</span>
+
                         <span class="project-tag">Desktop</span>
+
                     </div>
+
                     <p>The AI assistant with switchable personas and powerful tools.</p>
+
                     <div class="project-buttons">
+
                         <a href="https://chat.eyux.com.et/" class="cta-button" target="_blank">
+
                             <i class="fas fa-globe"></i> On Website
+
                         </a>
+
                         
+
                         <a href="https://eyux.en.uptodown.com/android" class="tablet-link" target="_blank">
+
                             <i class="fab fa-android"> On Android App </i>  
+
                         </a>
+
                         <a href="https://eyux-ai-assistance.en.uptodown.com/windows" class="tablet-link" target="_blank">
+
                             <i class="fas fa-desktop"> On Desktop App </i>  
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <!-- EcodeX VS Code Extension Card -->
+
             <div class="project-card" data-category="extension">
+
                 <div class="project-image-container">
+
                     <img src="x.png" alt="EcodeX VS Code Extension" class="project-image" loading="lazy">
+
                     <div class="category-chip">Extension</div>
+
                 </div>
+
                 <div class="project-card-content">
+
                     <h3>EcodeX: VS Code Extension</h3>
+
                     <div class="project-tags">
+
                         <span class="project-tag">VS Code</span>
+
                         <span class="project-tag">Agentic AI</span>
+
                         <span class="project-tag">Diffs</span>
+
                         <span class="project-tag">One-click apply</span>
+
                     </div>
+
                     <p>Agentic AI for VS Code. Fast responses, clean diffs, and one-click apply so you can ship without leaving your editor.</p>
+
                     <div class="project-buttons">
+
                         <a href="https://ecodex-vsix.vercel.app/" class="cta-button" download>
+
                             <i class="fas fa-download"></i> Download
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <!-- git-mood Card -->
+
             <div class="project-card" data-category="desktop cli">
+
                 <div class="project-image-container">
+
                     <img src="5.png" alt="git-mood" class="project-image" loading="lazy">
+
                     <div class="category-chip">CLI</div>
+
                 </div>
+
                 <div class="project-card-content">
+
                     <h3>git-mood</h3>
+
                     <div class="project-tags">
+
                         <span class="project-tag">Node.js</span>
+
                         <span class="project-tag">CLI</span>
+
                         <span class="project-tag">AI</span>
+
                         <span class="project-tag">Git</span>
+
                     </div>
+
                     <p>AI-powered Git assistant for Conventional Commits, deep reviews, README generation.</p>
+
                     <div class="project-buttons">
+
                         <a href="https://www.npmjs.com/package/git-mood" class="cta-button" target="_blank">
+
                             <i class="fas fa-external-link-alt"></i> NPM Package
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <!-- Amharic Bible Verse Card -->
+
             <div class="project-card" data-category="android">
+
                 <div class="project-image-container">
+
                     <img src="0.png" alt="Amharic Bible Verses" class="project-image" loading="lazy">
+
                     <div class="category-chip">Android</div>
+
                 </div>
+
                 <div class="project-card-content">
+
                     <h3>የመጽሐፍ ቅዱስ ጥቅሶች</h3>
+
                     <div class="project-tags">
+
                         <span class="project-tag">Bible</span>
+
                         <span class="project-tag">Amharic</span>
+
                         <span class="project-tag">Android</span>
+
                     </div>
+
                     <p>Your daily companion for Amharic Bible verses and study tools.</p>
+
                     <div class="project-buttons">
+
                         <a href="https://ethiopian-bible-verse.en.uptodown.com/android" class="cta-button" target="_blank">
+
                             <i class="fab fa-android"></i> Phone
+
                         </a>
+
                         <a href="https://com-eulzz-verses.en.uptodown.com/android" class="tablet-link" target="_blank">
+
                             <i class="fas fa-tablet-alt"> Tablet </i> 
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
 
+
+
             <!-- ZenCapture Card -->
+
             <div class="project-card" data-category="desktop">
+
                 <div class="project-image-container">
+
                     <img src="vvv.gif" alt="ZenCapture Note Taking" class="project-image" loading="lazy">
+
                     <div class="category-chip">Desktop</div>
+
                 </div>
+
                 <div class="project-card-content">
+
                     <h3>ZenCapture</h3>
+
                     <div class="project-tags">
+
                         <span class="project-tag">Productivity</span>
+
                         <span class="project-tag">Windows</span>
+
                         <span class="project-tag">Notes</span>
+
                     </div>
+
                     <p>A very fast note-taking and quick capture for your daily ideas on Windows.</p>
+
                     <div class="project-buttons">
+
                         <a href="https://zencapture.en.uptodown.com/windows" class="cta-button" target="_blank">
+
                             <i class="fab fa-windows"></i> Download
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
+
             
+
             <!-- Quick Dictionary AI Explainer Extension Card -->
+
             <div class="project-card" data-category="extension">
+
                 <div class="project-image-container">
+
                     <img src="11.gif" alt="Quick Dictionary + AI Explainer" class="project-image" loading="lazy">
+
                     <div class="category-chip">Extension</div>
+
                 </div>
+
                 <div class="project-card-content">
+
                     <h3>Quick Dictionary + AI Explainer</h3>
+
                     <div class="project-tags">
+
                         <span class="project-tag">AI</span>
+
                         <span class="project-tag">Firefox</span>
+
                         <span class="project-tag">Extension</span>
+
                     </div>
+
                     <p>An AI-powered Firefox add-on to get instant definitions and explanations for words and sentences.</p>
+
                     <div class="project-buttons">
+
                         <a href="https://addons.mozilla.org/en-US/firefox/addon/quick-dictionary-ai-explainer/" class="cta-button" target="_blank">
+
                             <i class="fab fa-firefox"></i> Firefox Add-ons
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
+
+
+
 
 
             <!-- Quiz App Card -->
+
             <div class="project-card" data-category="android">
+
                 <div class="project-image-container">
+
                     <img src="53.png" alt="Quiz App" class="project-image" loading="lazy">
+
                     <div class="category-chip">Android</div>
+
                 </div>
+
                 <div class="project-card-content">
+
                     <h3>Quiz App</h3>
+
                     <div class="project-tags">
+
                         <span class="project-tag">Education</span>
+
                         <span class="project-tag">Android</span>
+
                         <span class="project-tag">Quiz</span>
+
                     </div>
+
                     <p>Challenge yourself with different quizzes and test your knowledge.</p>
+
                     <div class="project-buttons">
+
                         <a href="https://com-eulzz-quizz.en.uptodown.com/android" class="cta-button" target="_blank">
+
                             <i class="fab fa-android"></i> Download
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <!-- Daily Quotes App Card -->
+
             <div class="project-card" data-category="android">
+
                 <div class="project-image-container">
+
                     <img src="D2.jpg" alt="Daily Quotes App" class="project-image" loading="lazy">
+
                     <div class="category-chip">Android</div>
+
                 </div>
+
                 <div class="project-card-content">
+
                     <h3>Daily Quotes</h3>
+
                     <div class="project-tags">
+
                         <span class="project-tag">Inspiration</span>
+
                         <span class="project-tag">Android</span>
+
                         <span class="project-tag">Daily</span>
+
                     </div>
+
                     <p>Providing you with daily inspiration and wisdom from various authors.</p>
+
                     <div class="project-buttons">
+
                         <a href="https://mini-daily-quotes.en.uptodown.com/android" class="cta-button" target="_blank">
+
                             <i class="fab fa-android"></i> Download
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
 
+
+
             
+
             <!-- Unique Digitals Website Card -->
+
             <div class="project-card" data-category="web">
+
                 <div class="project-image-container">
+
                     <img src="U.png" alt="Unique Digitals Website" class="project-image" loading="lazy">
+
                     <div class="category-chip">Website</div>
+
                 </div>
+
                 <div class="project-card-content">
+
                     <h3>Unique Digitals</h3>
+
                     <div class="project-tags">
+
                         <span class="project-tag">Website</span>
+
                         <span class="project-tag">Client Work</span>
+
                         <span class="project-tag">Modern</span>
+
                     </div>
+
                     <p>A cutting-edge website built for client, offering a modern and responsive design that delivers a seamless user experience.</p>
+
                     <div class="project-buttons">
+
                         <a href="https://uniquedigitals.vercel.app/" class="cta-button" target="_blank">
+
                             <i class="fas fa-external-link-alt"></i> Visit Website
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
 </section>
 
 
+
+
+
     <section id="skills" class="skills">
+
         <div class="container">
+
             <h2 class="section-title animate-item">Technical Skills</h2>
+
             <div class="skill-categories">
+
                 <div class="skill-category">
+
                     <h3>Frontend</h3>
+
                     <div class="skill-bar">
+
                         <div class="skill-progress" style="--progress: 95%"></div>
+
                     </div>
+
                     <p>HTML, CSS, JavaScript, TypeScript, React</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Mobile Development</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--progress: 85%"></div>
-                    </div>
-                    <p>React Native, Expo, Expo Router</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Backend / Cloud</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--progress: 70%"></div>
-                    </div>
-                    <p>Node.js, Firebase, MongoDB</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Extensions</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--progress: 80%"></div>
-                    </div>
-                    <p>VS Code Extension API, WebExtensions (Firefox), Webviews</p>
-                </div>
-                <div class="skill-category">
-                    <h3>CLI / Tooling</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="--progress: 90%"></div>
-                    </div>
-                    <p>Git, npm, Conventional Commits, EAS, Vercel</p>
+
                 </div>
 
                 <div class="skill-category">
-                    <h3>AI + Product</h3>
+
+                    <h3>Mobile Development</h3>
+
                     <div class="skill-bar">
-                        <div class="skill-progress" style="--progress: 75%"></div>
+
+                        <div class="skill-progress" style="--progress: 85%"></div>
+
                     </div>
-                    <p>Prompt Engineering, LLM workflows, UI/UX (Figma)</p>
+
+                    <p>React Native, Expo, Expo Router</p>
+
                 </div>
+
+                <div class="skill-category">
+
+                    <h3>Backend / Cloud</h3>
+
+                    <div class="skill-bar">
+
+                        <div class="skill-progress" style="--progress: 70%"></div>
+
+                    </div>
+
+                    <p>Node.js, Firebase, MongoDB</p>
+
+                </div>
+
+                <div class="skill-category">
+
+                    <h3>Extensions</h3>
+
+                    <div class="skill-bar">
+
+                        <div class="skill-progress" style="--progress: 80%"></div>
+
+                    </div>
+
+                    <p>VS Code Extension API, WebExtensions (Firefox), Webviews</p>
+
+                </div>
+
+                <div class="skill-category">
+
+                    <h3>CLI / Tooling</h3>
+
+                    <div class="skill-bar">
+
+                        <div class="skill-progress" style="--progress: 90%"></div>
+
+                    </div>
+
+                    <p>Git, npm, Conventional Commits, EAS, Vercel</p>
+
+                </div>
+
+
+
+                <div class="skill-category">
+
+                    <h3>AI + Product</h3>
+
+                    <div class="skill-bar">
+
+                        <div class="skill-progress" style="--progress: 75%"></div>
+
+                    </div>
+
+                    <p>Prompt Engineering, LLM workflows, UI/UX (Figma)</p>
+
+                </div>
+
             </div>
+
         </div>
+
     </section>
+
+
+
 
 
     <!-- Certificates Section -->
+
     <section id="certificates" class="certificates">
+
         <div class="container">
+
             <h2 class="section-title animate-item">Certifications</h2>
+
             <div class="certificates-grid">
+
                 <div class="certificate-card">
+
                     <img src="images.png" alt="Udacity Icon" class="certificate-icon">
+
                     <h3 class="certificate-title">Udacity Certificate 1</h3>
+
                     <p>Data Analysis Fundamentals</p>
+
                     <a href="https://www.udacity.com/certificate/e/b3fa2532-abe4-11ef-adb1-83635f014422" target="_blank"
+
                         class="certificate-link">
+
                         <i class="fas fa-external-link-alt"></i>
+
                         View Certificate
+
                     </a>
+
                 </div>
+
                 <div class="certificate-card">
+
                     <img src="images.png" alt="Udacity Icon" class="certificate-icon">
+
                     <h3 class="certificate-title">Udacity Certificate 2</h3>
+
                     <p>Advanced Web Development</p>
+
                     <a href="https://www.udacity.com/certificate/e/a533081e-4da4-11ef-b1a2-27e471d9bb2d" target="_blank"
+
                         class="certificate-link">
+
                         <i class="fas fa-external-link-alt"></i>
+
                         View Certificate
+
                     </a>
+
                 </div>
+
                 <div class="certificate-card">
+
                     <img src="images.png" alt="Udacity Icon" class="certificate-icon">
+
                     <h3 class="certificate-title">Udacity Certificate 3</h3>
+
                     <p>Mobile App Development</p>
+
                     <a href="https://www.udacity.com/certificate/e/08e347b8-a02d-11ef-b475-ffe960d45cab" target="_blank"
+
                         class="certificate-link">
+
                         <i class="fas fa-external-link-alt"></i>
+
                         View Certificate
+
                     </a>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
+
+
     <section id="contact" class="contact">
+
         <div class="container">
+
             <h2 class="section-title animate-item">Contact Me</h2>
+
             <div class="profile-and-form">
+
                 <!-- Profile Image -->
+
                 <div class="profile">
+
                     <img src="profile7.jpg" alt="Eyuel Engida" class="profile-icon">
+
                 </div>
 
+
+
                 <!-- Contact Form -->
+
                 <form id="contact-form">
+
                     <div class="form-group">
+
                         <label for="email">Your email:</label>
+
                         <input type="email" name="email" placeholder="Enter your email address" required />
+
                     </div>
+
                     <div class="form-group">
+
                         <label for="message">Your message:</label>
+
                         <textarea name="message" rows="5" placeholder="Type your message here..." required></textarea>
+
                     </div>
+
                     <div class="col-12">
+
                         <button type="submit" class="button">
+
                             <span class="default">Send</span>
+
                             <span class="success">Processing...</span>
+
                             <div class="left"></div>
+
                             <div class="right"></div>
+
                         </button>
+
                         <a class="dribbble" href="https://dribbble.com/ai" target="_blank"><img
+
                                 src="https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg"
+
                                 alt=""></a>
+
                     </div>
+
+
 
                 </form>
 
+
+
                 <!-- Success and Failure Messages -->
+
                 <div id="alerts-container">
+
                     <div id="success-message" class="alert alert-success d-none">
+
                         <i class="fas fa-check-circle"></i> Message sent successfully!
+
                     </div>
+
                     <div id="failure-message" class="alert alert-danger d-none">
+
                         <i class="fas fa-times-circle"></i> Failed to send message. Please try again.
+
                     </div>
+
                 </div>
+
                 <!-- Success and Failure Messages -->
+
             </div>
+
         </div>
+
     </section>
 
+
+
     <!-- Floating Coffee Widget -->
+
     <div class="floating-coffee-widget" id="coffeeWidget">
+
         <div class="coffee-toggle" id="coffeeToggle">
+
             <i class="fas fa-coffee"></i>
+
         </div>
+
         <div class="coffee-content" id="coffeeContent">
+
             <a href="https://buymeacoffee.com/eyuelengida" target="_blank" class="coffee-button">
+
                 <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy Me a Coffee" style="height: 16px; width: auto; margin-right: 6px;">
+
                 Buy Me a Coffee
+
             </a>
+
             <div class="qr-code-container">
+
                 <img src="bmc_qr.png" alt="QR Code" style="width: 50px; height: 50px; display: block;">
+
                 <p style="color: #0a0a0a; margin: 2px 0 0; font-size: 9px; font-weight: 500;">Scan to support</p>
+
             </div>
+
         </div>
+
     </div>
 
+
+
     <footer>
+
         <div class="container">
+
             <div class="footer-content">
+
                 <div class="developer-signature">
+
                     <span class="code-brackets">&lt;/&gt;</span>
+
                     <span class="crafted-text">Crafted by Eyuel Engida</span>
+
                 </div>
+
                 <div class="copyright">
+
                     <p>&copy; <span id="currentYear"></span> All rights reserved</p>
+
                 </div>
+
             </div>
+
         </div>
+
         <a href="#home" class="back-to-top" id="backToTopBtn">
+
             <div class="back-to-top-rectangle">
+
                 <i class="fas fa-arrow-up"></i>
+
             </div>
+
         </a>
+
         <style>
+
             .back-to-top {
+
                 position: fixed;
+
                 bottom: 30px;
+
                 right: 30px;
+
                 z-index: 99;
+
                 text-decoration: none;
+
                 display: flex;
+
                 justify-content: center;
+
                 align-items: center;
+
                 opacity: 0;
+
                 visibility: hidden;
+
                 transition: opacity 0.3s, visibility 0.3s;
+
             }
+
+
 
             .back-to-top.visible {
+
                 opacity: 1;
+
                 visibility: visible;
+
             }
+
+
 
             .back-to-top-rectangle {
+
                 width: 50px;
+
                 height: 50px;
+
                 background: linear-gradient(145deg, var(--secondary), var(--accent));
+
                 border-radius: 5px;
+
                 display: flex;
+
                 justify-content: center;
+
                 align-items: center;
+
                 color: var(--text);
+
                 box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+
                 transition: all 0.3s ease;
+
             }
+
+
 
             .back-to-top-rectangle:hover {
+
                 transform: translateY(-5px);
+
                 box-shadow: 0 8px 20px rgba(0, 255, 136, 0.5);
+
             }
+
         </style>
+
         <script>
+
             // Control back to top button visibility
+
             window.addEventListener('scroll', function () {
+
                 const backToTopBtn = document.getElementById('backToTopBtn');
+
                 const homeSection = document.getElementById('home');
+
                 const homeSectionBottom = homeSection.offsetTop + homeSection.offsetHeight;
+
+
 
                 // Show button only when scrolled past the home section
+
                 if (window.scrollY > homeSectionBottom) {
+
                     backToTopBtn.classList.add('visible');
+
                 } else {
+
                     backToTopBtn.classList.remove('visible');
+
                 }
+
             });
+
         </script>
+
     </footer>
 
-    <script>
-        // Set the current year dynamically
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Floating Coffee Widget Toggle and Scroll-based Visibility
-        document.addEventListener('DOMContentLoaded', function() {
-            const coffeeWidget = document.getElementById('coffeeWidget');
-            const coffeeToggle = document.getElementById('coffeeToggle');
-            const coffeeContent = document.getElementById('coffeeContent');
-            
-            coffeeToggle.addEventListener('click', function() {
-                coffeeContent.classList.toggle('active');
-            });
-            
-            // Close coffee widget when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!coffeeWidget.contains(event.target)) {
-                    coffeeContent.classList.remove('active');
-                }
-            });
-            
-            // Show/hide coffee widget based on scroll position
-            function handleCoffeeWidgetVisibility() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                const windowHeight = window.innerHeight;
-                const documentHeight = document.documentElement.scrollHeight;
-                const homeSection = document.getElementById('home');
-                const homeSectionBottom = homeSection.offsetTop + homeSection.offsetHeight;
-                
-                // Show widget when user scrolls past home section AND is in bottom 40% of page
-                const scrollPercentage = (scrollTop + windowHeight) / documentHeight;
-                const pastHomeSection = scrollTop > homeSectionBottom;
-                const nearBottom = scrollPercentage > 0.6; // Show when 60% through the page
-                
-                if (pastHomeSection && nearBottom) {
-                    coffeeWidget.classList.add('visible');
-                } else {
-                    coffeeWidget.classList.remove('visible');
-                    coffeeContent.classList.remove('active'); // Also close the content panel
-                }
-            }
-            
-            // Listen for scroll events
-            window.addEventListener('scroll', handleCoffeeWidgetVisibility);
-            
-            // Initial check
-            handleCoffeeWidgetVisibility();
-        });
-    </script>
+
 
     <script>
+
+        // Set the current year dynamically
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        
+
+        // Floating Coffee Widget Toggle and Scroll-based Visibility
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const coffeeWidget = document.getElementById('coffeeWidget');
+
+            const coffeeToggle = document.getElementById('coffeeToggle');
+
+            const coffeeContent = document.getElementById('coffeeContent');
+
+            
+
+            coffeeToggle.addEventListener('click', function() {
+
+                coffeeContent.classList.toggle('active');
+
+            });
+
+            
+
+            // Close coffee widget when clicking outside
+
+            document.addEventListener('click', function(event) {
+
+                if (!coffeeWidget.contains(event.target)) {
+
+                    coffeeContent.classList.remove('active');
+
+                }
+
+            });
+
+            
+
+            // Show/hide coffee widget based on scroll position
+
+            function handleCoffeeWidgetVisibility() {
+
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                const windowHeight = window.innerHeight;
+
+                const documentHeight = document.documentElement.scrollHeight;
+
+                const homeSection = document.getElementById('home');
+
+                const homeSectionBottom = homeSection.offsetTop + homeSection.offsetHeight;
+
+                
+
+                // Show widget when user scrolls past home section AND is in bottom 40% of page
+
+                const scrollPercentage = (scrollTop + windowHeight) / documentHeight;
+
+                const pastHomeSection = scrollTop > homeSectionBottom;
+
+                const nearBottom = scrollPercentage > 0.6; // Show when 60% through the page
+
+                
+
+                if (pastHomeSection && nearBottom) {
+
+                    coffeeWidget.classList.add('visible');
+
+                } else {
+
+                    coffeeWidget.classList.remove('visible');
+
+                    coffeeContent.classList.remove('active'); // Also close the content panel
+
+                }
+
+            }
+
+            
+
+            // Listen for scroll events
+
+            window.addEventListener('scroll', handleCoffeeWidgetVisibility);
+
+            
+
+            // Initial check
+
+            handleCoffeeWidgetVisibility();
+
+        });
+
+    </script>
+
+
+
+    <script>
+
         document.addEventListener('DOMContentLoaded', function () {
+
             const loadingScreen = document.querySelector('.loading-screen');
 
+
+
             // Ensure body is locked during loading
+
             document.body.style.overflow = 'hidden';
 
+
+
             // Hide loading screen after delay
+
             setTimeout(() => {
+
                 loadingScreen.classList.add('fade-out');
+
                 setTimeout(() => {
+
                     loadingScreen.style.display = 'none';
+
                     document.body.style.overflow = 'visible';
+
                 }, 1000);
+
             }, 3000);
+
         });
+
     </script>
+
+
+
+
+
 
 
 
 
     <!--
+
     <script type="text/javascript">
+
         const form = document.getElementById('contactForm');
+
         const confirmationMessage = document.getElementById('confirmationMessage');
 
+
+
         form.addEventListener('submit', function (event) {
+
             event.preventDefault();
 
+
+
             emailjs.sendForm('service_q5lu7qc', 'ukx3eur', form, 'user_XHUyCWZav0x8Ym42W')
+
                 .then(function (response) {
+
                     confirmationMessage.style.display = 'block';
+
                     form.style.display = 'none';
+
                     console.log('Form submission successful');
+
                 }, function (error) {
+
                     alert('Failed to send message. Please try again later.');
+
                     console.error('Error:', error);
+
                 });
+
         });
+
     </script>  -->
 
+
+
     <script>
+
         // Project Tab Filtering Functionality - REMOVED
+
         document.addEventListener('DOMContentLoaded', function () {
+
             // Tab filtering functionality has been removed
+
             // Tabs are now static indicators only
 
+
+
             // Progress bar and section highlighting
+
             const progressBar = document.getElementById('progressBar');
+
             const sections = document.querySelectorAll('section');
+
             const dots = document.querySelectorAll('.indicator-dot');
 
+
+
             const observerOptions = {
+
                 threshold: 0.1,
+
                 rootMargin: '0px 0px -50px 0px'
+
             };
 
+
+
             const observer = new IntersectionObserver((entries) => {
+
                 entries.forEach(entry => {
+
                     if (entry.isIntersecting) {
+
                         entry.target.classList.add('animate-item');
+
                     }
+
                 });
+
             }, observerOptions);
 
+
+
             // Observe all animatable elements
+
             document.querySelectorAll('.section-title, .project-card').forEach(el => {
+
                 observer.observe(el);
+
             });
+
+
 
             // Project grid is now visible by default - no need for delayed showing
 
+
+
             // Intersection Observer for section animations
+
             const sectionObserver = new IntersectionObserver((entries) => {
+
                 entries.forEach(entry => {
+
                     if (entry.isIntersecting) {
+
                         entry.target.classList.add('visible');
 
+
+
                         // Animate skill bars when skills section is visible
+
                         if (entry.target.classList.contains('skills')) {
+
                             entry.target.querySelectorAll('.skill-progress').forEach(progress => {
+
                                 progress.style.width = progress.style.getPropertyValue('--progress');
+
                             });
+
                         }
+
                     }
+
                 });
+
             }, {
+
                 threshold: 0.2
+
             });
+
+
 
             // Observe all sections
+
             sections.forEach(section => {
+
                 sectionObserver.observe(section);
+
             });
+
+
 
             function updateProgress() {
+
                 const windowHeight = window.innerHeight;
+
                 const fullHeight = document.documentElement.scrollHeight - windowHeight;
+
                 const scrolled = window.scrollY;
+
                 const progress = (scrolled / fullHeight) * 100;
+
                 progressBar.style.height = progress + '%'; // Update height instead of width
 
+
+
                 // Update active section indicator
+
                 sections.forEach((section, index) => {
+
                     const rect = section.getBoundingClientRect();
+
                     if (rect.top <= windowHeight / 2 && rect.bottom >= windowHeight / 2) {
+
                         dots.forEach(dot => dot.classList.remove('active'));
+
                         dots[index].classList.add('active');
+
                     }
+
                 });
+
             }
+
+
 
             window.addEventListener('scroll', updateProgress);
+
             updateProgress(); // Initial call
 
+
+
             // Smooth scroll for navigation
+
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
                 anchor.addEventListener('click', function (e) {
+
                     e.preventDefault();
+
                     const targetId = this.getAttribute('href').substring(1);
+
                     const targetElement = document.getElementById(targetId);
 
+
+
                     if (targetElement) {
+
                         targetElement.scrollIntoView({
+
                             behavior: 'smooth'
+
                         });
+
                     }
+
                 });
+
             });
+
+
 
             // Click handling for indicator dots
+
             dots.forEach((dot, index) => {
+
                 dot.addEventListener('click', () => {
+
                     sections[index].scrollIntoView({ behavior: 'smooth' });
+
                 });
+
             });
+
+
 
             // Social icons animation
+
             document.querySelectorAll('.social-links a').forEach(link => {
+
                 link.addEventListener('mouseenter', function () {
+
                     this.style.transform = 'translateY(-5px) rotate(5deg)';
+
                 });
+
+
 
                 link.addEventListener('mouseleave', function () {
+
                     this.style.transform = 'translateY(0) rotate(0)';
+
                 });
+
             });
+
+
 
             // Mobile menu handling
+
             //cutp418@gmail.com
+
             const hamburger = document.querySelector('.hamburger');
+
             const navLinks = document.querySelector('.nav-links');
 
+
+
             hamburger.addEventListener('click', () => {
+
                 hamburger.classList.toggle('active');
+
                 navLinks.classList.toggle('active');
+
             });
+
+
 
             // Enhanced nav-links functionality with active section highlighting
+
             const navLinksArray = document.querySelectorAll('.nav-links a');
+
             
+
             // Handle mobile menu closing
+
             navLinksArray.forEach(link => {
+
                 link.addEventListener('click', () => {
+
                     hamburger.classList.remove('active');
+
                     navLinks.classList.remove('active');
+
                 });
+
             });
+
+
 
             // Active section highlighting based on scroll position
+
             function updateActiveNavLink() {
+
                 const sections = document.querySelectorAll('section[id]');
+
                 const scrollPosition = window.scrollY + 100;
 
+
+
                 sections.forEach(section => {
+
                     const sectionTop = section.offsetTop;
+
                     const sectionHeight = section.offsetHeight;
+
                     const sectionId = section.getAttribute('id');
+
                     const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
 
+
+
                     if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+
                         // Remove active class from all nav links
+
                         navLinksArray.forEach(link => link.classList.remove('active'));
+
                         // Add active class to current section's nav link
+
                         if (navLink) {
+
                             navLink.classList.add('active');
+
                         }
+
                     }
+
                 });
+
             }
 
+
+
             // Smooth scroll with easing for nav links
+
             navLinksArray.forEach(link => {
                 link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
+                    const href = link.getAttribute('href');
                     
-                    if (targetSection) {
-                        const headerHeight = document.querySelector('header').offsetHeight;
-                        const targetPosition = targetSection.offsetTop - headerHeight;
+                    // Only prevent default for internal anchor links
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+
+                        const targetId = href.substring(1);
+                        const targetSection = document.getElementById(targetId);
+
                         
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
+
+                        if (targetSection) {
+                            const headerHeight = document.querySelector('header').offsetHeight;
+                            const targetPosition = targetSection.offsetTop - headerHeight;
+
                         
-                        // Add click ripple effect
-                        link.style.transform = 'scale(0.95)';
-                        setTimeout(() => {
-                            link.style.transform = '';
-                        }, 150);
+
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+
+                        
+
+                            // Add click ripple effect
+                            link.style.transform = 'scale(0.95)';
+                            setTimeout(() => {
+                                link.style.transform = '';
+                            }, 150);
+                        }
                     }
+                    // External links (like blog.html) will work normally
                 });
+
             });
+
+
 
             // Update active nav link on scroll with throttling for performance
+
             let scrollTimeout;
+
             window.addEventListener('scroll', () => {
+
                 if (scrollTimeout) {
+
                     clearTimeout(scrollTimeout);
+
                 }
+
                 scrollTimeout = setTimeout(updateActiveNavLink, 10);
+
             });
+
             
+
             // Initial call to set active link on page load
+
             updateActiveNavLink();
 
+
+
             // Keyboard navigation support
+
             navLinksArray.forEach((link, index) => {
+
                 link.addEventListener('keydown', (e) => {
+
                     if (e.key === 'Enter' || e.key === ' ') {
+
                         e.preventDefault();
+
                         link.click();
+
                     } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+
                         e.preventDefault();
+
                         const nextIndex = (index + 1) % navLinksArray.length;
+
                         navLinksArray[nextIndex].focus();
+
                     } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+
                         e.preventDefault();
+
                         const prevIndex = (index - 1 + navLinksArray.length) % navLinksArray.length;
+
                         navLinksArray[prevIndex].focus();
+
                     }
+
                 });
+
+
 
                 // Add focus styling
+
                 link.addEventListener('focus', () => {
+
                     link.style.outline = '2px solid var(--accent)';
+
                     link.style.outlineOffset = '2px';
+
                 });
+
+
 
                 link.addEventListener('blur', () => {
+
                     link.style.outline = 'none';
+
                 });
+
             });
+
         });
+
+
 
     </script>
 
 
+
+
+
     <script>
+
         document.querySelectorAll('.button').forEach(button => {
+
             // Helper to get a CSS custom property value
+
             let getVar = variable => getComputedStyle(button).getPropertyValue(variable);
 
+
+
             button.addEventListener('click', e => {
+
                 // Prevent the animation from starting unless all required fields are filled.
+
                 // First, try to find the closest parent form.
+
                 const form = button.closest('form');
 
+
+
                 // If a form exists, use HTML5 form validation.
+
                 if (form) {
+
                     if (!form.checkValidity()) {
+
                         // This will show the browser's native validation messages.
+
                         form.reportValidity();
+
                         return;  // Stop processing if the form is invalid.
+
                     }
+
                 } else {
+
                     // If no form exists, manually check all required inputs in the document.
+
                     const requiredInputs = document.querySelectorAll('input[required]');
+
                     let allFilled = true;
+
                     requiredInputs.forEach(input => {
+
                         if (!input.value.trim()) {
+
                             allFilled = false;
+
                         }
+
                     });
+
                     if (!allFilled) {
+
                         // Optionally, show a custom message or simply exit.
+
                         alert("Please fill all required fields.");
+
                         return;
+
                     }
+
                 }
+
+
 
                 // If we pass the validation, proceed with the GSAP animation.
+
                 if (!button.classList.contains('active')) {
+
                     button.classList.add('active');
+
                     gsap.to(button, {
+
                         keyframes: [{
+
                             '--left-wing-first-x': 50,
+
                             '--left-wing-first-y': 100,
+
                             '--right-wing-second-x': 50,
+
                             '--right-wing-second-y': 100,
+
                             duration: 0.2,
+
                             onComplete() {
+
                                 gsap.set(button, {
+
                                     '--left-wing-first-y': 0,
+
                                     '--left-wing-second-x': 40,
+
                                     '--left-wing-second-y': 100,
+
                                     '--left-wing-third-x': 0,
+
                                     '--left-wing-third-y': 100,
+
                                     '--left-body-third-x': 40,
+
                                     '--right-wing-first-x': 50,
+
                                     '--right-wing-first-y': 0,
+
                                     '--right-wing-second-x': 60,
+
                                     '--right-wing-second-y': 100,
+
                                     '--right-wing-third-x': 100,
+
                                     '--right-wing-third-y': 100,
+
                                     '--right-body-third-x': 60
+
                                 });
+
                             }
+
                         },
+
                         {
+
                             '--left-wing-third-x': 20,
+
                             '--left-wing-third-y': 90,
+
                             '--left-wing-second-y': 90,
+
                             '--left-body-third-y': 90,
+
                             '--right-wing-third-x': 80,
+
                             '--right-wing-third-y': 90,
+
                             '--right-body-third-y': 90,
+
                             '--right-wing-second-y': 90,
+
                             duration: 0.2
+
                         },
+
                         {
+
                             '--rotate': 50,
+
                             '--left-wing-third-y': 95,
+
                             '--left-wing-third-x': 27,
+
                             '--right-body-third-x': 45,
+
                             '--right-wing-second-x': 45,
+
                             '--right-wing-third-x': 60,
+
                             '--right-wing-third-y': 83,
+
                             duration: 0.25
+
                         },
+
                         {
+
                             '--rotate': 55,
+
                             '--plane-x': -8,
+
                             '--plane-y': 24,
+
                             duration: 0.2
+
                         },
+
                         {
+
                             '--rotate': 40,
+
                             '--plane-x': 45,
+
                             '--plane-y': -180,
+
                             '--plane-opacity': 0,
+
                             duration: 0.3,
+
                             onComplete() {
+
                                 setTimeout(() => {
+
                                     button.removeAttribute('style');
+
                                     gsap.fromTo(button, {
+
                                         opacity: 0,
+
                                         y: -8
+
                                     }, {
+
                                         opacity: 1,
+
                                         y: 0,
+
                                         clearProps: true,
+
                                         duration: 0.3,
+
                                         onComplete() {
+
                                             button.classList.remove('active');
+
                                         }
+
                                     });
+
                                 }, 2000);
+
                             }
+
                         }
+
                         ]
+
                     });
+
                     gsap.to(button, {
+
                         keyframes: [{
+
                             '--text-opacity': 0,
+
                             '--border-radius': 0,
+
                             '--left-wing-background': getVar('--primary-darkest'),
+
                             '--right-wing-background': getVar('--primary-darkest'),
+
                             duration: 0.1
+
                         },
+
                         {
+
                             '--left-wing-background': getVar('--primary'),
+
                             '--right-wing-background': getVar('--primary'),
+
                             duration: 0.1
+
                         },
+
                         {
+
                             '--left-body-background': getVar('--primary-dark'),
+
                             '--right-body-background': getVar('--primary-darkest'),
+
                             duration: 0.4
+
                         },
+
                         {
+
                             '--success-opacity': 1,
+
                             '--success-scale': 1,
+
                             duration: 0.25,
+
                             delay: 0.25
+
                         }
+
                         ]
+
                     });
+
                 }
+
             });
+
         });
 
+
+
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
     <script src="script2.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
+
       <!-- ===== Custom Cursor Script Start ===== -->
+
     <script>
+
         document.addEventListener('DOMContentLoaded', function () {
+
             const cursorContainer = document.getElementById('custom-cursor-container');
+
             
+
             // This sets the cursor's position directly without any animation delay.
+
             // It's wrapped in requestAnimationFrame for the best performance.
+
             const moveCursor = (e) => {
+
                 requestAnimationFrame(() => {
+
                     cursorContainer.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+
                 });
+
             };
+
+
 
             window.addEventListener('mousemove', moveCursor);
 
+
+
             // --- Smart Disappear/Reappear Logic (Unchanged) ---
+
             document.body.addEventListener('mouseleave', () => {
+
                 cursorContainer.classList.add('cursor-hidden');
-            });
-            document.body.addEventListener('mouseenter', () => {
-                cursorContainer.classList.remove('cursor-hidden');
+
             });
 
-            // --- Hover Effect Logic (Updated to include hamburger) ---
-            const interactiveElements = document.querySelectorAll('a, button, input, textarea, .cta-button, .btn-donate, .indicator-dot, .animated-button, .hamburger');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hovered'));
-                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hovered'));
+            document.body.addEventListener('mouseenter', () => {
+
+                cursorContainer.classList.remove('cursor-hidden');
+
             });
+
+
+
+            // --- Hover Effect Logic (Updated to include hamburger) ---
+
+            const interactiveElements = document.querySelectorAll('a, button, input, textarea, .cta-button, .btn-donate, .indicator-dot, .animated-button, .hamburger');
+
+            interactiveElements.forEach(el => {
+
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hovered'));
+
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hovered'));
+
+            });
+
         });
+
     </script>
+
     <!-- ===== Custom Cursor Script End ===== -->
+
+
 
 </body>
 
+
+
 </html>
+
