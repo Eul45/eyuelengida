@@ -1,96 +1,86 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // --- 1. Current Year ---
+  // Set current year in footer
   const yearEl = document.getElementById("year");
+  const assetLinks = Array.from(document.querySelectorAll("[data-asset-path]"));
   if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
+    yearEl.textContent = String(new Date().getFullYear());
   }
 
-  // --- 2. Theme Toggle Logic ---
-  const themeToggle = document.getElementById("themeToggle");
-  const themeText = document.getElementById("themeText");
-  const htmlDoc = document.documentElement;
-
-  const updateToggleUI = (theme) => {
-    if (theme === "light") {
-      themeText.textContent = "Light mode";
-    } else {
-      themeText.textContent = "Dark mode";
+  assetLinks.forEach((link) => {
+    const assetPath = link.getAttribute("data-asset-path");
+    if (!assetPath) {
+      return;
     }
-  };
 
-  // Initial UI state based on attribute set in head
-  updateToggleUI(htmlDoc.getAttribute("data-theme"));
+    if (window.location.protocol === "file:") {
+      link.href = new URL(assetPath, window.location.href.replace(/[#?].*$/, "")).href;
+      return;
+    }
 
-  themeToggle.addEventListener("click", () => {
-    const currentTheme = htmlDoc.getAttribute("data-theme");
-    const newTheme = currentTheme === "light" ? "dark" : "light";
-
-    htmlDoc.setAttribute("data-theme", newTheme);
-    localStorage.setItem("omnisearch-site-theme", newTheme);
-    updateToggleUI(newTheme);
+    link.href = `/omni-search/${assetPath}`;
   });
 
-  // --- 3. Scroll Reveal Animation ---
-  const revealElements = document.querySelectorAll(".reveal");
-
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          // Once visible, we can stop observing this element
-          revealObserver.unobserve(entry.target);
+  // Fetch real-time GitHub Stars
+  const starBadge = document.getElementById("github-stars");
+  if (starBadge) {
+    fetch("https://api.github.com/repos/Eul45/omni-search")
+      .then(response => response.json())
+      .then(data => {
+        if (data.stargazers_count !== undefined) {
+          // Updates the text to show the actual star count, e.g., "★ 124"
+          starBadge.textContent = `★ ${data.stargazers_count.toLocaleString()}`;
+        } else {
+          // Hide it if the API limit is reached or fails
+          starBadge.style.display = "none";
         }
+      })
+      .catch(error => {
+        console.error("Error fetching GitHub stars:", error);
+        starBadge.style.display = "none";
       });
-    },
-    {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
-    }
-  );
+  }
 
-  revealElements.forEach((el) => revealObserver.observe(el));
+  // Active navigation handling
+  const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
+  const sections = Array.from(document.querySelectorAll("[data-nav-section]"));
 
-  // --- 4. Image/Video Fallback Handler ---
-  // If an image or video fails to load, we can show a placeholder or log the error
-  const mediaElements = document.querySelectorAll("img, video");
-  mediaElements.forEach((media) => {
-    media.addEventListener("error", function () {
-      const fallbackMsg = this.getAttribute("data-fallback");
-      if (fallbackMsg) {
-        console.warn(`Resource failed to load: ${this.src}. ${fallbackMsg}`);
-        
-        // If it's an image, we could replace it with a styled div placeholder
-        if (this.tagName === "IMG") {
-          const placeholder = document.createElement("div");
-          placeholder.className = "media-placeholder";
-          placeholder.innerHTML = `<span>${fallbackMsg}</span>`;
-          this.replaceWith(placeholder);
-        }
-      }
+  function setActiveNav(sectionId) {
+    navLinks.forEach((link) => {
+      link.classList.toggle("is-active", link.dataset.navLink === sectionId);
     });
-  });
+  }
 
-  // --- 5. Smooth Scroll Adjustments ---
-  // (Optional) ensure header height is accounted for if needed, 
-  // though CSS scroll-margin-top is usually cleaner.
-  const navLinks = document.querySelectorAll('.nav-links a, .btn[href^="#"]');
-  navLinks.forEach(link => {
+  // Scroll spy
+  if ("IntersectionObserver" in window && sections.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveNav(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-20% 0px -70% 0px",
+        threshold: 0,
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  // Smooth scroll click handler
+  navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
-      const href = link.getAttribute("href");
-      if (href.startsWith("#") && href.length > 1) {
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          const headerOffset = 80;
-          const elementPosition = target.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth"
-          });
-        }
+      e.preventDefault();
+      const targetId = link.getAttribute("href").substring(1);
+      const targetSection = document.getElementById(targetId);
+      
+      if (targetSection) {
+        // Scroll to element offset by fixed navbar height (approx 80px)
+        const y = targetSection.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        setActiveNav(targetId);
       }
     });
   });
