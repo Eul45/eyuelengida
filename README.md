@@ -13,7 +13,7 @@ Welcome to my personal website repository! This site showcases my skills, projec
 Visit my live website here: [eyuelengida.vercel.app](https://eyuelengida.vercel.app/).
 
 ## 📸 Website Preview
-![Website Screenshot](assets/website-screenshot.png)
+![Website Screenshot](assets/docs/website-screenshot.png)
 
 ## 🎥 Message Submission Demo
 

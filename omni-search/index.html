@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="OmniSearch is a high-performance Windows desktop file indexer and search app built with Tauri, Rust, and C++."
+    />
+    <title>OmniSearch | Windows File Search</title>
+    <!-- Open Graph -->
+  <meta property="og:title" content="OmniSearch">
+  <meta property="og:description" content="OmniSearch is a high-performance Windows desktop file indexer and search app built with Tauri, Rust, and C++.">
+  <meta property="og:image" content="https://www.eyuel.com.et/omni-search/screenshot-1.png">
+  <meta property="og:url" content="https://www.eyuel.com.et/omni-search">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OmniSearch">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OmniSearch">
+  <meta name="twitter:description" content="OmniSearch is a high-performance Windows desktop file indexer and search app built with Tauri, Rust, and C++.">
+  <meta name="twitter:image" content="https://www.eyuel.com.et/omni-search/screenshot-1.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/omni-search/logo.png" type="image/png">
+  <link rel="icon" href="/omni-search/logo.png" sizes="48x48" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        const saved = localStorage.getItem("omnisearch-site-theme");
+        const theme = saved === "light" || saved === "dark" ? saved : "dark";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+    <link rel="stylesheet" href="/omni-search/styles.css" />
+  </head>
+  <body>
+    <div class="page-bg" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="#top">
+          <img src="/omni-search/logo.png" alt="OmniSearch logo" />
+          <span>OmniSearch</span>
+        </a>
+        <nav class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#preview">Preview</a>
+          <a href="#tech">Tech</a>
+          <a href="#download">Download</a>
+        </nav>
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+          <span class="theme-dot"></span>
+          <span id="themeText">Dark mode</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero container reveal">
+        <div class="hero-copy">
+          <p class="eyebrow">Windows Desktop Search</p>
+          <h1>Search millions of files in seconds.</h1>
+          <p class="lead">
+            OmniSearch indexes NTFS metadata directly and gives you fast search, filtering,
+            previews, and duplicate detection in one clean desktop app.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://github.com/Eul45/omni-search" target="_blank" rel="noreferrer">
+              View on GitHub
+            </a>
+            <a class="btn btn-ghost" href="#download">Get MSI / EXE</a>
+          </div>
+          <ul class="hero-metrics">
+            <li><strong>C++ + Rust</strong><span>Native indexing core</span></li>
+            <li><strong>Multi-drive</strong><span>C:, D:, E: and more</span></li>
+            <li><strong>Modern UI</strong><span>Theme toggle + previews</span></li>
+          </ul>
+        </div>
+        <div class="hero-media">
+          <figure class="media-card">
+            <img
+              src="/omni-search/hero-demo.gif"
+              alt="OmniSearch demo GIF"
+              class="media-img"
+              data-fallback="hero-demo.gif"
+            />
+            <figcaption>demo</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="features" class="section container reveal">
+        <div class="section-head">
+          <p class="eyebrow">Core Features</p>
+          <h2>Built for speed, not just UI.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Raw NTFS indexing</h3>
+            <p>USN/MFT-based scanning through native C++ engine for high-speed indexing.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Smart filtering</h3>
+            <p>Filter by extension, size range, date range, and sort by best match or largest.</p>
+          </article>
+          <article class="feature-card">
+            <h3>File actions</h3>
+            <p>Open files, jump to folders, and work directly from results with one click.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Preview mode</h3>
+            <p>Show quick previews for supported files with user-controlled toggle.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Duplicate detection</h3>
+            <p>Find duplicate files quickly and clean up wasted space on local drives.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Theme memory</h3>
+            <p>Dark/light mode choice is saved and restored automatically on next launch.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="preview" class="section container reveal">
+        <div class="section-head">
+          <p class="eyebrow">Product Preview</p>
+        </div>
+        <div class="preview-grid">
+          <figure class="media-card">
+            <img
+              src="/omni-search/screenshot-1.png"
+              alt="OmniSearch screenshot 1"
+              class="media-img"
+            />
+            <figcaption>Search Experience</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img
+              src="/omni-search/screenshot-2.png"
+              alt="OmniSearch screenshot 2"
+              class="media-img"
+            />
+            <figcaption>Duplicate Finder</figcaption>
+          </figure>
+          <figure class="media-card media-video">
+            <video controls preload="metadata" poster="/omni-search/video-poster.png" data-fallback="demo.mp4">
+              <source src="https://ojwnwpb4x7waujjw.public.blob.vercel-storage.com/demo.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Demo video placeholder</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="tech" class="section container reveal">
+        <div class="section-head">
+          <p class="eyebrow">Stack</p>
+          <h2>Native performance + modern desktop UX.</h2>
+        </div>
+        <div class="tech-row">
+          <span class="chip">C++ (scanner core)</span>
+          <span class="chip">Rust (Tauri bridge)</span>
+          <span class="chip">TypeScript + React</span>
+          <span class="chip">Tauri v2</span>
+          <span class="chip">Windows NTFS APIs</span>
+        </div>
+      </section>
+
+      <section id="download" class="section container cta reveal">
+        <h2>Ready to try OmniSearch?</h2>
+        <p>Download the latest release package from GitHub and run on Windows.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://github.com/Eul45/omni-search/releases" target="_blank" rel="noreferrer">
+            Open Releases
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/Eul45/omni-search" target="_blank" rel="noreferrer">
+            Source Code
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> OmniSearch. Built by Eyuel Engida.</p>
+        <div class="footer-links">
+          <a href="https://github.com/Eul45/omni-search" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/eyuel-engida-77155a317" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://t.me/Eul_zzz" target="_blank" rel="noreferrer">Telegram</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/omni-search/script.js"></script>
+  </body>
+  </html>
