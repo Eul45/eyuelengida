@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eyuel Engida — Engineer & Innovator</title>
-
-    <!--
+    <title>Eyuel Engida - Engineer & Innovator</title>
+     <!--
                                                             
                                                             ███████╗██╗   ██╗██╗   ██╗███████╗██╗     
                                                             ██╔════╝╚██╗ ██╔╝██║   ██║██╔════╝██║     
@@ -116,7 +115,7 @@
                     I’m Eyuel - I build apps, tools, and systems across web, desktop, and mobile.
                 </p>
 
-                <div class="hero__actions reveal" style="--i:4">
+                <div class="hero__actions" id="heroActions">
                     <a href="#projects" class="btn btn--primary">
                         <i class="fas fa-rocket"></i> View My Work
                     </a>
@@ -877,15 +876,14 @@
                 });
             }
 
-            // --- Scroll indicator: hide permanently on scroll ---
+            // --- Scroll swap: buttons <-> scroll indicator ---
             const heroScroll = document.querySelector('.hero__scroll');
-            let scrollIndicatorHidden = false;
-            if (heroScroll) {
+            const heroActions = document.getElementById('heroActions');
+            if (heroScroll && heroActions) {
                 window.addEventListener('scroll', () => {
-                    if (!scrollIndicatorHidden && window.scrollY > 30) {
-                        scrollIndicatorHidden = true;
-                        heroScroll.classList.add('hidden');
-                    }
+                    const scrolled = window.scrollY > 30;
+                    heroScroll.classList.toggle('hidden', scrolled);
+                    heroActions.classList.toggle('showing', scrolled);
                 }, { passive: true });
             }
 
@@ -893,8 +891,12 @@
             const cursorWrap = document.getElementById('custom-cursor-wrap');
 
             if (cursorWrap && window.matchMedia('(pointer: fine)').matches) {
+                // Start hidden until user moves mouse onto the page
+                cursorWrap.classList.add('cursor-hidden');
+
                 // Move cursor directly with requestAnimationFrame for smooth performance
                 const moveCursor = (e) => {
+                    cursorWrap.classList.remove('cursor-hidden');
                     requestAnimationFrame(() => {
                         cursorWrap.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
                     });
