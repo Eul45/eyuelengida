@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Built an Alternative to Windows Search — Eyuel Engida</title>
+    <meta name="description" content="OmniSearch uses a native C++ NTFS scanner with a Rust bridge and Tauri + React UI. Here's how I built it.">
+
+    <meta property="og:title" content="I Built an Alternative to Windows Search">
+    <meta property="og:description" content="OmniSearch uses a native C++ NTFS scanner with a Rust bridge and Tauri + React UI.">
+    <meta property="og:image" content="https://eyuel.com.et/assets/projects/omni-search2.jpg">
+    <meta property="og:url" content="https://eyuel.com.et/blog/omnisearch-windows-alternative">
+
+    <link rel="icon" href="../assets/brand/favicon-32.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        /* Blog post styles */
+        .post-hero {
+            padding: calc(var(--header-height) + 3rem) 0 2rem;
+        }
+
+        .post-hero__back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .post-hero__back:hover { color: var(--accent-light); }
+
+        .post-hero__meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+        }
+
+        .post-hero__tag {
+            padding: 3px 10px;
+            background: var(--gradient-subtle);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            color: var(--accent-light);
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        .post-hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 5vw, 2.75rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .post-hero__subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            line-height: 1.7;
+        }
+
+        /* Post content */
+        .post-content {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 0 4rem;
+        }
+
+        .post-content h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .post-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 2rem 0 0.75rem;
+        }
+
+        .post-content p {
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        .post-content ul, .post-content ol {
+            color: var(--text-secondary);
+            margin: 0 0 1.5rem 1.5rem;
+            line-height: 1.85;
+        }
+
+        .post-content li { margin-bottom: 0.4rem; }
+
+        .post-content strong { color: var(--text-primary); }
+
+        .post-content a {
+            color: var(--accent-light);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s ease;
+        }
+
+        .post-content a:hover { color: var(--accent); }
+
+        .post-content img {
+            width: 100%;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            margin: 1.5rem 0;
+        }
+
+        .post-content code {
+            padding: 2px 7px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--accent-light);
+        }
+
+        .post-content blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            border-left: 3px solid var(--accent);
+            background: var(--bg-card);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Post CTA links */
+        .post-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 2rem 0;
+        }
+
+        /* Post navigation */
+        .post-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+
+        .post-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .post-nav a:hover { color: var(--accent-light); }
+
+        @media (max-width: 768px) {
+            .post-content { padding: 1.5rem 0 3rem; }
+        }
+
+        /* YouTube video embed */
+        .post-video {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            margin: 1.5rem 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .post-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Custom cursor -->
+    <div id="custom-cursor-wrap">
+        <svg id="custom-cursor" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 21 Q 10 14 3 3 L 22 12 Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </div>
+
+    <div class="gradient-orb gradient-orb--1" aria-hidden="true"></div>
+    <div class="gradient-orb gradient-orb--2" aria-hidden="true"></div>
+
+    <!-- Header -->
+    <header class="header scrolled" id="header">
+        <div class="container header__inner">
+            <a href="/" class="logo">
+                <img src="../assets/brand/logo.png" alt="EE" class="logo__img">
+                <span class="logo__text">Eyuel</span>
+            </a>
+            <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav__links" id="navLinks">
+                <a href="/" class="nav__link">Home</a>
+                <a href="/#about" class="nav__link">About</a>
+                <a href="/#projects" class="nav__link">Projects</a>
+                <a href="/#skills" class="nav__link">Skills</a>
+                <a href="/#contact" class="nav__link">Contact</a>
+                <a href="/blog" class="nav__link active">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Post Hero -->
+    <section class="post-hero">
+        <div class="container">
+            <a href="/blog" class="post-hero__back reveal"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+
+            <div class="post-hero__meta reveal">
+                <span class="post-hero__tag">Launch</span>
+                <span>June 2025</span>
+                <span>·</span>
+                <span>4 min read</span>
+            </div>
+
+            <h1 class="post-hero__title reveal">I Built an Alternative to Windows Search</h1>
+            <p class="post-hero__subtitle reveal">OmniSearch uses a native C++ NTFS scanner with a Rust bridge and Tauri + React UI — designed for speed and real file discovery on Windows.</p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Post Content -->
+    <article class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="post-content reveal">
+
+                <div class="post-video">
+                    <iframe src="https://www.youtube.com/embed/XjsHkU8M3J0" title="OmniSearch Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+
+                <h2>Why I Built This</h2>
+                <p>Windows Search has always frustrated me. It's slow, unreliable, and doesn't give you the control you need for real file management. I wanted something that could scan my entire NTFS drive in seconds, not minutes.</p>
+                <p>So I built <strong>OmniSearch</strong> — an open-source Windows desktop file search and duplicate file finder focused on speed.</p>
+
+                <h2>The Tech Stack</h2>
+                <p>The architecture is designed for raw performance:</p>
+                <ul>
+                    <li><strong>C++ NTFS scanner</strong> — reads the Master File Table directly for near-instant indexing</li>
+                    <li><strong>Rust bridge</strong> — safe FFI layer between native code and the frontend</li>
+                    <li><strong>Tauri + React UI</strong> — lightweight desktop app (way smaller than Electron)</li>
+                </ul>
+
+                <h2>What It Does</h2>
+                <ul>
+                    <li>Fast indexing and search across all Windows drives</li>
+                    <li>Filters by extension, size, and date</li>
+                    <li>Click any result to open the file or reveal its folder</li>
+                    <li>Dark and light theme toggle</li>
+                    <li>Optional inline previews in results</li>
+                    <li>Duplicate Finder with grouped results and clear separation</li>
+                    <li>MSI installer available</li>
+                </ul>
+
+                <h2>Community Response</h2>
+                <p>I shared OmniSearch on <strong>r/windowsapps</strong> and the response was incredible — <strong>60 upvotes and 29 comments</strong> with really useful feedback. People asked for keyboard-first UX, better thumbnail performance, and indexing improvements.</p>
+
+                <blockquote>Building in public and sharing early is one of the best decisions I've made. Real users give you real priorities.</blockquote>
+
+                <h2>Try It</h2>
+                <div class="post-links">
+                    <a href="https://apps.microsoft.com/detail/9N7FQ8KPLRJ2?hl=en-us&gl=US&ocid=pdpshare" class="btn btn--primary btn--sm" target="_blank"><i class="fab fa-microsoft"></i> Microsoft Store</a>
+                    <a href="https://github.com/Eul45/omni-search" class="btn btn--ghost btn--sm" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://www.eyuel.com.et/omni-search" class="btn btn--ghost btn--sm" target="_blank"><i class="fas fa-globe"></i> Homepage</a>
+                </div>
+
+                <!-- Navigation -->
+                <div class="post-nav">
+                    <a href="/blog"><i class="fas fa-arrow-left"></i> All Posts</a>
+                    <a href="/blog/building-eyux-with-expo">Next Post <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <span>&lt;/&gt;</span>
+                <span>Crafted by <span class="footer__brand-accent">Eyuel Engida</span></span>
+            </div>
+            <div class="footer__copy">&copy; <span id="currentYear"></span> All rights reserved</div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+        });
+        navLinks.querySelectorAll('.nav__link').forEach(l => l.addEventListener('click', () => {
+            navToggle.classList.remove('active'); navLinks.classList.remove('open'); document.body.style.overflow = '';
+        }));
+        const revealObs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+        const cursorWrap = document.getElementById('custom-cursor-wrap');
+        if (cursorWrap && window.matchMedia('(pointer: fine)').matches) {
+            cursorWrap.classList.add('cursor-hidden');
+            window.addEventListener('mousemove', (e) => {
+                cursorWrap.classList.remove('cursor-hidden');
+                requestAnimationFrame(() => { cursorWrap.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`; });
+            });
+            document.body.addEventListener('mouseleave', () => cursorWrap.classList.add('cursor-hidden'));
+            document.body.addEventListener('mouseenter', () => cursorWrap.classList.remove('cursor-hidden'));
+            document.querySelectorAll('a, button').forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hovered'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hovered'));
+            });
+        }
+    </script>
+</body>
+
+</html>

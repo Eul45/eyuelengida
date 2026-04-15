@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building EyuX: My Most Advanced Expo Project — Eyuel Engida</title>
+    <meta name="description" content="How I built a cross-platform AI assistant with Expo — shipped to Android, Windows, and Web.">
+
+    <meta property="og:title" content="Building EyuX: My Most Advanced Expo Project">
+    <meta property="og:description" content="Cross-platform AI assistant with switchable personas, web search, and an agentic IDE.">
+    <meta property="og:image" content="https://eyuel.com.et/assets/projects/eyux-ai-assistant.png">
+
+    <link rel="icon" href="../assets/brand/favicon-32.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .post-hero { padding: calc(var(--header-height) + 3rem) 0 2rem; }
+        .post-hero__back { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 1.5rem; transition: color 0.3s ease; }
+        .post-hero__back:hover { color: var(--accent-light); }
+        .post-hero__meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; font-size: 0.8rem; color: var(--text-tertiary); }
+        .post-hero__tag { padding: 3px 10px; background: var(--gradient-subtle); border: 1px solid var(--border); border-radius: var(--radius-full); color: var(--accent-light); font-weight: 600; font-size: 0.75rem; }
+        .post-hero__title { font-family: var(--font-display); font-size: clamp(1.75rem, 5vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1rem; }
+        .post-hero__subtitle { font-size: 1.1rem; color: var(--text-secondary); max-width: 680px; line-height: 1.7; }
+        .post-content { max-width: 720px; margin: 0 auto; padding: 2rem 0 4rem; }
+        .post-content h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin: 2.5rem 0 1rem; }
+        .post-content p { color: var(--text-secondary); line-height: 1.85; margin-bottom: 1.25rem; }
+        .post-content ul { color: var(--text-secondary); margin: 0 0 1.5rem 1.5rem; line-height: 1.85; }
+        .post-content li { margin-bottom: 0.4rem; }
+        .post-content strong { color: var(--text-primary); }
+        .post-content a { color: var(--accent-light); text-decoration: underline; text-underline-offset: 3px; }
+        .post-content a:hover { color: var(--accent); }
+        .post-content img { width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border); margin: 1.5rem 0; }
+        .post-content blockquote { margin: 1.5rem 0; padding: 1rem 1.5rem; border-left: 3px solid var(--accent); background: var(--bg-card); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--text-secondary); font-style: italic; }
+        .post-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0; }
+        .post-nav { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; border-top: 1px solid var(--border); margin-top: 3rem; }
+        .post-nav a { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--text-secondary); transition: color 0.3s ease; }
+        .post-nav a:hover { color: var(--accent-light); }
+
+        /* Image carousel */
+        .carousel {
+            position: relative;
+            margin: 1.5rem 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg-elevated);
+        }
+
+        .carousel__track {
+            position: relative;
+            width: 100%;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel__slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel__slide.active {
+            opacity: 1;
+            position: relative;
+        }
+
+        .carousel__slide img {
+            max-width: 100%;
+            max-height: 500px;
+            display: block;
+            margin: 0 auto;
+            object-fit: contain;
+        }
+
+        .carousel__label {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 4px 14px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+            backdrop-filter: blur(8px);
+        }
+
+        .carousel__btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: white;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+            backdrop-filter: blur(4px);
+        }
+
+        .carousel__btn:hover {
+            background: rgba(99, 102, 241, 0.6);
+            border-color: var(--accent);
+        }
+
+        .carousel__btn--prev { left: 12px; }
+        .carousel__btn--next { right: 12px; }
+
+        .carousel__dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 0;
+        }
+
+        .carousel__dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .carousel__dot.active {
+            background: var(--accent-light);
+            width: 24px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="custom-cursor-wrap">
+        <svg id="custom-cursor" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 21 Q 10 14 3 3 L 22 12 Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </div>
+    <div class="gradient-orb gradient-orb--1" aria-hidden="true"></div>
+    <div class="gradient-orb gradient-orb--2" aria-hidden="true"></div>
+
+    <header class="header scrolled">
+        <div class="container header__inner">
+            <a href="/" class="logo">
+                <img src="../assets/brand/logo.png" alt="EE" class="logo__img">
+                <span class="logo__text">Eyuel</span>
+            </a>
+            <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav__links" id="navLinks">
+                <a href="/" class="nav__link">Home</a>
+                <a href="/#about" class="nav__link">About</a>
+                <a href="/#projects" class="nav__link">Projects</a>
+                <a href="/#skills" class="nav__link">Skills</a>
+                <a href="/#contact" class="nav__link">Contact</a>
+                <a href="/blog" class="nav__link active">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="post-hero">
+        <div class="container">
+            <a href="/blog" class="post-hero__back reveal"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+            <div class="post-hero__meta reveal">
+                <span class="post-hero__tag">Project</span>
+                <span>September 2025</span>
+                <span>·</span>
+                <span>5 min read</span>
+            </div>
+            <h1 class="post-hero__title reveal">Building EyuX: My Most Advanced Expo Project</h1>
+            <p class="post-hero__subtitle reveal">How I built a cross-platform AI assistant with switchable personas, web search, and an agentic IDE — shipped to Android, Windows, and Web.</p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <article class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="post-content reveal">
+
+                <div class="carousel" id="eyuxCarousel">
+                    <div class="carousel__track">
+                        <div class="carousel__slide active">
+                            <img src="blog-eyux_web-1.png" alt="EyuX Web Version">
+                            <span class="carousel__label"><i class="fas fa-globe"></i> Web</span>
+                        </div>
+                        <div class="carousel__slide">
+                            <img src="blog-eyux_mobile-2.png" alt="EyuX Mobile Version">
+                            <span class="carousel__label"><i class="fas fa-mobile-alt"></i> Mobile</span>
+                        </div>
+                        <div class="carousel__slide">
+                            <img src="blog-eyux_desktop-2.png" alt="EyuX Desktop Version">
+                            <span class="carousel__label"><i class="fas fa-desktop"></i> Desktop</span>
+                        </div>
+                        <button class="carousel__btn carousel__btn--prev" id="carouselPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel__btn carousel__btn--next" id="carouselNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="carousel__dots" id="carouselDots">
+                        <button class="carousel__dot active" data-slide="0"></button>
+                        <button class="carousel__dot" data-slide="1"></button>
+                        <button class="carousel__dot" data-slide="2"></button>
+                    </div>
+                </div>
+
+                <h2>The Idea</h2>
+                <p>I wanted to build an AI assistant that wasn't just another ChatGPT wrapper. Something with <strong>real personality</strong> — where you could switch between different AI personas depending on what you needed. A creative writer, a code reviewer, a casual chat buddy.</p>
+                <p>More importantly, I wanted it to work everywhere — Android, Windows, and the web — from a single codebase.</p>
+
+                <h2>Why Expo?</h2>
+                <p>Expo was the natural choice. With <strong>Expo Router</strong> for navigation and the ability to target both mobile and web, I could ship to multiple platforms without maintaining separate codebases. The developer experience is unmatched.</p>
+                <p>I shared this project on <strong>r/expo</strong> and the community response was amazing — 16 upvotes and great technical discussions about the architecture.</p>
+
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>Switchable AI Personas</strong> — choose from different assistants optimized for different tasks</li>
+                    <li><strong>Bring Your Own Key (BYOK)</strong> — use your own Google Gemini API key</li>
+                    <li><strong>Agentic IDE</strong> — an integrated development environment powered by AI</li>
+                    <li><strong>Multi-thread branching</strong> — fork conversations into different directions</li>
+                    <li><strong>Web search</strong> — AI can search the web for up-to-date information</li>
+                    <li><strong>Cross-platform</strong> — Android, Windows (Microsoft Store), and Web</li>
+                </ul>
+
+                <h2>Lessons Learned</h2>
+                <blockquote>Ship early, ship often. The first version of EyuX was rough, but getting it into people's hands taught me more than months of polishing alone ever would.</blockquote>
+                <p>Building cross-platform taught me that the hard part isn't the code — it's the UX differences between platforms. What feels natural on mobile doesn't always work on desktop, and vice versa.</p>
+
+                <h2>Try EyuX</h2>
+                <div class="post-links">
+                    <a href="https://chat.eyux.com.et/" class="btn btn--primary btn--sm" target="_blank"><i class="fas fa-globe"></i> Web App</a>
+                    <a href="https://apps.microsoft.com/detail/9NX5DBW6NHW1" class="btn btn--ghost btn--sm" target="_blank"><i class="fab fa-microsoft"></i> Microsoft Store</a>
+                    <a href="https://eyux.en.uptodown.com/android" class="btn btn--ghost btn--sm" target="_blank"><i class="fab fa-android"></i> Android</a>
+                </div>
+
+                <div class="post-nav">
+                    <a href="/blog/omnisearch-windows-alternative"><i class="fas fa-arrow-left"></i> Previous Post</a>
+                    <a href="/blog/introducing-git-mood">Next Post <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand"><span>&lt;/&gt;</span> <span>Crafted by <span class="footer__brand-accent">Eyuel Engida</span></span></div>
+            <div class="footer__copy">&copy; <span id="currentYear"></span> All rights reserved</div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const navToggle = document.getElementById('navToggle'), navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => { navToggle.classList.toggle('active'); navLinks.classList.toggle('open'); document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : ''; });
+        navLinks.querySelectorAll('.nav__link').forEach(l => l.addEventListener('click', () => { navToggle.classList.remove('active'); navLinks.classList.remove('open'); document.body.style.overflow = ''; }));
+        const revealObs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+        const cursorWrap = document.getElementById('custom-cursor-wrap');
+        if (cursorWrap && window.matchMedia('(pointer: fine)').matches) {
+            cursorWrap.classList.add('cursor-hidden');
+            window.addEventListener('mousemove', (e) => { cursorWrap.classList.remove('cursor-hidden'); requestAnimationFrame(() => { cursorWrap.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`; }); });
+            document.body.addEventListener('mouseleave', () => cursorWrap.classList.add('cursor-hidden'));
+            document.body.addEventListener('mouseenter', () => cursorWrap.classList.remove('cursor-hidden'));
+            document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hovered')); el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hovered')); });
+        }
+
+        // --- Image Carousel ---
+        const slides = document.querySelectorAll('.carousel__slide');
+        const dots = document.querySelectorAll('.carousel__dot');
+        const prevBtn = document.getElementById('carouselPrev');
+        const nextBtn = document.getElementById('carouselNext');
+        let currentSlide = 0;
+
+        function goToSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+            nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.slide)));
+            });
+        }
+    </script>
+</body>
+</html>
