@@ -1,63 +1,303 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog - Coming Soon</title>
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #0b0b0b;
-      color: #ffffff;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Eyuel Engida</title>
+    <meta name="description"
+        content="Thoughts on building software, shipping products, and the tools I use — by Eyuel Engida.">
 
-    .box {
-      width: 100%;
-      max-width: 640px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 14px;
-      padding: 28px;
-      background: rgba(255, 255, 255, 0.04);
-    }
+    <meta property="og:title" content="Blog — Eyuel Engida">
+    <meta property="og:description" content="Thoughts on building software, shipping products, and the tools I use.">
+    <meta property="og:url" content="https://eyuel.com.et/blog">
+    <meta property="og:type" content="website">
 
-    h1 {
-      margin: 0 0 10px;
-      font-size: 2rem;
-      line-height: 1.2;
-    }
+    <link rel="icon" href="assets/brand/favicon-32.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 
-    p {
-      margin: 0 0 18px;
-      color: rgba(255, 255, 255, 0.75);
-      line-height: 1.6;
-    }
+    <style>
+        /* Blog-specific styles */
+        .blog-hero {
+            padding: calc(var(--header-height) + 3rem) 0 2rem;
+        }
 
-    a {
-      color: #00e0c6;
-      text-decoration: none;
-      font-weight: 600;
-    }
+        .blog-hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
 
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+        .blog-hero__desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 520px;
+        }
+
+        /* Post cards grid */
+        .blog__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+            padding-bottom: 4rem;
+        }
+
+        .post-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all 0.4s var(--ease-out);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px var(--accent-glow);
+        }
+
+        .post-card__img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            background: var(--bg-elevated);
+        }
+
+        .post-card__body {
+            padding: 1.25rem 1.5rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-card__meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+        }
+
+        .post-card__tag {
+            padding: 2px 8px;
+            background: var(--gradient-subtle);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            color: var(--accent-light);
+            font-weight: 500;
+        }
+
+        .post-card__title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .post-card__excerpt {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .post-card__read {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            transition: gap 0.3s ease;
+        }
+
+        .post-card:hover .post-card__read {
+            gap: 10px;
+        }
+
+        /* Empty state */
+        .blog__empty {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-tertiary);
+        }
+
+        @media (max-width: 768px) {
+            .blog__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <main class="box">
-    <h1>Blog coming soon</h1>
-    <p>
-      preparing this page. Check back soon.
-    </p>
-    <a href="https://www.eyuel.com.et">Back to Home</a>
-  </main>
+    <!-- Custom cursor -->
+    <div id="custom-cursor-wrap">
+        <svg id="custom-cursor" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 21 Q 10 14 3 3 L 22 12 Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </div>
+
+    <div class="gradient-orb gradient-orb--1" aria-hidden="true"></div>
+    <div class="gradient-orb gradient-orb--2" aria-hidden="true"></div>
+
+    <!-- Header -->
+    <header class="header scrolled" id="header">
+        <div class="container header__inner">
+            <a href="/" class="logo">
+                <img src="assets/brand/logo.png" alt="EE" class="logo__img">
+                <span class="logo__text">Eyuel</span>
+            </a>
+            <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav__links" id="navLinks">
+                <a href="/" class="nav__link">Home</a>
+                <a href="/#about" class="nav__link">About</a>
+                <a href="/#projects" class="nav__link">Projects</a>
+                <a href="/#skills" class="nav__link">Skills</a>
+                <a href="/#contact" class="nav__link">Contact</a>
+                <a href="/blog" class="nav__link active">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1 class="blog-hero__title reveal">Blog</h1>
+            <p class="blog-hero__desc reveal">Thoughts on building software, shipping products, and the tools I use.</p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Blog Posts -->
+    <section class="section" style="padding-top: 2rem;">
+        <div class="container">
+            <div class="blog__grid stagger-children">
+
+                <!-- Post 1: OmniSearch -->
+                <a href="/blog/omnisearch-windows-alternative" class="post-card reveal" style="--i:0">
+                    <img src="assets/projects/omni-search2.jpg" alt="OmniSearch" class="post-card__img" loading="lazy">
+                    <div class="post-card__body">
+                        <div class="post-card__meta">
+                            <span class="post-card__tag">Launch</span>
+                            <span>June 2025</span>
+                        </div>
+                        <h2 class="post-card__title">I Built an Alternative to Windows Search</h2>
+                        <p class="post-card__excerpt">OmniSearch uses a native C++ NTFS scanner with a Rust bridge and
+                            Tauri + React UI. Fast indexing, duplicate finder, and more.</p>
+                        <span class="post-card__read">Read more <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Post 2: EyuX Expo Project -->
+                <a href="/blog/building-eyux-with-expo" class="post-card reveal" style="--i:1">
+                    <img src="assets/projects/eyux-ai-assistant.png" alt="EyuX AI" class="post-card__img"
+                        loading="lazy">
+                    <div class="post-card__body">
+                        <div class="post-card__meta">
+                            <span class="post-card__tag">Project</span>
+                            <span>September 2025</span>
+                        </div>
+                        <h2 class="post-card__title">Building EyuX: My Most Advanced Expo Project</h2>
+                        <p class="post-card__excerpt">How I built a cross-platform AI assistant with switchable
+                            personas, web search, and an agentic IDE — shipped to Android, Windows, and Web.</p>
+                        <span class="post-card__read">Read more <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Post 3: git-mood -->
+                <a href="/blog/introducing-git-mood" class="post-card reveal" style="--i:2">
+                    <img src="assets/projects/git-mood.png" alt="git-mood" class="post-card__img" loading="lazy">
+                    <div class="post-card__body">
+                        <div class="post-card__meta">
+                            <span class="post-card__tag">Open Source</span>
+                            <span>2025</span>
+                        </div>
+                        <h2 class="post-card__title">Introducing git-mood: AI-Powered Git Assistant</h2>
+                        <p class="post-card__excerpt">A CLI tool that generates Conventional Commits, deep code reviews,
+                            and README files — all powered by Google Gemini.</p>
+                        <span class="post-card__read">Read more <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <span>&lt;/&gt;</span>
+                <span>Crafted by <span class="footer__brand-accent">Eyuel Engida</span></span>
+            </div>
+            <div class="footer__copy">&copy; <span id="currentYear"></span> All rights reserved</div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Mobile nav
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+        });
+        navLinks.querySelectorAll('.nav__link').forEach(l => l.addEventListener('click', () => {
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('open');
+            document.body.style.overflow = '';
+        }));
+
+        // Reveal animations
+        const revealObs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+        // Back to top
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+        }, { passive: true });
+
+        // Custom cursor
+        const cursorWrap = document.getElementById('custom-cursor-wrap');
+        if (cursorWrap && window.matchMedia('(pointer: fine)').matches) {
+            cursorWrap.classList.add('cursor-hidden');
+            window.addEventListener('mousemove', (e) => {
+                cursorWrap.classList.remove('cursor-hidden');
+                requestAnimationFrame(() => {
+                    cursorWrap.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+                });
+            });
+            document.body.addEventListener('mouseleave', () => cursorWrap.classList.add('cursor-hidden'));
+            document.body.addEventListener('mouseenter', () => cursorWrap.classList.remove('cursor-hidden'));
+            document.querySelectorAll('a, button, .post-card').forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hovered'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hovered'));
+            });
+        }
+    </script>
 </body>
 
 </html>
