@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Step-by-step guide to bypass the UAC admin prompt for OmniSearch using Windows Task Scheduler. Launch silently without popups." />
+  <title>Silent Admin Launcher Guide | OmniSearch</title>
+
+  <meta property="og:title" content="OmniSearch — Silent Admin Launcher Guide" />
+  <meta property="og:description"
+    content="Learn how to bypass UAC prompts and launch OmniSearch silently using Task Scheduler." />
+  <meta property="og:url" content="https://www.eyuel.com.et/omni-search/uac-guide.html" />
+
+  <script>
+    (function () {
+      const base = document.createElement("base");
+      base.href =
+        window.location.protocol === "file:"
+          ? window.location.href.replace(/[#?].*$/, "")
+          : "/omni-search/";
+      document.head.appendChild(base);
+    })();
+  </script>
+  <link rel="icon" href="logo1.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="guide-page">
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <img src="logo1.png" alt="OmniSearch logo" />
+        <span class="brand-name">OmniSearch</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#features" class="nav-link">Features</a>
+        <a href="index.html#downloads" class="nav-link">Download</a>
+        <a href="index.html#faq" class="nav-link is-active">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero / Title -->
+    <section class="guide-hero">
+      <div class="container">
+        <a href="index.html#faq" class="guide-back-link">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Back to FAQ
+        </a>
+        <div class="guide-hero-content">
+          <span class="guide-step-badge" style="font-size: 0.8rem; padding: 0.3rem 0.9rem;">Setup Guide</span>
+          <h1>Silent Admin Launcher</h1>
+          <p class="guide-hero-lead">OmniSearch needs admin rights to read raw NTFS journals (MFT/USN). This guide
+            walks you through configuring Windows Task Scheduler to launch OmniSearch with elevated privileges — no UAC
+            popup, no CMD flash.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps -->
+    <section class="guide-steps-section">
+      <div class="container">
+
+        <!-- Step 1: Text Left / Image Right -->
+        <div class="guide-step">
+          <div class="guide-text">
+            <span class="guide-step-badge">Step 1</span>
+            <h2>Create Elevated Task</h2>
+            <p>Open <strong>Task Scheduler</strong> (search for it in Start) and select <strong>"Create Task"</strong>
+              from the right-side Actions panel.</p>
+            <p>Name the task <code>Omnisearch</code>. Under the <strong>General</strong> tab, check the box for
+              <strong>"Run with highest privileges"</strong>. This is what grants admin rights without the UAC popup.
+            </p>
+          </div>
+          <div class="guide-media">
+            <figure class="window-frame">
+              <div class="window-bar">
+                <div class="window-controls"><span></span><span></span><span></span></div>
+                <div class="window-title">Task Scheduler — General</div>
+              </div>
+              <img src="task-1-general.png"
+                alt="Task Scheduler General tab with Run with highest privileges checked" />
+            </figure>
+          </div>
+        </div>
+
+        <!-- Step 2: Image Left / Text Right -->
+        <div class="guide-step guide-step--reverse">
+          <div class="guide-text">
+            <span class="guide-step-badge">Step 2</span>
+            <h2>Map the Action</h2>
+            <p>Switch to the <strong>Actions</strong> tab and click <strong>New…</strong></p>
+            <p>In the dialog, click <strong>Browse</strong> and navigate to your <code>omni-search.exe</code> file. This
+              tells Windows exactly which program to launch with elevated rights.</p>
+          </div>
+          <div class="guide-media">
+            <figure class="window-frame">
+              <div class="window-bar">
+                <div class="window-controls"><span></span><span></span><span></span></div>
+                <div class="window-title">Task Scheduler — Actions</div>
+              </div>
+              <img src="task-2-action.png" alt="Task Scheduler Actions tab with OmniSearch executable selected" />
+            </figure>
+          </div>
+        </div>
+
+        <!-- Step 3: Text Left / Image Right -->
+        <div class="guide-step">
+          <div class="guide-text">
+            <span class="guide-step-badge">Step 3</span>
+            <h2>Battery Compatibility</h2>
+            <p>Go to the <strong>Conditions</strong> tab and <strong>uncheck</strong> the option:</p>
+            <p><em>"Start the task only if the computer is on AC power."</em></p>
+            <p>Without this, OmniSearch won't launch on laptops running on battery — which is most of the time when
+              you're actually searching for files.</p>
+          </div>
+          <div class="guide-media">
+            <figure class="window-frame">
+              <div class="window-bar">
+                <div class="window-controls"><span></span><span></span><span></span></div>
+                <div class="window-title">Task Scheduler — Conditions</div>
+              </div>
+              <img src="task-3-conditions.png" alt="Task Scheduler Conditions tab with AC power unchecked" />
+            </figure>
+          </div>
+        </div>
+
+        <!-- Step 4: Image Left / Text Right -->
+        <div class="guide-step guide-step--reverse">
+          <div class="guide-text">
+            <span class="guide-step-badge">Step 4</span>
+            <h2>Silent Startup (No CMD Flash)</h2>
+            <p>When you trigger a scheduled task manually, Windows briefly flashes a black command window. To avoid
+              this, create a small VBScript file.</p>
+            <p>Create a file called <code>OmniSearch.vbs</code> anywhere convenient and paste the script below. Then
+              create a <strong>shortcut</strong> to this <code>.vbs</code> file and use it as your main desktop/taskbar
+              icon.</p>
+            <div class="code-block-wrapper">
+              <div class="code-block-header">
+                <span>OmniSearch.vbs</span>
+                <button class="btn btn-secondary btn-copy" id="btn-copy-vbs" onclick="copyVbsCode()">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  Copy
+                </button>
+              </div>
+              <pre class="code-block" id="vbs-code"><code>Set WshShell = CreateObject("WScript.Shell")
+WshShell.Run "schtasks /run /tn ""Omnisearch""", 0, False</code></pre>
+            </div>
+          </div>
+          <div class="guide-media">
+            <figure class="window-frame">
+              <div class="window-bar">
+                <div class="window-controls"><span></span><span></span><span></span></div>
+                <div class="window-title">OmniSearch.vbs</div>
+              </div>
+              <img src="task-4-script.png" alt="VBS script file for silent OmniSearch launch" />
+            </figure>
+          </div>
+        </div>
+
+        <!-- Done callout -->
+        <div class="guide-done-card">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#22c55e" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <div>
+            <h3>You're all set!</h3>
+            <p>Double-click your VBS shortcut and OmniSearch will launch with full admin rights — silently, instantly,
+              and without any UAC popup.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> OmniSearch. Built by Eyuel Engida.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#downloads">Downloads</a>
+        <a href="https://github.com/Eul45/omni-search" target="_blank" aria-label="GitHub Repository"
+          class="github-link">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+    // Copy VBS code to clipboard
+    function copyVbsCode() {
+      const codeEl = document.getElementById("vbs-code");
+      const btn = document.getElementById("btn-copy-vbs");
+      if (!codeEl || !btn) return;
+
+      const text = codeEl.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!`;
+        btn.style.borderColor = "#22c55e";
+        btn.style.color = "#22c55e";
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.borderColor = "";
+          btn.style.color = "";
+        }, 2000);
+      }).catch(() => {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+      });
+    }
+  </script>
+</body>
+
+</html>
