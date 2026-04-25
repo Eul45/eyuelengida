@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const targetId = link.getAttribute("href").substring(1);
       const targetSection = document.getElementById(targetId);
-      
+
       if (targetSection) {
         // Scroll to element offset by fixed navbar height (approx 80px)
         const y = targetSection.getBoundingClientRect().top + window.scrollY - 80;
