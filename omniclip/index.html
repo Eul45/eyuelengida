@@ -194,8 +194,49 @@
       <article class="download-card fade-up">
         <div class="dl-icon" style="font-size:2.5rem">📱</div>
         <h3>Android — APK Download</h3>
-        <p>Download the companion app APK and install it on your Android phone.</p>
-        <a class="btn btn-secondary w-full" href="omniclipv0.1.0.apk" data-asset-path="omniclipv0.1.0.apk" download>Download APK (v0.1.0)</a>
+        <p>Choose the correct version for your phone's processor to install the companion app.</p>
+        
+        <button id="apk-toggle-btn" class="btn btn-secondary w-full" style="margin-top: auto;" onclick="document.getElementById('apk-options').style.display='flex'; this.style.display='none';">View Download Options</button>
+
+        <div id="apk-options" style="display: none; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: -0.5rem;">
+            <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-muted);">Available Versions</span>
+            <button onclick="document.getElementById('apk-options').style.display='none'; document.getElementById('apk-toggle-btn').style.display='inline-flex';" style="background: none; border: none; cursor: pointer; color: var(--text-muted); display: flex; align-items: center; gap: 4px; font-size: 0.85rem; font-weight: 600; padding: 4px 8px; border-radius: 4px; transition: background 0.2s;" onmouseover="this.style.background='var(--border)'" onmouseout="this.style.background='none'">
+              Collapse <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+            </button>
+          </div>
+
+          <div style="text-align: left; padding: 1.25rem; background: var(--bg-alt); border-radius: var(--radius-sm); border: 1px solid var(--border);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+              <h4 style="margin: 0; font-size: 1.05rem; display: flex; align-items: center;">
+                Modern Phones 
+                <span class="tooltip" tabindex="0" style="margin-left: 6px; outline: none;">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  <span class="tooltip-text"><strong>Supported Devices:</strong><br/>Samsung Galaxy S6 & newer, Note 5 & newer, all Google Pixels, OnePlus 3 & newer, modern A-series (A14, A34, A54), Xiaomi, Moto G (newer). Covers ~99% of phones since 2017.</span>
+                </span>
+              </h4>
+              <span class="dl-badge" style="margin-bottom: 0; margin-left: 0.5rem;">Recommended</span>
+            </div>
+            <p style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-muted);">
+              For most phones made after 2017 (e.g. Samsung Galaxy S/Note series, Pixel, OnePlus, modern A-series).
+            </p>
+            <a class="btn btn-primary w-full" href="app-arm64-v8a-release.apk" data-asset-path="app-arm64-v8a-release.apk" download>Download 64-bit (arm64-v8a)</a>
+          </div>
+
+          <div style="text-align: left; padding: 1.25rem; background: var(--bg-alt); border-radius: var(--radius-sm); border: 1px solid var(--border);">
+            <h4 style="margin: 0 0 0.5rem; font-size: 1.05rem; display: flex; align-items: center;">
+              Older / Budget Phones
+              <span class="tooltip" tabindex="0" style="margin-left: 6px; outline: none;">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <span class="tooltip-text"><strong>Supported Devices:</strong><br/>Legacy 32-bit devices such as Samsung Galaxy A10s, J-series, A01, A02, Moto G (1st-5th Gen), Galaxy S5, Note 4, and very cheap entry-level models.</span>
+              </span>
+            </h4>
+            <p style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-muted);">
+              If the version above fails to install, use this one. Works on older/budget models (e.g. Samsung Galaxy A10s, J-series).
+            </p>
+            <a class="btn btn-secondary w-full" href="app-armeabi-v7a-release.apk" data-asset-path="app-armeabi-v7a-release.apk" download>Download 32-bit (armeabi-v7a)</a>
+          </div>
+        </div>
       </article>
     </div>
   </div>
