@@ -108,14 +108,14 @@
 
         .post-content strong { color: var(--text-primary); }
 
-        .post-content a {
+        .post-content a:not(.btn) {
             color: var(--accent-light);
             text-decoration: underline;
             text-underline-offset: 3px;
             transition: color 0.2s ease;
         }
 
-        .post-content a:hover { color: var(--accent); }
+        .post-content a:not(.btn):hover { color: var(--accent); }
 
         .post-content img {
             width: 100%;

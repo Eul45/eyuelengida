@@ -154,17 +154,17 @@
                         complex ideas into simple, beautiful software.
                     </p>
 
-                    <div class="about__stats stagger-children">
-                        <div class="stat reveal" style="--i:0">
-                            <div class="stat__number">12+</div>
+                    <div class="about__stats stagger-children" id="statsContainer">
+                        <div class="stat reveal-scale" style="--i:0">
+                            <div class="stat__number"><span class="counter" data-target="12">0</span>+</div>
                             <div class="stat__label">Projects</div>
                         </div>
-                        <div class="stat reveal" style="--i:1">
-                            <div class="stat__number">5+</div>
+                        <div class="stat reveal-scale" style="--i:1">
+                            <div class="stat__number"><span class="counter" data-target="5">0</span>+</div>
                             <div class="stat__label">Platforms</div>
                         </div>
-                        <div class="stat reveal" style="--i:2">
-                            <div class="stat__number">3</div>
+                        <div class="stat reveal-scale" style="--i:2">
+                            <div class="stat__number"><span class="counter" data-target="3">0</span></div>
                             <div class="stat__label">Certificates</div>
                         </div>
                     </div>
@@ -918,6 +918,32 @@
                     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hovered'));
                 });
             }
+            // --- Number Counter Animation ---
+            const counters = document.querySelectorAll('.counter');
+            const countObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = +entry.target.getAttribute('data-target');
+                        let count = 0;
+                        const duration = 1500; // 1.5 seconds
+                        const increment = target / (duration / 16); // 60fps
+
+                        const updateCount = () => {
+                            count += increment;
+                            if (count < target) {
+                                entry.target.innerText = Math.ceil(count);
+                                requestAnimationFrame(updateCount);
+                            } else {
+                                entry.target.innerText = target;
+                            }
+                        };
+                        updateCount();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => countObserver.observe(counter));
 
         });
     </script>

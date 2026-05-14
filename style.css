@@ -14,12 +14,12 @@
   --text-secondary: rgba(240, 240, 245, 0.6);
   --text-tertiary: rgba(240, 240, 245, 0.35);
 
-  --accent: #6366f1;
-  --accent-light: #818cf8;
-  --accent-glow: rgba(99, 102, 241, 0.15);
-  --accent-glow-strong: rgba(99, 102, 241, 0.3);
-  --gradient-accent: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
-  --gradient-subtle: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.08));
+  --accent: #D97757;
+  --accent-light: #e89e86;
+  --accent-glow: rgba(217, 119, 87, 0.15);
+  --accent-glow-strong: rgba(217, 119, 87, 0.3);
+  --gradient-accent: linear-gradient(135deg, #c45b3a 0%, #D97757 50%, #e89e86 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(217, 119, 87, 0.08), rgba(232, 158, 134, 0.08));
 
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Space Grotesk', 'Inter', sans-serif;
@@ -152,7 +152,7 @@ body::before {
 .gradient-orb--1 {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(99,102,241,0.12), transparent 70%);
+  background: radial-gradient(circle, rgba(217, 119, 87, 0.12), transparent 70%);
   top: -200px;
   right: -200px;
   animation: orbFloat1 20s ease-in-out infinite;
@@ -161,7 +161,7 @@ body::before {
 .gradient-orb--2 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(139,92,246,0.08), transparent 70%);
+  background: radial-gradient(circle, rgba(232, 158, 134, 0.08), transparent 70%);
   bottom: 20%;
   left: -150px;
   animation: orbFloat2 25s ease-in-out infinite;
