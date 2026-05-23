@@ -260,18 +260,19 @@
             </div>
             <h3>Windows App</h3>
             <p>Install via the Microsoft Store for auto-updates, or download standalone binaries.</p>
-            
+
             <div style="display: flex; flex-direction: column; gap: 0.75rem; width: 100%; margin-top: auto;">
               <a class="btn btn-primary w-full" href="https://apps.microsoft.com/detail/9N53Z3QVL322?hl=en-us&gl=US"
                 target="_blank" rel="noreferrer">Get it from Microsoft Store</a>
-              <a class="btn btn-secondary w-full" href="https://ojwnwpb4x7waujjw.public.blob.vercel-storage.com/OmniClip_v0.1.14_x64.exe" download>
+              <a class="btn btn-secondary w-full"
+                href="https://ojwnwpb4x7waujjw.public.blob.vercel-storage.com/OmniClip_v0.1.14_x64.exe" download>
                 📦 Download Portable (.exe)
               </a>
             </div>
           </article>
           <article class="download-card fade-up">
             <div class="dl-icon" style="font-size:2.5rem">📱</div>
-            <h3>Android — APK Download</h3>
+            <h3>Android - APK Download</h3>
             <p>Choose the correct version for your phone's processor to install the companion app.</p>
 
             <button id="apk-toggle-btn" class="btn btn-secondary w-full" style="margin-top: auto;"
@@ -348,6 +349,42 @@
                   download>Download 32-bit (armeabi-v7a)</a>
               </div>
             </div>
+
+            <!-- Developer Section Link inside Android Card -->
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--border);">
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">
+                Are you a developer?
+                <button id="dev-toggle-btn" class="dev-link-btn"
+                  style="background: none; border: none; color: var(--accent); font-weight: 600; cursor: pointer; text-decoration: underline; font-family: inherit; font-size: 0.85rem; padding: 0 2px;">
+                  Try Kotlin Native version
+                </button>
+              </p>
+
+              <div id="dev-panel"
+                style="display: none; text-align: left; margin-top: 1rem; background: var(--bg-alt); border-radius: var(--radius-sm); padding: 1.25rem; border: 1px solid var(--border);">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                  <div
+                    style="width: 32px; height: 32px; border-radius: 4px; background: linear-gradient(135deg, #7F52FF, #E52E71, #FF8A00); display: flex; align-items: center; justify-content: center;">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="white">
+                      <path d="M24 24H0V0h24L12 12z" />
+                    </svg>
+                  </div>
+                  <h4 style="margin: 0; font-size: 0.95rem; font-weight: bold;">Kotlin Native Companion</h4>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.8rem; line-height: 1.5; margin-bottom: 1rem;">
+                  For fun and performance, we rewrote the companion app in <strong>100% native Kotlin + Jetpack
+                    Compose</strong>. Unlike the Expo version, it runs directly on Android APIs, offering a
+                  feather-light memory footprint, ultra-fast cold start times, and system-native UI elements.
+                </p>
+                <a class="btn btn-primary w-full"
+                  href="https://ojwnwpb4x7waujjw.public.blob.vercel-storage.com/OmniClip-Kotlin-v0.1.apk"
+                  style="background: linear-gradient(135deg, #7F52FF, #FF007F); color: white; border: none; font-weight: bold; font-size: 0.85rem; padding: 0.5rem 1rem;"
+                  download>
+                  📥 Download Kotlin APK
+                </a>
+              </div>
+            </div>
+
           </article>
         </div>
       </div>
@@ -374,7 +411,9 @@
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="6 9 12 15 18 9" />
               </svg></button>
-            <div class="faq-answer">Click "Start Sync Server" on the desktop app to generate a QR code, scan it using the Android app, then confirm the connection approval prompt on your PC to securely link the devices.</div>
+            <div class="faq-answer">Click "Start Sync Server" on the desktop app to generate a QR code, scan it using
+              the Android app, then confirm the connection approval prompt on your PC to securely link the devices.
+            </div>
           </div>
           <div class="faq-item">
             <button class="faq-question">Is my clipboard data encrypted?<svg viewBox="0 0 24 24" fill="none"
