@@ -134,4 +134,19 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // Developer Kotlin toggle
+  const devToggle = document.getElementById("dev-toggle-btn");
+  const devPanel = document.getElementById("dev-panel");
+  if (devToggle && devPanel) {
+    devToggle.addEventListener("click", () => {
+      if (devPanel.style.display === "none") {
+        devPanel.style.display = "block";
+        devToggle.textContent = "Hide Kotlin Native version";
+      } else {
+        devPanel.style.display = "none";
+        devToggle.textContent = "Try Kotlin Native version";
+      }
+    });
+  }
 });
