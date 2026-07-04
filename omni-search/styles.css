@@ -25,6 +25,42 @@
   --radius-lg: 16px;
 
   --font-sans: "Inter", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+
+  --navbar-bg: rgba(255, 255, 255, 0.85);
+  --code-pink: #be185d;
+  --code-teal: #0f766e;
+  --code-indigo: #4f46e5;
+  --footer-bg: #ffffff;
+}
+
+/* Dark theme — same structure, inverted for contrast. Brand slate/navy identity is kept,
+   the primary button flips from dark-on-light to light-on-dark like most dark UIs do. */
+[data-theme="dark"] {
+  --bg-page: #0b1220;
+  --bg-surface: #121a2b;
+  --bg-alt: #1a2436;
+  --bg-dark: #05070d;
+
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-inverse: #f8fafc;
+
+  --primary: #e2e8f0;
+  --primary-hover: #ffffff;
+  --primary-fg: #0f172a;
+
+  --border: #243044;
+  --border-dark: #334155;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.45), 0 4px 6px -4px rgb(0 0 0 / 0.45);
+
+  --navbar-bg: rgba(11, 18, 32, 0.85);
+  --code-pink: #f472b6;
+  --code-teal: #2dd4bf;
+  --code-indigo: #a5b4fc;
+  --footer-bg: #0b1220;
 }
 
 * {
@@ -37,16 +73,74 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
 body {
   font-family: var(--font-sans);
   color: var(--text-main);
   background-color: var(--bg-page);
   line-height: 1.6;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Accessible focus ring, consistent in both themes */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--primary);
+  color: var(--primary-fg);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.875rem;
+  z-index: 999;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
 }
 
 img {
   max-width: 100%;
   display: block;
+}
+
+/* Smooth, cheap theme-switch transition for the common themed surfaces */
+.window-frame,
+.window-bar,
+.bento-card,
+.release-panel,
+.release-highlights article,
+.android-card,
+.info-card,
+.donate-card,
+.download-card,
+.faq-link-card,
+.android-local-panel,
+.star-badge,
+.btn-secondary,
+code {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
 
 a {
@@ -105,9 +199,14 @@ h3 {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--navbar-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.navbar.is-scrolled {
+  box-shadow: var(--shadow-sm);
 }
 
 .nav-inner {
@@ -137,15 +236,122 @@ h3 {
 }
 
 .nav-link {
+  position: relative;
   font-size: 0.9375rem;
   font-weight: 500;
   color: var(--text-muted);
+  padding: 0.35rem 0;
   transition: color 0.2s;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -2px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: right 0.2s ease;
 }
 
 .nav-link:hover,
 .nav-link.is-active {
   color: var(--text-main);
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  right: 0;
+}
+
+/* Right-hand controls: theme switch + mobile hamburger */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-toggle,
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.theme-toggle {
+  width: 2.5rem;
+  height: 2.5rem;
+  position: relative;
+}
+
+.theme-toggle:hover,
+.menu-toggle:hover {
+  background: var(--bg-alt);
+}
+
+.theme-toggle svg {
+  position: absolute;
+  width: 19px;
+  height: 19px;
+  transition: opacity 0.2s ease, transform 0.3s ease;
+}
+
+.theme-toggle .icon-moon {
+  opacity: 0;
+  transform: scale(0.5) rotate(-30deg);
+}
+
+.theme-toggle .icon-sun {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun {
+  opacity: 0;
+  transform: scale(0.5) rotate(30deg);
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* Hamburger — hidden on desktop, shown at the mobile breakpoint */
+.menu-toggle {
+  display: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0;
+}
+
+.menu-toggle span {
+  width: 18px;
+  height: 2px;
+  background: var(--text-main);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.menu-toggle.is-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.is-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 /* Buttons */
@@ -229,8 +435,9 @@ h3 {
 .badge {
   display: inline-block;
   padding: 0.25rem 0.75rem;
-  background: #e2e8f0;
-  color: #334155;
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
   border-radius: 99px;
   font-size: 0.8125rem;
   font-weight: 600;
@@ -324,6 +531,70 @@ h3 {
   height: auto;
 }
 
+/* Release Spotlight */
+.release-section {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.release-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 2rem;
+  align-items: stretch;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: var(--shadow-md);
+}
+
+.release-copy p {
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.release-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.release-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.release-highlights article,
+.android-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.release-highlights article {
+  padding: 1.2rem;
+}
+
+.release-highlights strong,
+.release-highlights span {
+  display: block;
+}
+
+.release-highlights strong {
+  margin-bottom: 0.4rem;
+}
+
+.release-highlights span {
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
 /* Bento/Feature Grid */
 .bento-grid {
   display: grid;
@@ -372,6 +643,105 @@ h3 {
 .simple-card p {
   color: var(--text-muted);
   font-size: 0.9375rem;
+}
+
+/* Android Companion */
+.android-section {
+  background:
+    radial-gradient(circle at 6% 10%, rgba(16, 185, 129, 0.08), transparent 32%),
+    radial-gradient(circle at 92% 0%, rgba(15, 23, 42, 0.08), transparent 34%),
+    var(--bg-page);
+}
+
+.android-showcase {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.42fr) minmax(0, 1fr) minmax(130px, 0.42fr);
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.phone-frame {
+  width: min(100%, 230px);
+  margin: 0 auto;
+  padding: 0.55rem;
+  border-radius: 2rem;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  box-shadow: var(--shadow-lg);
+}
+
+.phone-frame.slim {
+  width: min(100%, 190px);
+}
+
+.phone-frame img {
+  width: 100%;
+  aspect-ratio: 9 / 19.5;
+  object-fit: cover;
+  border-radius: 1.45rem;
+  background: #020617;
+}
+
+.android-desktop-shot img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.android-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.android-card {
+  padding: 1.25rem;
+}
+
+.android-card p {
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  line-height: 1.6;
+}
+
+.android-card code {
+  color: var(--code-teal);
+  background: rgba(20, 184, 166, 0.1);
+}
+
+.android-local-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 2rem;
+  align-items: center;
+  margin-top: 2rem;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.android-local-panel p {
+  color: var(--text-muted);
+}
+
+.android-local-media {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.38fr) minmax(0, 0.62fr);
+  gap: 1rem;
+  align-items: center;
+}
+
+.android-local-media .window-frame img {
+  width: 100%;
+  aspect-ratio: 1.35 / 1;
+  object-fit: contain;
+  object-position: center;
+  background: #0f172a;
 }
 
 /* Download Grid */
@@ -423,7 +793,7 @@ code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.875em;
   background: var(--bg-alt);
-  color: #be185d;
+  color: var(--code-pink);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
 }
@@ -518,9 +888,10 @@ code {
 
 /* Footer */
 .site-footer {
-  background: #ffffff;
+  background: var(--footer-bg);
   border-top: 1px solid var(--border);
   padding: 2.5rem 0;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .footer-inner {
@@ -551,21 +922,126 @@ code {
   color: var(--text-main);
 }
 
+/* Back to top */
+.back-to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--primary-fg);
+  border: none;
+  border-radius: 50%;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  z-index: 40;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--primary-hover);
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Scroll reveal — subtle one-time fade/rise for card grids as they enter view.
+   JS adds/removes these classes; reduced-motion users see content immediately (see top of file). */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Responsive */
+
+/* Tablet step: ease multi-column grids down to 2 columns before mobile collapses them to 1 */
+@media (max-width: 1080px) {
+
+  .bento-grid,
+  .download-grid,
+  .android-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 900px) {
 
   .hero-grid,
-  .grid-layout {
+  .grid-layout,
+  .release-panel,
+  .android-local-panel {
     grid-template-columns: 1fr;
   }
 
   .bento-grid,
-  .download-grid {
+  .download-grid,
+  .release-highlights,
+  .android-grid,
+  .android-showcase,
+  .android-local-media {
     grid-template-columns: 1fr;
   }
 
+  .menu-toggle {
+    display: inline-flex;
+  }
+
   .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 1.5rem;
+    transition: max-height 0.3s ease, opacity 0.25s ease, padding 0.3s ease;
+  }
+
+  .nav-links.is-open {
+    max-height: 30rem;
+    opacity: 1;
+    padding: 0.5rem 1.5rem 1.25rem;
+  }
+
+  .nav-link {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+  }
+
+  .nav-link::after {
     display: none;
+  }
+
+  .nav-links .nav-link:last-child {
+    border-bottom: none;
   }
 
   .hero-section {
@@ -580,12 +1056,48 @@ code {
     align-items: center;
   }
 
+  .android-desktop-shot {
+    order: -1;
+  }
+
+  .phone-frame,
+  .phone-frame.slim {
+    width: min(260px, 100%);
+  }
+
   .footer-inner {
     flex-direction: column;
     text-align: center;
     justify-content: center;
   }
 
+}
+
+/* Small phones: tighten section spacing and stack remaining 2-col grids */
+@media (max-width: 560px) {
+
+  .page-section {
+    padding: 3rem 0;
+  }
+
+  .hero-section {
+    padding: 3rem 0 2.5rem;
+  }
+
+  .release-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .back-to-top {
+    right: 1rem;
+    bottom: 1rem;
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+  }
 }
 
 .github-btn {
@@ -700,7 +1212,7 @@ code {
   direction: rtl;
 }
 
-.guide-step--reverse > * {
+.guide-step--reverse>* {
   direction: ltr;
 }
 
@@ -741,7 +1253,7 @@ code {
 
 .guide-text code {
   background: rgba(99, 102, 241, 0.08);
-  color: #4f46e5;
+  color: var(--code-indigo);
   border: 1px solid rgba(99, 102, 241, 0.2);
 }
 
@@ -850,6 +1362,7 @@ code {
 
 /* ── Guide Page Responsive ── */
 @media (max-width: 768px) {
+
   .guide-step,
   .guide-step--reverse {
     grid-template-columns: 1fr;

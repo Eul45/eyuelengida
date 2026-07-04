@@ -5,18 +5,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="OmniSearch is a high-performance Windows desktop file search app built with Tauri v2, Rust, and C++ for fast NTFS indexing, duplicate cleanup, and inline content search." />
+    content="OmniSearch is a high-performance Windows desktop and Android file search app built with Tauri v2, Rust, C++, and Kotlin for fast NTFS indexing, secure LAN sync, duplicate cleanup, previews, and inline content search." />
   <title>OmniSearch | High-Performance Windows File Search</title>
 
   <!-- Open Graph / Twitter Meta -->
-<meta name="twitter:card" content="summary_large_image">
-<meta property="og:site_name" content="OmniSearch" /> <meta property="og:title" content="OmniSearch" />
-<meta property="og:description" content="Fast Windows desktop search with live NTFS indexing, multithreaded duplicate finder, Quick Window mode, and inline content search." />
-<meta property="og:image" content="https://www.eyuel.com.et/omni-search/screenshot-1.png" />
-<meta property="og:url" content="https://www.eyuel.com.et/omni-search" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta property="og:image"
-        content="https://raw.githubusercontent.com/Eul45/eyuelengida/main/omni-search/Screenshot_page.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:site_name" content="OmniSearch" />
+  <meta property="og:title" content="OmniSearch" />
+  <meta property="og:description"
+    content="Fast Windows desktop search with live NTFS indexing, Android LAN sync, file transfer, duplicate cleanup, Quick Window mode, and inline content search." />
+  <meta property="og:image" content="https://www.eyuel.com.et/omni-search/screenshot-1.png" />
+  <meta property="og:url" content="https://www.eyuel.com.et/omni-search" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image"
+    content="https://raw.githubusercontent.com/Eul45/eyuelengida/main/omni-search/Screenshot_page.png">
 
   <script>
     (function () {
@@ -30,37 +32,72 @@
   </script>
   <link rel="icon" href="logo1.png" type="image/png" />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Set theme before first paint to avoid a flash of the wrong mode -->
+  <script>
+    (function () {
+      const stored = localStorage.getItem("omnisearch-theme");
+      const theme = stored === "dark" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <meta name="theme-color" content="#0f172a" />
 </head>
 
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
   <!-- Modern Sticky Navbar -->
-  <header class="navbar">
+  <header class="navbar" id="siteNavbar">
     <div class="container nav-inner">
       <a href="#home" class="brand">
         <img src="logo1.png" alt="OmniSearch logo" />
         <span class="brand-name">OmniSearch</span>
       </a>
-      <nav class="nav-links">
+
+      <nav class="nav-links" id="navLinks">
         <a href="#home" class="nav-link is-active" data-nav-link="home">Home</a>
+        <a href="#release" class="nav-link" data-nav-link="release">Latest</a>
         <a href="#features" class="nav-link" data-nav-link="features">Features</a>
+        <a href="#android" class="nav-link" data-nav-link="android">Android</a>
         <a href="#downloads" class="nav-link" data-nav-link="downloads">Download</a>
         <a href="#guide" class="nav-link" data-nav-link="guide">Syntax Guide</a>
         <a href="#faq" class="nav-link" data-nav-link="faq">FAQ</a>
         <a href="#contact" class="nav-link" data-nav-link="contact">Contact</a>
       </nav>
+
+      <div class="nav-controls">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode" title="Switch theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+          </svg>
+        </button>
+
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu"
+          aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <!-- Hero Section -->
     <section id="home" class="hero-section" data-nav-section="home">
       <div class="container hero-grid">
         <div class="hero-content">
-          <span class="badge">Built with Tauri v2, Rust & C++</span>
+          <span class="badge">Desktop + Android companion</span>
           <h1>High-performance Windows file search.</h1>
           <p class="hero-lead">
             OmniSearch indexes NTFS metadata directly through USN/MFT APIs for instant global search. Effortlessly find
-            files with advanced filters, multithreaded duplicate detection, and deep inline content search.
+            files with advanced filters, multithreaded duplicate detection, deep inline content search, secure Android
+            LAN pairing, and bidirectional file transfer.
           </p>
           <div class="hero-actions">
             <a href="#downloads" class="btn btn-primary">
@@ -91,7 +128,7 @@
             <li><svg viewBox="0 0 24 24">
                 <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                   d="M20 6 9 17l-5-5" />
-              </svg> Powerful inline content search syntax</li>
+              </svg> Secure Android companion app with local-network sync</li>
           </ul>
         </div>
 
@@ -103,6 +140,48 @@
             </div>
             <img src="a.gif" alt="OmniSearch main search workspace" />
           </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Release Section -->
+    <section id="release" class="page-section release-section bg-alt" data-nav-section="release">
+      <div class="container">
+        <div class="release-panel">
+          <div class="release-copy">
+            <span class="badge">Latest updates</span>
+            <h2>OmniSearch now connects desktop search with Android.</h2>
+            <p>
+              OmniSearch has grown from a powerful Windows desktop search tool into a connected desktop and Android
+              workflow. Recent updates add the official Android companion app, stronger content-search previews,
+              remote desktop search from mobile, file transfer, duplicate management, and a standalone Android local
+              explorer.
+            </p>
+            <div class="release-actions">
+              <a class="btn btn-primary" href="#android">Explore Android app</a>
+              <a class="btn btn-secondary" href="https://github.com/Eul45/omni-search/releases/latest" target="_blank"
+                rel="noreferrer">Get the Android app from latest release</a>
+            </div>
+          </div>
+          <div class="release-highlights">
+            <article>
+              <strong>Expanded content search</strong>
+              <span>Preview matches with highlighted context for readable files, code, logs, JSON, and documents.</span>
+            </article>
+            <article>
+              <strong>Built-in previewer</strong>
+              <span>Open side-by-side text previews and copy selected content directly inside OmniSearch.</span>
+            </article>
+            <article>
+              <strong>Android sync</strong>
+              <span>Pair over trusted private Wi-Fi with QR setup, encrypted WebSockets, and desktop approval.</span>
+            </article>
+            <article>
+              <strong>File transfer</strong>
+              <span>Download PC files to Android, upload Android files to desktop, and share Android files into
+                OmniSearch.</span>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -158,6 +237,115 @@
             <p>Customize your workspace with multiple presets including Slate Glass, Aurora, Nordic Ink, and Solar Sand.
             </p>
           </article>
+          <article class="bento-card simple-card">
+            <h3>Highlighted Content Matches</h3>
+            <p>Readable previews now surface matching text with surrounding context so you can judge files faster.</p>
+          </article>
+          <article class="bento-card simple-card">
+            <h3>Remote Mobile Workflow</h3>
+            <p>Search your PC, browse directories, pin results, download files, and request cleanup from Android.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Android Companion Section -->
+    <section id="android" class="page-section android-section" data-nav-section="android">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="badge">OmniSearch Android App v1.0</span>
+          <h2>Your PC search engine, in your pocket.</h2>
+          <p>
+            Pair your phone with OmniSearch Desktop over a private local network to search your PC, browse files,
+            transfer media, inspect duplicates, and manage Android storage from one companion app.
+          </p>
+        </div>
+
+        <div class="android-showcase">
+          <figure class="phone-frame">
+            <img src="android-home.png" alt="OmniSearch Android dashboard" />
+          </figure>
+          <figure class="window-frame android-desktop-shot">
+            <div class="window-bar">
+              <div class="window-controls"><span></span><span></span><span></span></div>
+              <div class="window-title">Secure desktop pairing</div>
+            </div>
+            <img src="android-pc-sync.png" alt="OmniSearch desktop Android sync pairing screen" />
+          </figure>
+          <figure class="phone-frame">
+            <img src="android-search.png" alt="OmniSearch Android remote search" />
+          </figure>
+        </div>
+
+        <div class="android-grid">
+          <article class="android-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <h3>Secure local pairing</h3>
+            <p>QR pairing, encrypted <code>wss://</code> transport, certificate pinning, desktop approval, rate-limited
+              pairing attempts, and session-scoped path validation.</p>
+          </article>
+          <article class="android-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <h3>Remote desktop search</h3>
+            <p>Use the desktop indexing engine from Android, preview results, open files on the PC, reveal locations,
+              pin important items, or download files to the phone.</p>
+          </article>
+          <article class="android-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 5v14"></path>
+                <path d="m19 12-7 7-7-7"></path>
+              </svg>
+            </div>
+            <h3>Bidirectional transfer</h3>
+            <p>Download desktop files to Android, upload Android files to desktop through chunked WebSocket transfer,
+              and send files to OmniSearch from Android's system share sheet.</p>
+          </article>
+          <article class="android-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 6h18"></path>
+                <path d="M8 6V4h8v2"></path>
+                <path d="M19 6l-1 14H6L5 6"></path>
+              </svg>
+            </div>
+            <h3>Duplicate cleanup</h3>
+            <p>Start duplicate scans on the PC from Android, review groups on the phone, and send cleanup requests back
+              with Recycle Bin support.</p>
+          </article>
+        </div>
+
+        <div class="android-local-panel">
+          <div>
+            <span class="badge">Standalone file explorer</span>
+            <h3>Android local storage management is built in.</h3>
+            <p>
+              The Android app also works without desktop sync: browse categories, navigate internal and external
+              storage, use multi-select actions, favorites, recycle-bin style recovery, and media/document previews.
+            </p>
+          </div>
+          <div class="android-local-media">
+            <figure class="phone-frame slim">
+              <img src="android-local.png" alt="Android local dashboard" />
+            </figure>
+            <figure class="window-frame">
+              <img src="android-local-video-player.png" alt="Android local explorer" />
+            </figure>
+          </div>
         </div>
       </div>
     </section>
@@ -167,7 +355,7 @@
       <div class="container">
         <div class="section-header text-center">
           <h2>Get OmniSearch</h2>
-          <p>Choose the build that fits your Windows setup.</p>
+          <p>Install the latest desktop release and pair it with the Android companion app.</p>
         </div>
 
         <div class="download-grid">
@@ -175,8 +363,8 @@
             <div class="dl-icon">📦</div>
             <h3>Portable Version</h3>
             <p>Download the portable ZIP package and run OmniSearch without any installation.</p>
-            <a class="btn btn-primary w-full" href="/omni-search/OmniSearch_0.1.13_x64.zip"
-              data-asset-path="OmniSearch_0.1.13_x64.zip" download>Download ZIP</a>
+           <a class="btn btn-primary w-full" href="/omni-search/OmniSearch_0.1.14_x64.zip"
+              data-asset-path="OmniSearch_0.1.14_x64.zip" download>Download ZIP</a>
           </article>
 
           <article class="download-card featured-dl">
@@ -276,7 +464,8 @@
         <div class="faq-list">
           <a href="uac-guide.html" class="faq-link-card">
             <span>How do I stop the UAC admin prompt on every launch using Task Scheduler?</span>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
           </a>
@@ -337,6 +526,14 @@
       </div>
     </div>
   </footer>
+
+  <!-- Back to top -->
+  <button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7"></path>
+    </svg>
+  </button>
 
   <script src="script.js"></script>
 </body>
