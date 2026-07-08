@@ -31,13 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
           starBadge.textContent = `★ ${data.stargazers_count.toLocaleString()}`;
         } else {
           // Fallback if the payload properties look weird
-          starBadge.textContent = "★ 500+";
+          starBadge.textContent = "★ 550+";
         }
       })
       .catch(error => {
         console.error("Error fetching GitHub stars:", error);
       // Fallback gracefully instead of hiding the badge entirely
-        starBadge.textContent = "★ 500+";
+        starBadge.textContent = "★ 550+";
       });
   }
 
