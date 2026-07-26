@@ -396,6 +396,27 @@ h3 {
   background: var(--bg-alt);
 }
 
+.btn-android {
+  background: #10b981;
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-android:hover {
+  background: #059669;
+}
+
+.btn-sponsor {
+  background: #ea4aaa;
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-sponsor:hover {
+  background: #d0358e;
+}
+
+
 /* Page Layouts */
 .page-section {
   padding: 5rem 0;
