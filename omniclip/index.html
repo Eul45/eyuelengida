@@ -266,10 +266,18 @@
             <div style="display: flex; flex-direction: column; gap: 0.75rem; width: 100%; margin-top: auto;">
               <a class="btn btn-primary w-full" href="https://apps.microsoft.com/detail/9N53Z3QVL322?hl=en-us&gl=US"
                 target="_blank" rel="noreferrer">Get it from Microsoft Store</a>
-              <a class="btn btn-secondary w-full"
-                href="https://ojwnwpb4x7waujjw.public.blob.vercel-storage.com/OmniClip_v2.0.0_x64.exe" download>
-                📦 Download Portable (.exe)
-              </a>
+              <div style="position: relative; width: 100%;">
+                <button class="btn btn-secondary btn-disabled w-full" disabled style="width: 100%;">
+                  📦 Download Portable (.exe)
+                </button>
+                <span
+                  style="position: absolute; top: -9px; right: -4px; background: #e53935; color: #ffffff; font-size: 0.65rem; font-weight: 800; padding: 2px 7px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; transform: rotate(4deg); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); border: 2px solid #ffffff; z-index: 10;">
+                  TEMPORARILY UNAVAILABLE
+                </span>
+              </div>
+              <p style="font-size: 0.78rem; color: var(--text-muted); text-align: center; margin: 0;">
+                Please download via Microsoft Store above.
+              </p>
             </div>
           </article>
           <article class="download-card fade-up">
