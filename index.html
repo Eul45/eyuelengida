@@ -55,6 +55,11 @@
 </head>
 
 <body>
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" aria-hidden="true">
+        <div class="scroll-progress__bar" id="scrollProgressBar"></div>
+    </div>
+
     <!-- Custom cursor (desktop only) -->
     <div id="custom-cursor-wrap">
         <svg id="custom-cursor" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -82,6 +87,7 @@
             </button>
 
             <nav class="nav__links" id="navLinks">
+                <span class="nav__pill" id="navPill" aria-hidden="true"></span>
                 <a href="#home" class="nav__link active">Home</a>
                 <a href="#about" class="nav__link">About</a>
                 <a href="#projects" class="nav__link">Projects</a>
@@ -98,6 +104,7 @@
         <div class="container">
             <div class="hero__content">
                 <div class="hero__avatar-wrapper reveal-scale">
+                    <div class="hero__avatar-ring" aria-hidden="true"></div>
                     <div class="hero__avatar-glow" aria-hidden="true"></div>
                     <img src="assets/profile/eyuel-main.png" alt="Eyuel Engida" class="hero__avatar">
                 </div>
@@ -766,6 +773,17 @@
             window.addEventListener('scroll', onScroll, { passive: true });
             onScroll();
 
+            // --- Scroll progress bar ---
+            const progressBar = document.getElementById('scrollProgressBar');
+            const updateProgress = () => {
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+                progressBar.style.width = pct + '%';
+            };
+            window.addEventListener('scroll', updateProgress, { passive: true });
+            window.addEventListener('resize', updateProgress);
+            updateProgress();
+
             // --- Mobile nav toggle ---
             const navToggle = document.getElementById('navToggle');
             const navLinks = document.getElementById('navLinks');
@@ -799,9 +817,32 @@
                 });
             });
 
+            // --- Sliding nav pill indicator ---
+            const navPill = document.getElementById('navPill');
+            const movePill = (el) => {
+                if (!el || !navPill || !navLinks) return;
+                const linkRect = el.getBoundingClientRect();
+                const wrapRect = navLinks.getBoundingClientRect();
+                navPill.style.width = `${linkRect.width}px`;
+                navPill.style.transform = `translateX(${linkRect.left - wrapRect.left}px)`;
+                navPill.style.opacity = '1';
+            };
+
             // --- Active nav link highlight ---
             const sections = document.querySelectorAll('section[id]');
             const navLinkEls = document.querySelectorAll('.nav__link[href^="#"]');
+
+            navLinkEls.forEach(link => {
+                link.addEventListener('mouseenter', () => movePill(link));
+            });
+            navLinks.addEventListener('mouseleave', () => {
+                const active = document.querySelector('.nav__link.active');
+                if (active) movePill(active);
+            });
+            window.addEventListener('resize', () => {
+                const active = document.querySelector('.nav__link.active');
+                if (active) movePill(active);
+            });
 
             function updateActiveLink() {
                 const scrollY = window.scrollY + 120;
@@ -812,12 +853,19 @@
                     if (scrollY >= top && scrollY < top + height) {
                         navLinkEls.forEach(l => l.classList.remove('active'));
                         const activeLink = document.querySelector(`.nav__link[href="#${id}"]`);
-                        if (activeLink) activeLink.classList.add('active');
+                        if (activeLink) {
+                            activeLink.classList.add('active');
+                            movePill(activeLink);
+                        }
                     }
                 });
             }
 
             window.addEventListener('scroll', updateActiveLink, { passive: true });
+            window.addEventListener('load', () => {
+                const active = document.querySelector('.nav__link.active');
+                if (active) movePill(active);
+            });
 
             // --- Scroll-triggered reveal animations ---
             const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
@@ -939,6 +987,53 @@
                     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hovered'));
                 });
             }
+            // --- Mouse-tracked spotlight glow + card tilt + avatar parallax ---
+            const finePointer = window.matchMedia('(pointer: fine)').matches;
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (finePointer && !reduceMotion) {
+                // Spotlight glow tracking on cards
+                document.querySelectorAll('.project-card, .about__link-card, .cert-card, .stat').forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+                        card.style.setProperty('--my', `${e.clientY - rect.top}px`);
+                    });
+                });
+
+                // Subtle 3D tilt on project cards
+                projectCards.forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const px = (e.clientX - rect.left) / rect.width;
+                        const py = (e.clientY - rect.top) / rect.height;
+                        const rx = (py - 0.5) * -6;
+                        const ry = (px - 0.5) * 6;
+                        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = '';
+                    });
+                });
+
+                // Hero avatar parallax
+                const heroAvatarWrap = document.querySelector('.hero__avatar-wrapper');
+                const heroSection = document.querySelector('.hero');
+                if (heroAvatarWrap && heroSection) {
+                    heroSection.addEventListener('mousemove', (e) => {
+                        const rect = heroAvatarWrap.getBoundingClientRect();
+                        const cx = rect.left + rect.width / 2;
+                        const cy = rect.top + rect.height / 2;
+                        const dx = (e.clientX - cx) / 40;
+                        const dy = (e.clientY - cy) / 40;
+                        heroAvatarWrap.style.transform = `translate(${dx}px, ${dy}px)`;
+                    });
+                    heroSection.addEventListener('mouseleave', () => {
+                        heroAvatarWrap.style.transform = '';
+                    });
+                }
+            }
+
             // --- Number Counter Animation ---
             const counters = document.querySelectorAll('.counter');
             const countObserver = new IntersectionObserver((entries, observer) => {
