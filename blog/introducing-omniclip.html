@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing OmniClip: A Local-First Clipboard Manager for Windows — Eyuel Engida</title>
+    <meta name="description" content="OmniClip is a local-first Windows clipboard manager with persistent history, app source tracking, folders, notes, image preview, Android sync, and optional Pro power tools.">
+
+    <meta property="og:title" content="Introducing OmniClip: A Local-First Clipboard Manager for Windows">
+    <meta property="og:description" content="Persistent clipboard history, app source tracking, folders, notes, mobile sync, and privacy-focused power tools.">
+    <meta property="og:image" content="https://eyuel.com.et/assets/projects/omniclip.png">
+    <meta property="og:url" content="https://eyuel.com.et/blog/introducing-omniclip">
+
+    <link rel="icon" href="../assets/brand/favicon-32.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .post-hero { padding: calc(var(--header-height) + 3rem) 0 2rem; }
+        .post-hero__back { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 1.5rem; transition: color 0.3s ease; }
+        .post-hero__back:hover { color: var(--accent-light); }
+        .post-hero__meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; font-size: 0.8rem; color: var(--text-tertiary); }
+        .post-hero__tag { padding: 3px 10px; background: var(--gradient-subtle); border: 1px solid var(--border); border-radius: var(--radius-full); color: var(--accent-light); font-weight: 600; font-size: 0.75rem; }
+        .post-hero__title { font-family: var(--font-display); font-size: clamp(1.75rem, 5vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1rem; }
+        .post-hero__subtitle { font-size: 1.1rem; color: var(--text-secondary); max-width: 680px; line-height: 1.7; }
+        .post-content { max-width: 720px; margin: 0 auto; padding: 2rem 0 4rem; }
+        .post-content h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin: 2.5rem 0 1rem; }
+        .post-content h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+        .post-content p { color: var(--text-secondary); line-height: 1.85; margin-bottom: 1.25rem; font-size: 1rem; }
+        .post-content ul { color: var(--text-secondary); margin: 0 0 1.5rem 1.5rem; line-height: 1.85; }
+        .post-content li { margin-bottom: 0.4rem; }
+        .post-content strong { color: var(--text-primary); }
+        .post-content a:not(.btn) { color: var(--accent-light); text-decoration: underline; text-underline-offset: 3px; }
+        .post-content a:not(.btn):hover { color: var(--accent); }
+        .post-content img { width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border); margin: 1.5rem 0; }
+        .post-content code { padding: 2px 7px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 4px; font-size: 0.9em; color: var(--accent-light); }
+        .post-content blockquote { margin: 1.5rem 0; padding: 1rem 1.5rem; border-left: 3px solid var(--accent); background: var(--bg-card); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--text-secondary); font-style: italic; }
+        .post-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0; }
+        .post-nav { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; border-top: 1px solid var(--border); margin-top: 3rem; }
+        .post-nav a { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--text-secondary); transition: color 0.3s ease; }
+        .post-nav a:hover { color: var(--accent-light); }
+        .post-carousel {
+            position: relative;
+            margin: 1.5rem 0 2rem;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+        }
+        .post-carousel__track {
+            display: flex;
+            transition: transform 360ms var(--ease-out);
+            will-change: transform;
+        }
+        .post-carousel__slide {
+            min-width: 100%;
+            margin: 0;
+            background: var(--bg-elevated);
+        }
+        .post-carousel__slide img {
+            display: block;
+            width: 100%;
+            max-height: 520px;
+            object-fit: contain;
+            margin: 0;
+            border: 0;
+            border-radius: 0;
+        }
+        .post-carousel__button {
+            position: absolute;
+            top: 50%;
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            background: rgba(10, 10, 14, 0.72);
+            color: var(--text-primary);
+            cursor: pointer;
+            transform: translateY(-50%);
+            transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+            z-index: 2;
+        }
+        .post-carousel__button:hover {
+            background: var(--bg-elevated);
+            border-color: var(--border-hover);
+            color: var(--accent-light);
+        }
+        .post-carousel__button--prev { left: 12px; }
+        .post-carousel__button--next { right: 12px; }
+        .post-carousel__dots {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 7px;
+            z-index: 2;
+        }
+        .post-carousel__dot {
+            width: 8px;
+            height: 8px;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: var(--radius-full);
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+        }
+        .post-carousel__dot.active {
+            width: 22px;
+            background: var(--accent-light);
+            border-color: var(--accent-light);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="custom-cursor-wrap">
+        <svg id="custom-cursor" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 21 Q 10 14 3 3 L 22 12 Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </div>
+    <div class="gradient-orb gradient-orb--1" aria-hidden="true"></div>
+    <div class="gradient-orb gradient-orb--2" aria-hidden="true"></div>
+
+    <header class="header scrolled">
+        <div class="container header__inner">
+            <a href="/" class="logo">
+                <img src="../assets/brand/logo.png" alt="EE" class="logo__img">
+                <span class="logo__text">Eyuel</span>
+            </a>
+            <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav__links" id="navLinks">
+                <a href="/" class="nav__link">Home</a>
+                <a href="/#about" class="nav__link">About</a>
+                <a href="/#projects" class="nav__link">Projects</a>
+                <a href="/#skills" class="nav__link">Skills</a>
+                <a href="/#contact" class="nav__link">Contact</a>
+                <a href="/blog" class="nav__link active">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="post-hero">
+        <div class="container">
+            <a href="/blog" class="post-hero__back reveal"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+            <div class="post-hero__meta reveal">
+                <span class="post-hero__tag">Windows App</span>
+                <span>August 2026</span>
+                <span>·</span>
+                <span>4 min read</span>
+            </div>
+            <h1 class="post-hero__title reveal">Introducing OmniClip: A Local-First Clipboard Manager for Windows</h1>
+            <p class="post-hero__subtitle reveal">OmniClip keeps a persistent clipboard history with fast search, app source tracking, folders, notes, image tools, Android sync, and privacy-first storage.</p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <article class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="post-content reveal">
+                <div class="post-carousel" data-carousel>
+                    <div class="post-carousel__track">
+                        <figure class="post-carousel__slide">
+                            <img src="omniclip1.png" alt="OmniClip desktop clipboard history">
+                        </figure>
+                        <figure class="post-carousel__slide">
+                            <img src="omniclip2.png" alt="OmniClip compact clipboard popup">
+                        </figure>
+                        <figure class="post-carousel__slide">
+                            <img src="../assets/projects/omniclip.png" alt="OmniClip desktop and mobile sync">
+                        </figure>
+                    </div>
+                    <button class="post-carousel__button post-carousel__button--prev" type="button" aria-label="Previous OmniClip screenshot">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="post-carousel__button post-carousel__button--next" type="button" aria-label="Next OmniClip screenshot">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="post-carousel__dots" aria-label="OmniClip screenshot slides">
+                        <button class="post-carousel__dot active" type="button" aria-label="Show screenshot 1"></button>
+                        <button class="post-carousel__dot" type="button" aria-label="Show screenshot 2"></button>
+                        <button class="post-carousel__dot" type="button" aria-label="Show screenshot 3"></button>
+                    </div>
+                </div>
+
+                <h2>Why I Built It</h2>
+                <p>The built-in Windows clipboard history is useful, but it is limited when you copy a lot during real work. I wanted a clipboard manager that could keep long-term history, search quickly, show where clips came from, and stay local-first instead of sending clipboard data to a cloud service.</p>
+                <p>That became <strong>OmniClip</strong>: a Windows clipboard manager built for daily use, power users, and anyone who wants a better way to reuse text, links, images, commands, addresses, snippets, and frequent notes.</p>
+
+                <h2>What OmniClip Does</h2>
+                <ul>
+                    <li><strong>Persistent local clipboard history</strong> for text, URLs, and images</li>
+                    <li><strong>App Origin Tracking</strong> with source application names and icons</li>
+                    <li><strong>Fast search and filters</strong> for text, links, images, favorites, folders, and apps</li>
+                    <li><strong>Folders and notes</strong> for organizing frequently used clips</li>
+                    <li><strong>Clip editing</strong>, text transforms, and bulk actions</li>
+                    <li><strong>Sensitive clip protection</strong> with master password locking and auto-lock detection</li>
+                    <li><strong>Image preview, OCR, Google Lens, and translation tools</strong></li>
+                    <li><strong>Android sync over local WiFi</strong>, with no internet required</li>
+                    <li><strong>Backup import/export</strong> for moving or restoring clipboard history</li>
+                </ul>
+
+                <h2>Local-First Privacy</h2>
+                <blockquote>Your clipboard can contain passwords, private messages, work notes, addresses, screenshots, and code. OmniClip is designed around that reality.</blockquote>
+                <p>OmniClip stores clipboard history locally on your Windows PC. Mobile sync works over your local WiFi or hotspot, and there is no cloud account or telemetry layer in the middle. Pro AI features are optional and support both cloud providers and local Ollama models, so users can choose the privacy tradeoff that fits them.</p>
+
+                <h2>Free and Pro</h2>
+                <p>The core clipboard manager is free. OmniClip Pro unlocks extra power-user features such as AI chat, AI rewrite, OCR AI translation, Google Lens image search, premium themes, folder tab view, and higher storage limits.</p>
+
+                <h2>Get OmniClip</h2>
+                <div class="post-links">
+                    <a href="https://apps.microsoft.com/detail/9N53Z3QVL322?hl=en-us&gl=US" class="btn btn--primary btn--sm" target="_blank"><i class="fab fa-microsoft"></i> Microsoft Store</a>
+                    <a href="https://eyuel.com.et/omniclip" class="btn btn--ghost btn--sm" target="_blank"><i class="fas fa-globe"></i> Homepage</a>
+                    <a href="https://github.com/Eul45/OmniClip" class="btn btn--ghost btn--sm" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+
+                <div class="post-nav">
+                    <a href="/blog/omnisearch-windows-alternative"><i class="fas fa-arrow-left"></i> Previous Post</a>
+                    <a href="/blog">All Posts <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand"><span>&lt;/&gt;</span> <span>Crafted by <span class="footer__brand-accent">Eyuel Engida</span></span></div>
+            <div class="footer__copy">&copy; <span id="currentYear"></span> All rights reserved</div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const navToggle = document.getElementById('navToggle'), navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => { navToggle.classList.toggle('active'); navLinks.classList.toggle('open'); document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : ''; });
+        navLinks.querySelectorAll('.nav__link').forEach(l => l.addEventListener('click', () => { navToggle.classList.remove('active'); navLinks.classList.remove('open'); document.body.style.overflow = ''; }));
+        const revealObs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+        document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+            const track = carousel.querySelector('.post-carousel__track');
+            const slides = Array.from(carousel.querySelectorAll('.post-carousel__slide'));
+            const dots = Array.from(carousel.querySelectorAll('.post-carousel__dot'));
+            const prev = carousel.querySelector('.post-carousel__button--prev');
+            const next = carousel.querySelector('.post-carousel__button--next');
+            let index = 0;
+            const showSlide = (nextIndex) => {
+                index = (nextIndex + slides.length) % slides.length;
+                track.style.transform = `translateX(-${index * 100}%)`;
+                dots.forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === index));
+            };
+            prev.addEventListener('click', () => showSlide(index - 1));
+            next.addEventListener('click', () => showSlide(index + 1));
+            dots.forEach((dot, dotIndex) => dot.addEventListener('click', () => showSlide(dotIndex)));
+        });
+        const cursorWrap = document.getElementById('custom-cursor-wrap');
+        if (cursorWrap && window.matchMedia('(pointer: fine)').matches) {
+            cursorWrap.classList.add('cursor-hidden');
+            window.addEventListener('mousemove', (e) => { cursorWrap.classList.remove('cursor-hidden'); requestAnimationFrame(() => { cursorWrap.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`; }); });
+            document.body.addEventListener('mouseleave', () => cursorWrap.classList.add('cursor-hidden'));
+            document.body.addEventListener('mouseenter', () => cursorWrap.classList.remove('cursor-hidden'));
+            document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hovered')); el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hovered')); });
+        }
+    </script>
+</body>
+</html>
