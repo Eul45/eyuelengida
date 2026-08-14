@@ -1,0 +1,12 @@
+[
+  {
+    "id": "2026-08-14-magic-shake",
+    "type": "whatsNew",
+    "title": "Magic Shake is here",
+    "body": "Open OmniClip without touching the keyboard. Turn on Magic Shake in Settings, then shake your mouse left and right to bring up your clipboard popup from anywhere.\n\nIt follows your current window mode, so it can open the compact popup or the quick window depending on how you use OmniClip.",
+    "imageUrl": "https://eyuel.com.et/omniclip/magic_shake.png",
+    "createdAt": "2026-08-14",
+    "minVersion": "2.0.15",
+    "active": true
+  }
+]
