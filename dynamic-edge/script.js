@@ -284,6 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const galleryTabs = document.querySelectorAll(".gallery-tab-btn");
   const galleryImage = document.getElementById("gallery-viewport-img");
   const galleryCaption = document.getElementById("gallery-caption-banner");
+  const loadingOverlay = document.getElementById("gallery-loading-overlay");
 
   const galleryContent = {
     media: {
@@ -325,6 +326,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const key = tab.dataset.gallery;
       if (galleryContent[key] && galleryImage) {
+        // Show loading overlay
+        if (loadingOverlay) loadingOverlay.classList.add("active");
+        
         galleryImage.classList.remove("slide-left", "slide-right");
         void galleryImage.offsetWidth; // Trigger reflow
         galleryImage.classList.add("slide-left");
@@ -333,6 +337,11 @@ document.addEventListener("DOMContentLoaded", () => {
           galleryImage.src = galleryContent[key].src;
           galleryImage.alt = galleryContent[key].alt;
           if (galleryCaption) galleryCaption.textContent = galleryContent[key].caption;
+          
+          // Hide loading overlay when image loads
+          galleryImage.onload = () => {
+            if (loadingOverlay) loadingOverlay.classList.remove("active");
+          };
         }, 200);
       }
     });
@@ -362,6 +371,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Animate image
     if (galleryContent[key] && galleryImage) {
+      // Show loading overlay
+      if (loadingOverlay) loadingOverlay.classList.add("active");
+      
       galleryImage.classList.remove("slide-left", "slide-right");
       void galleryImage.offsetWidth; // Trigger reflow
       galleryImage.classList.add(direction > 0 ? "slide-left" : "slide-right");
@@ -370,6 +382,11 @@ document.addEventListener("DOMContentLoaded", () => {
         galleryImage.src = galleryContent[key].src;
         galleryImage.alt = galleryContent[key].alt;
         if (galleryCaption) galleryCaption.textContent = galleryContent[key].caption;
+        
+        // Hide loading overlay when image loads
+        galleryImage.onload = () => {
+          if (loadingOverlay) loadingOverlay.classList.remove("active");
+        };
       }, 200);
     }
   }
