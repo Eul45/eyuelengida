@@ -340,11 +340,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Gallery arrow navigation
   const galleryKeys = Object.keys(galleryContent);
-  let currentGalleryIndex = 0;
+
+  function getCurrentGalleryIndex() {
+    const activeTab = document.querySelector(".gallery-tab-btn.active");
+    if (activeTab) {
+      const key = activeTab.dataset.gallery;
+      return galleryKeys.indexOf(key);
+    }
+    return 0;
+  }
 
   function navigateGallery(direction) {
-    currentGalleryIndex = (currentGalleryIndex + direction + galleryKeys.length) % galleryKeys.length;
-    const key = galleryKeys[currentGalleryIndex];
+    const currentIndex = getCurrentGalleryIndex();
+    const newIndex = (currentIndex + direction + galleryKeys.length) % galleryKeys.length;
+    const key = galleryKeys[newIndex];
     
     // Update active tab
     galleryTabs.forEach(t => t.classList.remove("active"));
